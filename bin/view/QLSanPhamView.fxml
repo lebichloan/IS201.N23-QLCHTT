@@ -19,8 +19,8 @@
             <TableColumn fx:id="maLSPColumn" prefWidth="229.60003662109375" text="Loại Sản Phẩm" />
         </columns>
       </TableView>
-      <Button fx:id="add" layoutX="28.0" layoutY="589.0" mnemonicParsing="false" onAction="#add" text="Thêm" />
-      <Button fx:id="delete" layoutX="415.0" layoutY="589.0" mnemonicParsing="false" onAction="#delete" text="Xoá" />
+      <Button fx:id="add" layoutX="28.0" layoutY="589.0" mnemonicParsing="false" text="Thêm" />
+      <Button fx:id="delete" layoutX="415.0" layoutY="589.0" mnemonicParsing="false" text="Xoá" />
       <Button fx:id="update" layoutX="771.0" layoutY="576.0" mnemonicParsing="false" text="Cập Nhật" />
       <Label layoutX="851.0" layoutY="85.0" prefHeight="18.0" prefWidth="78.0" text="Mã Sản Phẩm" />
       <TextField fx:id="maSPTextField" layoutX="951.0" layoutY="81.0" prefHeight="26.0" prefWidth="173.0" />

@@ -3,6 +3,8 @@ module QLCHTT {
 	requires javafx.graphics;
 	requires javafx.fxml;
 	requires java.sql;
+	//requires oracle.jdbc;
+
 	exports view;
 	exports model;
 	exports controller;

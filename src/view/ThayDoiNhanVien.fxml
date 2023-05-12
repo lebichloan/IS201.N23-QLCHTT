@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane layoutY="-6.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="599.0">
+               <children>
+                  <SplitPane dividerPositions="0.11657754010695186" layoutX="181.0" layoutY="-36.0" orientation="VERTICAL" prefHeight="750.0" prefWidth="699.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Text layoutX="205.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi thông tin nhân viên" textAlignment="CENTER" wrappingWidth="749.6" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="484.0" layoutY="14.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Quay lại" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <SplitPane maxHeight="590.0" maxWidth="709.0" prefHeight="302.0" prefWidth="658.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="35.0">
+                                 <items>
+                                    <AnchorPane prefHeight="250.0" prefWidth="200.0">
+                                       <children>
+                                          <Text layoutX="29.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân viên*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="27.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="70.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="30.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="115.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField layoutX="102.0" layoutY="151.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="195.0" />
+                                          <Text layoutX="332.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="205.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="88.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày vào làm*" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="25.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="30.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="250.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField layoutX="100.0" layoutY="249.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="240.0" />
+                                          <TextField layoutX="441.0" layoutY="108.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0" />
+                                          <Text layoutX="289.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SĐT*" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="160.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField layoutX="100.0" layoutY="205.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="150.0" />
+                                          <Text layoutX="35.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="160.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField layoutX="111.0" layoutY="65.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="60.0" />
+                                          <DatePicker layoutX="102.0" layoutY="95.0" prefHeight="40.0" prefWidth="218.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="105.0" />
+                                          <Text layoutX="144.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NV001" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="25.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <DatePicker layoutX="477.0" layoutY="18.0" prefHeight="40.0" prefWidth="218.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="15.0" />
+                                          <Text layoutX="364.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên khác" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="115.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField layoutX="460.0" layoutY="106.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="188.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="105.0" />
+                                          <CheckBox layoutX="515.0" layoutY="72.0" mnemonicParsing="false" prefWidth="92.0" text="Nữ" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox layoutX="415.0" layoutY="69.0" mnemonicParsing="false" prefWidth="92.0" text="Nam" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="70.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
+                              <Text layoutX="83.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin nhân viên" textOrigin="CENTER" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="20.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <SplitPane layoutX="14.0" layoutY="354.0" maxHeight="590.0" maxWidth="709.0" prefHeight="172.0" prefWidth="658.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="360.0">
+                                 <items>
+                                    <AnchorPane prefHeight="250.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField layoutX="166.0" layoutY="79.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="70.0" />
+                                          <TextField layoutX="166.0" layoutY="34.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="25.0" />
+                                          <Text layoutX="36.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên đăng nhập*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="35.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="36.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mật khẩu*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="80.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="36.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quyền truy cập*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="125.0">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <MenuButton layoutX="166.0" layoutY="124.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="274.0" text="Chọn quyền người dùng" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="115.0">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                          </MenuButton>
+                                          <Button layoutX="492.0" layoutY="21.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Xóa tài khoản" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
+                              <Text layoutX="69.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin tài khoản" textOrigin="CENTER" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="345.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="299.0" layoutY="547.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Lưu thay đổi" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="299.0" AnchorPane.rightAnchor="299.4" />
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

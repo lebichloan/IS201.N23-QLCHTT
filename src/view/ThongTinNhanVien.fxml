@@ -13,7 +13,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -46,23 +45,23 @@
                                                          <items>
                                                             <AnchorPane prefHeight="250.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text layoutX="29.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân viên*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
+                                                                  <Text layoutX="29.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân viên*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="25.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
-                                                                  <Text layoutX="27.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="70.0">
+                                                                  <Text layoutX="27.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
-                                                                  <Text layoutX="30.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="160.0">
+                                                                  <Text layoutX="30.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="160.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
                                                                   <TextField layoutX="100.0" layoutY="242.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="285.0" />
-                                                                  <Text layoutX="30.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="285.0">
+                                                                  <Text layoutX="30.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="285.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
@@ -72,20 +71,20 @@
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
-                                                                  <Text layoutX="30.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="330.0">
+                                                                  <Text layoutX="30.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="330.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
                                                                   <TextField layoutX="100.0" layoutY="287.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="330.0" />
                                                                   <TextField layoutX="100.0" layoutY="197.0" maxHeight="40.0" maxWidth="411.0" prefHeight="40.0" prefWidth="411.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="240.0" />
-                                                                  <Text layoutX="400.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SĐT*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="245.0">
+                                                                  <Text layoutX="400.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SĐT*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="245.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
                                                                   <TextField layoutX="100.0" layoutY="197.0" maxHeight="40.0" maxWidth="401.0" prefHeight="40.0" prefWidth="401.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="195.0" />
-                                                                  <Text layoutX="30.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="205.0">
+                                                                  <Text layoutX="30.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="205.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
@@ -98,7 +97,7 @@
                                                                      </font>
                                                                   </Text>
                                                                   <DatePicker layoutX="370.0" layoutY="18.0" prefHeight="40.0" prefWidth="141.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="15.0" />
-                                                                  <Text layoutX="25.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên khác" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="115.0">
+                                                                  <Text layoutX="25.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên khác" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="115.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>

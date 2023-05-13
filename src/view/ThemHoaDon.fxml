@@ -89,6 +89,7 @@
                                                             <Font size="20.0" />
                                                          </font>
                                                       </Text>
+                                                      <Button layoutX="452.0" layoutY="15.0" maxHeight="100.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Thêm khách hàng mới" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
                                                    </children>
                                                 </AnchorPane>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="325.0" prefWidth="395.0">

@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane dividerPositions="0.9396511079679396" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane layoutX="10.0" layoutY="10.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="599.0">
                <children>
@@ -23,7 +23,7 @@
                      <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Text layoutX="205.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi thông tin hóa đơn" textAlignment="CENTER" wrappingWidth="1197.6000000000001" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                              <Text layoutX="205.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết hóa đơn" textAlignment="CENTER" wrappingWidth="1197.6000000000001" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                                  <font>
                                     <Font size="35.0" />
                                  </font>
@@ -33,11 +33,11 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <SplitPane dividerPositions="0.47246784565916394" layoutX="42.0" layoutY="45.0" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <SplitPane dividerPositions="0.3839464882943144" layoutX="42.0" layoutY="45.0" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <items>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                        <children>
-                                          <SplitPane dividerPositions="0.3734392735527809" orientation="VERTICAL" prefHeight="326.0" prefWidth="957.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <SplitPane dividerPositions="0.42667375132837404, 0.6485122210414452" orientation="VERTICAL" prefHeight="326.0" prefWidth="957.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <items>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                    <children>
@@ -45,36 +45,36 @@
                                                          <items>
                                                             <AnchorPane prefHeight="250.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text layoutX="29.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã khách hàng" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
+                                                                  <Text layoutX="30.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã khách hàng*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
-                                                                  <Text layoutX="27.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="70.0">
+                                                                  <Text layoutX="30.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="120.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
-                                                                  <TextField layoutX="110.0" layoutY="151.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="151.0" />
-                                                                  <Text layoutX="30.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="151.6552734375">
+                                                                  <TextField layoutX="110.0" layoutY="318.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="210.0" />
+                                                                  <Text layoutX="30.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="220.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
-                                                                  <TextField layoutX="110.0" layoutY="106.0" maxHeight="40.0" maxWidth="411.0" prefHeight="40.0" prefWidth="411.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="106.0" />
-                                                                  <Text layoutX="30.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SĐT" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="111.6552734375">
+                                                                  <TextField layoutX="110.0" layoutY="278.0" maxHeight="40.0" maxWidth="411.0" prefHeight="40.0" prefWidth="411.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="160.0" />
+                                                                  <Text layoutX="30.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SĐT" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="170.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
-                                                                  <TextField layoutX="111.0" layoutY="65.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
-                                                                  <MenuButton layoutX="169.0" layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Chọn mã khách hàng" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="15.0">
+                                                                  <TextField layoutX="110.0" layoutY="232.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="110.0" />
+                                                                  <MenuButton layoutX="30.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Chọn mã khách hàng" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="65.0">
                                                                      <items>
                                                                         <MenuItem mnemonicParsing="false" text="Action 1" />
                                                                         <MenuItem mnemonicParsing="false" text="Action 2" />
                                                                      </items>
                                                                   </MenuButton>
-                                                                  <MenuButton layoutX="325.0" layoutY="15.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="176.0" text="Chọn loại khách hàng" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="15.0">
+                                                                  <MenuButton layoutX="325.0" layoutY="15.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="176.0" text="Chọn loại khách hàng" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
                                                                      <items>
                                                                         <MenuItem mnemonicParsing="false" text="Action 1" />
                                                                         <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -97,86 +97,81 @@
                                                          <items>
                                                             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text layoutX="20.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã sản phẩm*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+                                                                  <Text layoutX="16.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân viên*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
-                                                                  <MenuButton layoutX="20.0" layoutY="44.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="241.0" text="Chọn mã sản phẩm" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="45.0">
+                                                                  <MenuButton layoutX="16.0" layoutY="66.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="241.0" text="Chọn mã nhân viên" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
                                                                      <items>
                                                                         <MenuItem mnemonicParsing="false" text="Action 1" />
                                                                         <MenuItem mnemonicParsing="false" text="Action 2" />
                                                                      </items>
                                                                   </MenuButton>
-                                                                  <Text layoutX="313.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên sản phẩm*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="85.0">
+                                                                  <Text layoutX="20.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên nhân viên*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="80.0">
                                                                      <font>
                                                                         <Font size="17.0" />
                                                                      </font>
                                                                   </Text>
-                                                                  <MenuButton layoutX="20.0" layoutY="107.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="241.0" text="Chọn tên sản phẩm" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="115.0">
-                                                                     <items>
-                                                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                                                                     </items>
-                                                                  </MenuButton>
-                                                                  <Text layoutX="20.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Màu sắc" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="160.0">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <Text layoutX="290.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kích thước" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="160.0">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <MenuButton layoutX="20.0" layoutY="192.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="241.0" text="Chọn màu sắc" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="190.0">
-                                                                     <items>
-                                                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                                                                     </items>
-                                                                  </MenuButton>
-                                                                  <MenuButton layoutX="290.0" layoutY="192.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="241.0" text="Chọn kích thước" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="190.0">
-                                                                     <items>
-                                                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                                                                     </items>
-                                                                  </MenuButton>
-                                                                  <Text layoutX="20.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng*" AnchorPane.topAnchor="249.6552734375">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <Text layoutX="290.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn vị tính*" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="249.6552734375">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <Text layoutX="20.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn giá*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="299.6552734375">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <Text layoutX="20.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thành tiền*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="349.6552734375">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <TextField layoutX="110.0" layoutY="240.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="150.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="240.0" />
-                                                                  <MenuButton layoutX="390.0" layoutY="240.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="241.0" text="Chọn đơn vị tính" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="240.0">
-                                                                     <items>
-                                                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                                                                     </items>
-                                                                  </MenuButton>
-                                                                  <TextField layoutX="110.0" layoutY="290.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="150.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="290.0" />
-                                                                  <TextField layoutX="110.0" layoutY="340.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="150.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="340.0" />
-                                                                  <Button layoutX="352.0" layoutY="270.0" maxHeight="100.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Thêm vào hóa đơn" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="10.0" />
-                                                                  <Button layoutX="327.0" layoutY="-15.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Xem sản phẩm" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0" />
+                                                                  <TextField layoutX="128.0" layoutY="71.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0" />
                                                                </children>
                                                             </AnchorPane>
                                                          </items>
                                                       </SplitPane>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm sản phẩm cho hóa đơn" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="15.0">
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin nhân viên xuất hóa đơn" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="15.0">
+                                                         <font>
+                                                            <Font size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="325.0" prefWidth="395.0">
+                                                   <children>
+                                                      <SplitPane maxHeight="590.0" maxWidth="709.0" prefHeight="302.0" prefWidth="658.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
+                                                         <items>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text layoutX="58.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số hóa đơn*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text layoutX="298.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HD001" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="30.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text layoutX="136.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="80.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <DatePicker layoutX="211.0" layoutY="118.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="70.0" />
+                                                                  <Text layoutX="216.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tình trạng*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="130.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <CheckBox layoutX="216.0" layoutY="38.0" mnemonicParsing="false" prefWidth="150.0" text="Đã thanh toán" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="130.0">
+                                                                     <font>
+                                                                        <Font size="15.0" />
+                                                                     </font>
+                                                                  </CheckBox>
+                                                                  <CheckBox layoutX="216.0" layoutY="38.0" mnemonicParsing="false" prefWidth="150.0" text="Chưa thanh toán" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="160.0">
+                                                                     <font>
+                                                                        <Font size="15.0" />
+                                                                     </font>
+                                                                  </CheckBox>
+                                                                  <CheckBox layoutX="216.0" layoutY="38.0" mnemonicParsing="false" prefWidth="92.0" text="Đã hủy" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="190.0">
+                                                                     <font>
+                                                                        <Font size="15.0" />
+                                                                     </font>
+                                                                  </CheckBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </items>
+                                                      </SplitPane>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin hóa đơn" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="15.0">
                                                          <font>
                                                             <Font size="20.0" />
                                                          </font>
@@ -193,48 +188,8 @@
                                              <items>
                                                 <AnchorPane prefHeight="250.0" prefWidth="200.0">
                                                    <children>
-                                                      <SplitPane dividerPositions="0.15139826422372227, 0.7814207650273224" orientation="VERTICAL" prefHeight="322.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                                                      <SplitPane dividerPositions="0.7919040479760119" orientation="VERTICAL" prefHeight="322.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                                                          <items>
-                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text layoutX="27.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số hóa đơn*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <Text layoutX="185.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HD001" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="10.0">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <Text layoutX="265.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo*" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="10.0">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <DatePicker layoutX="353.0" layoutY="3.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="0.0" />
-                                                                  <Text layoutX="37.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tình trạng*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="50.0">
-                                                                     <font>
-                                                                        <Font size="17.0" />
-                                                                     </font>
-                                                                  </Text>
-                                                                  <CheckBox layoutX="119.0" layoutY="56.0" mnemonicParsing="false" prefWidth="150.0" text="Đã thanh toán" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="55.0">
-                                                                     <font>
-                                                                        <Font size="15.0" />
-                                                                     </font>
-                                                                  </CheckBox>
-                                                                  <CheckBox layoutX="258.0" layoutY="71.0" mnemonicParsing="false" prefWidth="150.0" text="Chưa thanh toán" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="55.0">
-                                                                     <font>
-                                                                        <Font size="15.0" />
-                                                                     </font>
-                                                                  </CheckBox>
-                                                                  <CheckBox layoutX="414.0" layoutY="60.0" mnemonicParsing="false" prefWidth="92.0" text="Đã hủy" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="55.0">
-                                                                     <font>
-                                                                        <Font size="15.0" />
-                                                                     </font>
-                                                                  </CheckBox>
-                                                               </children>
-                                                            </AnchorPane>
                                                             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                                <children>
                                                                   <TableView prefHeight="750.0" prefWidth="606.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -283,7 +238,7 @@
                                                 </AnchorPane>
                                              </items>
                                           </SplitPane>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin đơn hàng" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="35.0">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết hóa đơn" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="35.0">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -297,11 +252,6 @@
                         </AnchorPane>
                      </items>
                   </SplitPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Button layoutX="549.0" layoutY="4.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Lưu thay đổi" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="549.4000000000001" AnchorPane.topAnchor="5.0" />
                </children>
             </AnchorPane>
          </items>

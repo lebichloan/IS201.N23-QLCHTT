@@ -12,7 +12,7 @@ public class database {
 	public static String username = "QLCHTT";
 	public static String password = "PASSWORD";
 
-	
+
 	public static Connection connection;
 	public static void connecting() {
 		try {
@@ -25,19 +25,18 @@ public class database {
 	
 	
 	
-	public static void SelectFromSanPham (ResultSet resultSet) {
+	public static void SelectFromSanPham () {
 		try {
 			String query = "SELECT maSP, tenSP FROM SANPHAM";
 			Statement statement = connection.createStatement();
-			resultSet = statement.executeQuery(query);
+			ResultSet resultSet = statement.executeQuery(query);
 	   
-//			while (resultSet.next()) {
-//				System.out.print("1");
-//				String maSP = resultSet.getString("maSP");
-//				String tenSP = resultSet.getString("tenSP");
-//				//String mauSac = resultSet.getString("mauSac"); // Use getString() instead of getInt()
-//				System.out.println("ID: " + maSP + ", Ten san pham: " + tenSP );
-//			}
+			while (resultSet.next()) {
+				String maSP = resultSet.getString("maSP");
+				String tenSP = resultSet.getString("tenSP");
+				//String mauSac = resultSet.getString("mauSac"); // Use getString() instead of getInt()
+				System.out.println("ID: " + maSP + ", Ten san pham: " + tenSP );
+			}
 		} catch (SQLException e) {
 	    System.out.println("Query failed: " + e.getMessage());
 		}

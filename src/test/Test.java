@@ -11,24 +11,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import controller.common;
 import db.database;
 
 
 public class Test extends Application {
-
+	public static common com;
     public static void main(String[] args) {
         launch(args);
     }
     
-//hghyjfjh
-    public static Connection connection=null;
+
    
     @Override
     public void start(Stage primaryStage) {
         try {
         	database.connecting();
-        	//database.SelectFromSanPham();
-            Parent root = FXMLLoader.load(this.getClass().getResource("/view/QLSanPhamView.fxml"));
+        	database.SelectFromSanPham();
+            Parent root = FXMLLoader.load(this.getClass().getResource("/view/Login.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

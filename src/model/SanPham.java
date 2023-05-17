@@ -2,11 +2,39 @@ package model;
 
 public class SanPham {
     private String maSP;
+    private String danhMuc;
+    private double donViTinh;
+    private int soLuong;
     private String tenSP;
     private String mauSac;
     private String kichThuoc;
     private String tinhTrang;
-    private String maLSP;
+    private String ghiChu;
+    public String getDanhMuc() {
+		return danhMuc;
+	}
+	public void setDanhMuc(String danhMuc) {
+		this.danhMuc = danhMuc;
+	}
+	public double getDonViTinh() {
+		return donViTinh;
+	}
+	public void setDonViTinh(double donViTinh) {
+		this.donViTinh = donViTinh;
+	}
+	public int getSoLuong() {
+		return soLuong;
+	}
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+	public String getGhiChu() {
+		return ghiChu;
+	}
+	public void setGhiChu(String ghiChu) {
+		this.ghiChu = ghiChu;
+	}
+	private String maLSP;
 	public String getMaSP() {
 		return maSP;
 	}

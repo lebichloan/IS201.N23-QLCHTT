@@ -21,5 +21,6 @@
 			<attribute name="javadoc_location" value="file:/C:/Users/HP/Desktop/bt%20java/IS201/IS201.N23.QLCHTT/lib/Javadoc-Readmes/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/HP/Documents/javafx-sdk-20.0.1/lib/charm-glisten-4.4.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

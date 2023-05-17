@@ -24,6 +24,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableCell;
@@ -66,6 +67,17 @@ public class QLSanPhamController implements Initializable{
 
 	@FXML
 	private TableColumn<SanPham,String> chooseColumn;
+	
+	@FXML
+    private ComboBox<String> chonDanhMucComboBox;
+	
+	@FXML
+    private ComboBox<String> chonTinhTrangComboBox;
+	
+	@FXML
+    private ComboBox<String> chonDonViTinhComboBox;
+	
+	
 	private ObservableList<SanPham> listSP;
 	
 //	@FXML
@@ -83,6 +95,12 @@ public class QLSanPhamController implements Initializable{
 	
 	@FXML
 	private Button themSanPhamButton;
+	
+	@FXML
+	private Button xemChiTietButton;
+	
+	@FXML
+	private Button apDungButton;
 //	
 //	@FXML
 //	private Button update;
@@ -319,6 +337,102 @@ public class QLSanPhamController implements Initializable{
 				    e.printStackTrace();
 				}
 			});
+	        
+	        xemChiTietButton.setOnMouseClicked((MouseEvent event) -> {
+				try {
+				    FXMLLoader loader = new FXMLLoader(common.class.getResource("/view/ThongTinSanPham.fxml"));
+				    AnchorPane root = loader.load();
+
+				   
+
+				    // Create a Scene object with the root node and set it to the primary stage
+				    Scene scene = new Scene(root);
+				    Stage window = new Stage();
+				    window.setScene(scene);
+				    //window.setMaximized(true);
+				    window.setResizable(false);
+				    window.show();
+
+				    // add a listener to the stage to handle window resize events
+				    scene.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> {
+				    	double scaleFactor = newSceneWidth.doubleValue() / oldSceneWidth.doubleValue();
+			            root.setPrefWidth(root.getPrefWidth() * scaleFactor);
+				    });
+				    scene.heightProperty().addListener((observableValue, oldSceneHeight, newSceneHeight) -> {
+				    	double scaleFactor = newSceneHeight.doubleValue() / oldSceneHeight.doubleValue();
+			            root.setPrefWidth(root.getPrefWidth() * scaleFactor);
+				    });
+				} catch (IOException e) {
+				    e.printStackTrace();
+				}
+			});
+	        
+	        try {
+
+	        	ObservableList<String> dataMaLSP = FXCollections.observableArrayList();
+	            ObservableList<String> dataTinhTrang = FXCollections.observableArrayList();
+	            ObservableList<String> dataDonViTinh = FXCollections.observableArrayList();
+	            
+	            Statement statement = database.connection.createStatement();
+	            ResultSet resultSet = statement.executeQuery("SELECT MaLSP FROM SanPham");
+	            while (resultSet.next()) {
+	                String name1 = resultSet.getString("MaLSP");
+	                dataMaLSP.add(name1);
+	            }
+	            resultSet = statement.executeQuery("SELECT Distinct tinhtrang FROM SanPham");
+	            while (resultSet.next()) {
+	                String name2 = resultSet.getString("TinhTrang");
+	                dataTinhTrang.add(name2);
+	            }
+	            resultSet = statement.executeQuery("SELECT  Distinct donvitinh FROM SanPham");
+	            while (resultSet.next()) {
+	                String name3 = resultSet.getString("DonViTinh");
+	                dataDonViTinh.add(name3);
+	            }
+
+
+	            // Set the ObservableList as the data source for the ComboBox
+	            chonDanhMucComboBox.setItems(dataMaLSP);
+	            chonTinhTrangComboBox.setItems(dataTinhTrang);
+	            chonDonViTinhComboBox.setItems(dataDonViTinh);
+
+	            // Close the connection and resources
+	            resultSet.close();
+	            statement.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        
+	        apDungButton.setOnAction(event -> {
+	            String selectedMaLSP = chonDanhMucComboBox.getValue();
+	            String selectedTinhtrang = chonTinhTrangComboBox.getValue();
+	            String selectedDonViTinh = chonDonViTinhComboBox.getValue();
+
+	            
+	            if (!(selectedMaLSP == null && selectedTinhtrang == null && selectedDonViTinh == null)) {
+	                    
+		            String query = "SELECT * FROM SANPHAM WHERE 1=1 ";
+	                    if (selectedMaLSP != null) {
+	                        query += " AND maLSP = " ;
+	                        query = query +  "'" + selectedMaLSP + "'";
+	                    }
+	                    
+	                    if (selectedTinhtrang != null) {
+	                        query += " AND TinhTrang = ";
+	                        query = query +  "'" + selectedTinhtrang + "'";
+	                    }
+	                    
+	                    if (selectedDonViTinh != null) {
+	                        query += " AND DonViTinh = ";
+	                        query = query +  "'" + selectedDonViTinh + "'";
+	                    }
+	                    
+	                    listSP.clear();
+	                    System.out.println(query);
+	                    updateList(query);
+	            }
+	        });
+
 	}
 	
 	public void updateList() {
@@ -333,7 +447,27 @@ public class QLSanPhamController implements Initializable{
 				newSP.setSoLuong(resultSet.getInt("SOLUONG"));
 				newSP.setDanhMuc(resultSet.getString("MALSP"));
 				newSP.setTinhTrang(resultSet.getString("tinhTrang"));
-				newSP.setDonViTinh(resultSet.getInt("DONVITINH"));
+				newSP.setDonViTinh(resultSet.getString("DONVITINH"));
+				newSP.setGhiChu(resultSet.getString("GHICHU"));
+			    listSP.add(newSP);
+			}
+		} catch (SQLException e) {
+	    System.out.println("Query failed: " + e.getMessage());
+		}
+	}
+	
+	public void updateList(String query) {
+		try {
+			Statement statement = database.connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			while (resultSet.next()) {
+				SanPham newSP = new SanPham();
+				newSP.setMaSP(resultSet.getString("MASP"));
+				newSP.setTenSP(resultSet.getString("TENSP"));
+				newSP.setSoLuong(resultSet.getInt("SOLUONG"));
+				newSP.setDanhMuc(resultSet.getString("MALSP"));
+				newSP.setTinhTrang(resultSet.getString("tinhTrang"));
+				newSP.setDonViTinh(resultSet.getString("DONVITINH"));
 				newSP.setGhiChu(resultSet.getString("GHICHU"));
 			    listSP.add(newSP);
 			}

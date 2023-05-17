@@ -3,7 +3,7 @@ package model;
 public class SanPham {
     private String maSP;
     private String danhMuc;
-    private double donViTinh;
+    private String donViTinh;
     private int soLuong;
     private String tenSP;
     private String mauSac;
@@ -16,10 +16,10 @@ public class SanPham {
 	public void setDanhMuc(String danhMuc) {
 		this.danhMuc = danhMuc;
 	}
-	public double getDonViTinh() {
+	public String getDonViTinh() {
 		return donViTinh;
 	}
-	public void setDonViTinh(double donViTinh) {
+	public void setDonViTinh(String donViTinh) {
 		this.donViTinh = donViTinh;
 	}
 	public int getSoLuong() {

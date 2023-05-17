@@ -148,7 +148,7 @@
                                                 <Font size="17.0" />
                                              </font>
                                           </Text>
-                                          <Button layoutX="283.0" layoutY="145.0" maxHeight="100.0" maxWidth="110.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Quên mật khẩu" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="90.0" />
+                                          <Button layoutX="283.0" layoutY="145.0" maxHeight="100.0" maxWidth="110.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Đổi mật khẩu" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="90.0" />
                                           <TableView layoutX="173.0" layoutY="168.0" prefHeight="50.0" prefWidth="150.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="160.0">
                                              <columns>
                                                 <TableColumn prefWidth="75.0" text="STT" />

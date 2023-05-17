@@ -84,6 +84,7 @@ FOREIGN KEY (SoHD) REFERENCES HOADON(SoHD),
 FOREIGN KEY (MaSP) REFERENCES SANPHAM(MaSP)
 );
 
+
 -- Insert into SANPHAM table (Products)
 INSERT INTO SANPHAM (MaSP, TenSP, SoLuong, MauSac, KichThuoc, DonViTinh, GhiChu, TinhTrang, MaLSP) VALUES ('SP005', 'Quần jean nam', 50, 'Xanh', '32', 'chiếc', 'Quần jean dài nam', 'Còn hàng', 'LSP01');
 INSERT INTO SANPHAM (MaSP, TenSP, SoLuong, MauSac, KichThuoc, DonViTinh, GhiChu, TinhTrang, MaLSP) VALUES ('SP006', 'Áo sơ mi nữ', 30, 'Trắng', 'M', 'chiếc', 'Áo sơ mi dài tay', 'Hết hàng', 'LSP02');
@@ -103,3 +104,11 @@ INSERT INTO SANPHAM (MaSP, TenSP, SoLuong, MauSac, KichThuoc, DonViTinh, GhiChu,
 commit;
 SELECT * FROM SANPHAM;
 DROP TABLE SANPHAM cascade constraints;
+
+-- Insert into LOAISANPHAM table (Product Categories)
+INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP01', 'Quần áo nam', 'Các loại quần áo nam');
+INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP02', 'Quần áo nữ', 'Các loại quần áo nữ');
+INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP03', 'Giày nam', 'Các loại giày nam');
+INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP04', 'Giày nữ', 'Các loại giày nữ');
+
+

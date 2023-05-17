@@ -12,7 +12,7 @@ public class database {
 	public static String username = "QLCHTT";
 	public static String password = "PASSWORD";
 
-	
+
 	public static Connection connection;
 	public static void connecting() {
 		try {
@@ -32,7 +32,6 @@ public class database {
 			ResultSet resultSet = statement.executeQuery(query);
 	   
 			while (resultSet.next()) {
-				System.out.print("1");
 				String maSP = resultSet.getString("maSP");
 				String tenSP = resultSet.getString("tenSP");
 				//String mauSac = resultSet.getString("mauSac"); // Use getString() instead of getInt()

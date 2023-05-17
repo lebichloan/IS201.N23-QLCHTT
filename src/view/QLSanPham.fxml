@@ -46,9 +46,9 @@
                                                             </Text>
                                                          </children>
                                                       </AnchorPane>
-                                                      <AnchorPane fx:id="daChonText" minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="116.0">
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="116.0">
                                                          <children>
-                                                            <Text layoutX="1.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn (5)" textAlignment="CENTER" wrappingWidth="97.23241806030273">
+                                                            <Text fx:id="daChonText" layoutX="1.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn (5)" textAlignment="CENTER" wrappingWidth="97.23241806030273">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
@@ -102,7 +102,7 @@
                                                       <Font size="17.0" />
                                                    </font>
                                                 </TextField>
-                                                <Button layoutX="229.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Xem chi tiết" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" fx:id="xemChiTietbutton" />
+                                                <Button layoutX="229.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Xem chi tiết" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" fx:id="xemChiTietButton" />
                                                 <Button layoutX="15.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Xóa đã chọn (5)" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" fx:id="xoaSanPhambutton" />
                                                 <Button fx:id="themSanPhamButton" layoutX="-23.0" layoutY="75.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Thêm mới" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
                                              </children>

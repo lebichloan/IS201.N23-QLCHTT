@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -40,8 +41,17 @@ public class TrangChuController implements Initializable {
 	
 	@FXML
 	AnchorPane thaoTacAnchorPane;
+	
+	@FXML
+	AnchorPane root;
 	Button selectedButton;
 	
+	public void exitFocused(MouseEvent event) {
+		if(event.getButton() == MouseButton.PRIMARY) {
+			root.requestFocus();
+		}
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

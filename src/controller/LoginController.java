@@ -83,6 +83,7 @@ public class LoginController implements Initializable {
 			    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			    window.setScene(scene);
 			    window.setMaximized(true);
+			    window.setResizable(false);
 			    window.show();
 
 			    // add a listener to the stage to handle window resize events

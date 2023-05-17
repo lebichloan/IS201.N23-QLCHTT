@@ -21,8 +21,7 @@ public class Test extends Application {
         launch(args);
     }
     
-//hghyjfjh
-    public static Connection connection=null;
+
    
     @Override
     public void start(Stage primaryStage) {

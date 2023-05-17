@@ -1,65 +1,47 @@
-CREATE TABLE sanpham (
-    maSP VARCHAR2(50) PRIMARY KEY,
-    tenSP VARCHAR2(100) NOT NULL,
-    mauSac VARCHAR2(50),
-    kichThuoc VARCHAR2(50),
-    tinhTrang VARCHAR2(50),
-    maLSP VARCHAR2(50) NOT NULL
+CREATE TABLE LOAIKHACHHANG (
+MaLKH NVARCHAR2(10) PRIMARY KEY,
+TenLKH NVARCHAR2(50) NOT NULL,
+GhiChu NVARCHAR2(200)
 );
 
+CREATE TABLE KHACHHANG (
+MaKH NVARCHAR2(10) PRIMARY KEY,
+TenKH NVARCHAR2(50) NOT NULL,
+DiaChi NVARCHAR2(100) NOT NULL,
+SDT NVARCHAR2(15) NOT NULL,
+MaLKH NVARCHAR2(10),
+FOREIGN KEY (MaLKH) REFERENCES LOAIKHACHHANG(MaLKH)
+);
 
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP001', '¡o s? mi nam', 'Tr?ng', 'M', 'CÚn h‡ng', 'LSP001');
+CREATE TABLE HOADON (
+SoHD NVARCHAR2(10) PRIMARY KEY,
+NgayLap DATE NOT NULL,
+TongTien NUMBER NOT NULL,
+TinhTrang NVARCHAR2(20),
+MaNV NVARCHAR2(10) NOT NULL,
+MaKH NVARCHAR2(10),
+FOREIGN KEY (MaNV) REFERENCES NHANVIEN(MaNV),
+FOREIGN KEY (MaKH) REFERENCES KHACHHANG(MaKH)
+);
 
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP002', '¡o thun nam', '?en', 'S', 'CÚn h‡ng', 'LSP001');
+CREATE TABLE CTHD (
+SoHD NVARCHAR2(10) NOT NULL,
+MaSP NVARCHAR2(10) NOT NULL,
+SoLuong NUMBER NOT NULL,
+DonGia NUMBER NOT NULL,
+PRIMARY KEY (SoHD, MaSP),
+FOREIGN KEY (SoHD) REFERENCES HOADON(SoHD),
+FOREIGN KEY (MaSP) REFERENCES SANPHAM(MaSP)
+);
 
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP003', 'Qu?n jean nam', 'Xanh', '32', 'H?t h‡ng', 'LSP001');
+-- Insert into LOAISANPHAM table (Product Categories)
+INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP01', 'Qu·∫ßn √°o nam', 'C√°c lo·∫°i qu·∫ßn √°o nam');
+INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP02', 'Qu·∫ßn √°o n·ªØ', 'C√°c lo·∫°i qu·∫ßn √°o n·ªØ');
+INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP03', 'Gi√†y nam', 'C√°c lo·∫°i gi√†y nam');
+INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP04', 'Gi√†y n·ªØ', 'C√°c lo·∫°i gi√†y n·ªØ');
 
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP004', '¡o s? mi n?', 'Xanh', 'M', 'CÚn h‡ng', 'LSP002');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP005', '¡o thun n?', 'H?ng', 'L', 'CÚn h‡ng', 'LSP002');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP006', 'V·y n?', '??', 'M', 'H?t h‡ng', 'LSP002');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP007', '¡o phÙng tr? em', 'V‡ng', 'XL', 'CÚn h‡ng', 'LSP003');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP008', 'Qu?n short tr? em', 'Xanh', '28', 'CÚn h‡ng', 'LSP003');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP009', 'V·y cho bÈ g·i', 'H?ng', '2', 'H?t h‡ng', 'LSP003');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP010', '¡o kho·c nam', '?en', 'M', 'CÚn h‡ng', 'LSP001');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP011', 'Qu?n kaki nam', 'Beige', '30', 'CÚn h‡ng', 'LSP001');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP012', '¡o len nam', 'Xanh l·', 'L', 'H?t h‡ng', 'LSP001');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP013', '¡o d‡i n?', 'H?ng', 'S', 'CÚn h‡ng', 'LSP002');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP014', 'Qu?n legging n?', '?en', 'M', 'CÚn h‡ng', 'LSP002');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP015', '??m n?', 'Xanh d??ng', 'L', 'H?t h‡ng', 'LSP002');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP016', '¡o kho·c tr? em', '??', 'XL', 'CÚn h‡ng', 'LSP003');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP017', 'Qu?n jean tr? em', 'X·m', '24', 'CÚn h‡ng', 'LSP003');
-
-INSERT INTO sanpham (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) VALUES
-('SP018', '¡o thun cho bÈ g·i', 'H?ng', '6', 'H?t h‡ng', 'LSP003');
-
-select * from sanpham;
+-- Insert into SANPHAM table (Products)
+INSERT INTO SANPHAM (MaSP, TenSP, SoLuong, MauSac, KichThuoc, DonViTinh, GhiChu, TinhTrang, MaLSP) VALUES ('SP001', '√Åo thun nam', 100, 'Tr·∫Øng', 'M', 1, '√Åo thun d√†i tay', 'C√≤n h√†ng', 'LSP01');
+INSERT INTO SANPHAM (MaSP, TenSP, SoLuong, MauSac, KichThuoc, DonViTinh, GhiChu, TinhTrang, MaLSP) VALUES ('SP002', 'V√°y d√†i n·ªØ', 50, 'ƒêen', 'S', 1, 'V√°y d·∫° h·ªôi', 'C√≤n h√†ng', 'LSP02');
+INSERT INTO SANPHAM (MaSP, TenSP, SoLuong, MauSac, KichThuoc, DonViTinh, GhiChu, TinhTrang, MaLSP) VALUES ('SP003', 'Gi√†y th·ªÉ thao nam', 80, 'Xanh', '42', 1, 'Gi√†y ch·∫°y b·ªô', 'C√≤n h√†ng', 'LSP03');
+INSERT INTO SANPHAM (MaSP, TenSP, SoLuong, MauSac, KichThuoc, DonViTinh, GhiChu, TinhTrang, MaLSP) VALUES ('SP004', 'Gi√†y cao g√≥t n·ªØ', 60, 'ƒê·ªè', '38', 1, 'Gi√†y ƒëi ti·ªác', 'C√≤n h√†ng', 'LSP04');

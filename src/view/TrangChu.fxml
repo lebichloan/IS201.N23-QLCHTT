@@ -14,11 +14,12 @@
                   <Button fx:id="dangXuatButton" layoutY="646.0" maxHeight="100.0" maxWidth="191.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="191.0" text="Đăng xuất" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="646.0" />
                   <VBox prefHeight="369.0" prefWidth="188.0">
                      <children>
-                        <Button fx:id="trangChuButton" mnemonicParsing="false" prefHeight="56.0" prefWidth="189.0" text="Trang chủ" />
-                        <Button fx:id="khachhangButton" mnemonicParsing="false" prefHeight="67.0" prefWidth="189.0" text="Khách hàng" />
-                        <Button fx:id="sanPhamButton" mnemonicParsing="false" prefHeight="71.0" prefWidth="188.0" text="Sản phẩm" />
-                        <Button fx:id="nhanVienButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="193.0" text="Nhân viên" />
-                        <Button fx:id="hoaDonButton" mnemonicParsing="false" prefHeight="77.0" prefWidth="194.0" text="Hóa đơn" />
+                        <Button fx:id="trangChuButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" text="Trang chủ" />
+                        <Button fx:id="khachhangButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" text="Khách hàng" />
+                        <Button fx:id="sanPhamButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="188.0" text="Sản phẩm" />
+                        <Button fx:id="nhanVienButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="193.0" text="Nhân viên" />
+                        <Button fx:id="hoaDonButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="194.0" text="Hóa đơn" />
+                        <Button fx:id="trangChuButton1" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" text="Thống kê doanh thu" />
                      </children>
                   </VBox>
                </children>

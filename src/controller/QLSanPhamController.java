@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import javafx.beans.binding.Bindings;
 
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 import db.database;
-import javafx.collections.FXCollections;
+import javafx.collections.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -77,8 +78,13 @@ public class QLSanPhamController implements Initializable{
 	@FXML
     private ComboBox<String> chonDonViTinhComboBox;
 	
+	@FXML
+	private Text daChonText;
 	
 	private ObservableList<SanPham> listSP;
+	
+	@FXML
+	private Text tongSoText;
 	
 //	@FXML
 //	private TextField maSPTextField;
@@ -102,14 +108,21 @@ public class QLSanPhamController implements Initializable{
 	@FXML
 	private Button apDungButton;
 //	
+	@FXML
+	private TextField timSanPhamTextField;
+	
+	@FXML
+	private Button timKiemButton;
 //	@FXML
 //	private Button update;
 //	
-//	@FXML
-//	private Button delete;
+	@FXML
+	private Button xoaSanPhambutton;
 	
 	@FXML
 	AnchorPane root;
+	
+	private static String maSPDaChon;
 
 	
 	public void exitFocused(MouseEvent event) {
@@ -338,6 +351,14 @@ public class QLSanPhamController implements Initializable{
 				}
 			});
 	        
+	        timKiemButton.setOnMouseClicked((MouseEvent event) -> {
+				String timKiem = timSanPhamTextField.getText();
+				if(timKiem != null) {
+					String query = "SELECT * FROM SANPHAM WHERE TENSP = '" + timKiem + "'";
+					updateList(query);
+				}
+			});
+	        
 	        xemChiTietButton.setOnMouseClicked((MouseEvent event) -> {
 				try {
 				    FXMLLoader loader = new FXMLLoader(common.class.getResource("/view/ThongTinSanPham.fxml"));
@@ -374,7 +395,7 @@ public class QLSanPhamController implements Initializable{
 	            ObservableList<String> dataDonViTinh = FXCollections.observableArrayList();
 	            
 	            Statement statement = database.connection.createStatement();
-	            ResultSet resultSet = statement.executeQuery("SELECT MaLSP FROM SanPham");
+	            ResultSet resultSet = statement.executeQuery("SELECT Distinct MaLSP FROM SanPham");
 	            while (resultSet.next()) {
 	                String name1 = resultSet.getString("MaLSP");
 	                dataMaLSP.add(name1);
@@ -432,7 +453,56 @@ public class QLSanPhamController implements Initializable{
 	                    updateList(query);
 	            }
 	        });
+	        
+	     // Listener for updating the selected count
+	        table.getSelectionModel().getSelectedItems().addListener((ListChangeListener<SanPham>) c -> {
+	            int selectedCount = table.getSelectionModel().getSelectedItems().size();
+	            daChonText.setText("Đã chọn: " + selectedCount);
+	        });
 
+	        // Button click event for deleting selected rows
+	        xoaSanPhambutton.setOnAction(event -> {
+	            ObservableList<SanPham> selectedItems = table.getSelectionModel().getSelectedItems();
+	            if (!selectedItems.isEmpty()) {
+	                try {
+	                	String deleteQuery = "DELETE FROM SANPHAM WHERE MASP = ?";
+	                    PreparedStatement deleteStatement = database.connection.prepareStatement(deleteQuery);
+
+	                    // Delete each selected row
+	                    for (SanPham selectedItem : selectedItems) {
+	                    	String id = selectedItem.getMaSP();
+	                        System.out.println(id);// Assuming you have an ID property in the SanPham class
+	                        deleteStatement.setString(1, id);
+	                        deleteStatement.executeUpdate();
+	                    }
+	                    // After deleting, remove the selected rows from the ObservableList
+	                    listSP.removeAll(selectedItems);
+	                    table.getSelectionModel().clearSelection();
+	                } catch (SQLException ex) {
+	                    System.out.println("Delete failed: " + ex.getMessage());
+	                }
+	            }
+	        });
+	        
+	        int countSanPham = 0;
+	        try {
+				String query = "SELECT * FROM SANPHAM";
+				Statement statement = database.connection.createStatement();
+				ResultSet resultSet = statement.executeQuery(query);
+				while (resultSet.next()) {
+					countSanPham++;
+				}
+				tongSoText.setText("Tổng số: " + countSanPham);
+				
+			} catch (SQLException e) {
+		    System.out.println("Query failed: " + e.getMessage());
+			}
+	        
+
+	}
+	
+	public static String getMaSPDaChon() {
+		return maSPDaChon;
 	}
 	
 	public void updateList() {

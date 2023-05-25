@@ -2,10 +2,10 @@ package model;
 
 public class SanPham {
     private String maSP;
+    private String tenSP;
     private String danhMuc;
     private String donViTinh;
     private int soLuong;
-    private String tenSP;
     private String mauSac;
     private String kichThuoc;
     private String tinhTrang;

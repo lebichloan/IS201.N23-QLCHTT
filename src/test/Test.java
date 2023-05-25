@@ -26,9 +26,7 @@ public class Test extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-        	database.connecting();
-        	database.SelectFromSanPham();
-            Parent root = FXMLLoader.load(this.getClass().getResource("/view/Login.fxml"));
+            Parent root = FXMLLoader.load(this.getClass().getResource("/view/QLNhanVien.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

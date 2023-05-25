@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 public class common {
 	
-	
 	public static void sceneTransition (String path, ActionEvent event){
     	try {
             FXMLLoader loader = new FXMLLoader(common.class.getResource(path));

@@ -21,8 +21,6 @@ public class Test extends Application {
         launch(args);
     }
     
-
-   
     @Override
     public void start(Stage primaryStage) {
         try {

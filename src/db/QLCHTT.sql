@@ -17,8 +17,11 @@ GioiTinh NVARCHAR2(10) NOT NULL,
 NgaySinh DATE NOT NULL,
 DiaChi NVARCHAR2(100) NOT NULL,
 SDT NVARCHAR2(15) NOT NULL,
-MaCH NVARCHAR2(10) NOT NULL,
+Email NVARCHAR2(50) NOT NULL,
+NgayVaoLam DATE NOT NULL,
+MaCH NVARCHAR2(10),
 MaQL NVARCHAR2(10),
+GhiChu NVARCHAR2(500),
 FOREIGN KEY (MaCH) REFERENCES CUAHANGCON(MaCH)
 );
 
@@ -110,5 +113,31 @@ INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP01', 'Quần áo nam',
 INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP02', 'Quần áo nữ', 'Các loại quần áo nữ');
 INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP03', 'Giày nam', 'Các loại giày nam');
 INSERT INTO LOAISANPHAM (MaLSP, TenLSP, MoTa) VALUES ('LSP04', 'Giày nữ', 'Các loại giày nữ');
+
+-- Insert into NHANVIEN
+insert into NHANVIEN values ('NV1', 'Nguyễn Văn A', 'Nam', '01/01/2000', '123 Đường ABC', '0123456789', 'nva@gmail.com', '01/01/2020', null, null, null);
+insert into NHANVIEN values ('NV2', 'Trần Thị B', 'Nữ', '02/02/2001', '456 Đường XYZ', '0123456789', 'ttb@gmail.com', '02/02/2020', null, null, null);
+insert into NHANVIEN values ('NV3', 'Lê Văn C', 'Nam', '03/03/2002', '789 Đường DEF', '0123456789', 'lvc@gmail.com', '03/03/2020', null, null, null);
+insert into NHANVIEN values ('NV4', 'Phạm Thị D', 'Nữ', '04/04/2003', '101 Đường GHI', '0123456789', 'ptd@gmail.com', '04/04/2020', null, null, null);
+insert into NHANVIEN values ('NV5', 'Nguyễn Văn E', 'Nam', '05/05/2004', '111 Đường JKL', '0123456789', 'nve@gmail.com', '05/05/2020', null, null, null);
+insert into NHANVIEN values ('NV6', 'Trần Thị F', 'Nữ', '06/06/2005', '222 Đường MNO', '0123456789', 'ttf@gmail.com','06/06/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV7','Lê Văn G','Nam','07/07/2006','333 Đường PQR','0123456789','lvg@gmail.com','07/07/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV8','Phạm Thị H','Nữ','08/08/2007','444 Đường STU','0123456789','pth@gmail.com','08/08/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV9','Nguyễn Văn I','Nam','09/09/2008','555 Đường VWX','0123456789','nvi@gmail.com','09/09/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV10','Trần Thị K','Nữ','10/10/2009','666 Đường YCX','1234567890','ktranthi@gmail.com','10/12/2020',null,null,null);
+insert into NHANVIEN values ('NV11','Lê Thị L','Nữ','11/11/2010','777 Đường ABC','0123456789','ltl@gmail.com','11/11/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV12','Phạm Văn M','Nam','12/12/2011','888 Đường XYZ','0123456789','pvm@gmail.com','12/12/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV13','Nguyễn Thị N','Nữ','13/01/2002','999 Đường DEF','0123456789','ntn@gmail.com','13/01/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV14','Trần Văn O','Nam','14/02/2003','101 Đường GHI KLM','0123456789','tvo@gmail.com', '14/02/2020', null, null, null);
+insert into NHANVIEN values ('NV15', 'Lê Thị P', 'Nữ', '15/03/2004', '111 Đường JKL', '0123456789', 'ltp@gmail.com', '15/03/2020', null, null, null);
+insert into NHANVIEN values ('NV16', 'Phạm Văn Q', 'Nam', '16/04/2005', '222 Đường MNO', '0123456789', 'pvq@gmail.com', '16/04/2020', null, null, null);
+insert into NHANVIEN values ('NV17', 'Nguyễn Thị R', 'Nữ', '17/05/2006', '333 Đường PQR', '0123456789', 'ntr@gmail.com', '17/05/2020', null, null, null);
+insert into NHANVIEN values ('NV18', 'Trần Văn S', 'Nam', '18/06/2007', '444 Đường STU', '0123456789', 'tvs@gmail.com', '18/06/2020', null, null, null);
+insert into NHANVIEN values ('NV19', 'Lê Thị T', 'Nữ', '19/07/2008', '555 Đường VWX', '0123456789', 'ltt@gmail.com', '19/07/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV20','Phạm Văn U','Nam','20/08/2009','666 Đường YZ ','0123456789','pvu@gmail.com' ,'20/08/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV21' ,'Nguyễn Thị V' ,'Nữ' ,'21/09/2010' ,'777 Đường ABC' ,'0123456789' ,'ntv@gmail.com' ,'21/09/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV22' ,'Trần Văn X' ,'Nam' ,'22/10/2011' ,'888 Đường XYZ' ,'0123456789' ,'tvx@gmail.com' ,'22/10/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV23' ,'Lê Thị Y' ,'Nữ' ,'23/11/2012' ,'999 Đường DEF' ,'0123456789' ,'lty@gmail.com' ,'23/11/2020' ,null ,null ,null );
+insert into NHANVIEN values ('NV24' ,'Phạm Văn Z1' ,'Nam' ,'24/12/2013' ,'101 Đường GHI KLMN1 ','0123456789' ,'pvz1@gmail.com ','24/03/2022',null,null,null);
 
 

@@ -25,7 +25,7 @@ public class Test extends Application {
     public void start(Stage primaryStage) {
         try {
         	database.connecting();
-        	database.SelectFromSanPham();
+        	//database.SelectFromSanPham();
             Parent root = FXMLLoader.load(this.getClass().getResource("/view/Login.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

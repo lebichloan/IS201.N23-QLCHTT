@@ -13,19 +13,25 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane layoutY="-6.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="599.0">
                <children>
-                  <SplitPane dividerPositions="0.11657754010695186" layoutX="181.0" layoutY="-36.0" orientation="VERTICAL" prefHeight="750.0" prefWidth="699.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.17453625632377737" layoutX="181.0" layoutY="-36.0" orientation="VERTICAL" prefHeight="750.0" prefWidth="699.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Text layoutX="205.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi thông tin nhân viên" textAlignment="CENTER" wrappingWidth="698.3999999999999" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                              <Text layoutX="205.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm nhân viên mới" textAlignment="CENTER" wrappingWidth="749.6" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                                  <font>
                                     <Font size="35.0" />
                                  </font>
                               </Text>
+                              <Text layoutX="126.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày thêm:" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="165.0">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Text>
+                              <DatePicker layoutX="266.0" layoutY="65.0" prefHeight="40.0" prefWidth="150.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
                               <Button layoutX="484.0" layoutY="14.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Quay lại" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                            </children>
                         </AnchorPane>
@@ -56,7 +62,7 @@
                                                 <Font size="17.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="88.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày vào làm*" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="25.0">
+                                          <Text layoutX="88.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày vào làm*" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="25.0">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
@@ -118,17 +124,17 @@
                                        <children>
                                           <TextField layoutX="166.0" layoutY="79.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="70.0" />
                                           <TextField layoutX="166.0" layoutY="34.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="25.0" />
-                                          <Text layoutX="36.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên đăng nhập*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="35.0">
+                                          <Text layoutX="36.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên đăng nhập*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="36.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mật khẩu*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="80.0">
+                                          <Text layoutX="36.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mật khẩu*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="75.0">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="36.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quyền truy cập*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="125.0">
+                                          <Text layoutX="36.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quyền truy cập*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="120.0">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
@@ -139,7 +145,11 @@
                                                 <MenuItem mnemonicParsing="false" text="Action 2" />
                                              </items>
                                           </MenuButton>
-                                          <Button layoutX="492.0" layoutY="21.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Xóa tài khoản" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                          <CheckBox layoutX="456.0" layoutY="14.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="188.0" text="Không tạo tài khoản &#10;người dùng" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
                                        </children>
                                     </AnchorPane>
                                  </items>
@@ -149,7 +159,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="299.0" layoutY="547.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Lưu thay đổi" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="299.0" AnchorPane.rightAnchor="299.4" />
+                              <Button layoutX="299.0" layoutY="547.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Lưu" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="299.0" AnchorPane.rightAnchor="299.4" />
                            </children>
                         </AnchorPane>
                      </items>

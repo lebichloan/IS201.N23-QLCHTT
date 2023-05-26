@@ -7,23 +7,33 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class database {
-	//String url = "jdbc:oracle:thin:SYS/password@localhost:1521:orcl AS SYSDBA";
 	public static String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 	public static String username = "QLCHTT";
 	public static String password = "PASSWORD";
 
-
+	
 	public static Connection connection;
 	public static void connecting() {
 		try {
 		    connection = DriverManager.getConnection(url, username, password);
 		    System.out.println("Connection successful");
+		    
 		} catch (SQLException e) {
 		    System.out.println("Connection failed: " + e.getMessage());
 		}
 	}
 	
-	
+	public static Connection getConnection() {
+		try {
+		    connection = DriverManager.getConnection(url, username, password);
+		    System.out.println("Connection successful");
+		    
+		} catch (SQLException e) {
+		    System.out.println("Connection failed: " + e.getMessage());
+		}
+		return connection;
+	}
+    
 	
 	public static void SelectFromSanPham () {
 		try {
@@ -41,5 +51,15 @@ public class database {
 	    System.out.println("Query failed: " + e.getMessage());
 		}
 	}
-
+	
+// ngat ket noi
+	public static void closeConnection(Connection conn) {
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+    }
 }

@@ -4,17 +4,33 @@ public class SanPham {
     private String maSP;
     private String tenSP;
     private String danhMuc;
-    private String donViTinh;
+	private String donViTinh;
     private int soLuong;
     private String mauSac;
     private String kichThuoc;
     private String tinhTrang;
     private String ghiChu;
-    public String getDanhMuc() {
-		return danhMuc;
+    private String ngayThem;
+    private String gia;
+    private String thuongHieu;
+
+	public String getNgayThem() {
+		return ngayThem;
 	}
-	public void setDanhMuc(String danhMuc) {
-		this.danhMuc = danhMuc;
+	public void setNgayThem(String ngayThem) {
+		this.ngayThem = ngayThem;
+	}
+	public String getGia() {
+		return gia;
+	}
+	public void setGia(String gia) {
+		this.gia = gia;
+	}
+	public String getThuongHieu() {
+		return thuongHieu;
+	}
+	public void setThuongHieu(String thuongHieu) {
+		this.thuongHieu = thuongHieu;
 	}
 	public String getDonViTinh() {
 		return donViTinh;
@@ -82,5 +98,12 @@ public class SanPham {
 	public SanPham() {
 		this.maSP="0";
 	}
-    
+	public String getDanhMuc() {
+		return danhMuc;
+	}
+	public void setDanhMuc(String danhMuc) {
+		this.danhMuc = danhMuc;
+	}
+	
+
 }

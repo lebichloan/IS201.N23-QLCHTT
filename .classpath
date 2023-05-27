@@ -16,10 +16,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/ojdbc11.jar" sourcepath="C:/Users/HP/Downloads/ojdbc11.jar">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX">
 		<attributes>
-			<attribute name="javadoc_location" value="file:/C:/Users/HP/Desktop/bt%20java/IS201/IS201.N23.QLCHTT/lib/Javadoc-Readmes/"/>
+			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/HP/Downloads/ojdbc11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

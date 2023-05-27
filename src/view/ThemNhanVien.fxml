@@ -113,7 +113,7 @@
                                     </AnchorPane>
                                  </items>
                               </SplitPane>
-                              <Text layoutX="83.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin nhân viên" textOrigin="CENTER" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="20.0">
+                              <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin nhân viên" textOrigin="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="6.69921875">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -154,7 +154,7 @@
                                     </AnchorPane>
                                  </items>
                               </SplitPane>
-                              <Text layoutX="69.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin tài khoản" textOrigin="CENTER" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="345.0">
+                              <Text layoutX="22.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin tài khoản" textOrigin="CENTER" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="336.69921875">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

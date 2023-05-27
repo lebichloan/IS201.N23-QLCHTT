@@ -108,13 +108,13 @@
                            <children>
                               <TableView prefHeight="750.0" prefWidth="780.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                                  <columns>
-                                    <TableColumn prefWidth="65.59996944665909" text="STT" />
-                                    <TableColumn prefWidth="75.0" text="Số hóa đơn" />
-                                    <TableColumn prefWidth="75.0" text="Tên khách hàng" />
-                                    <TableColumn prefWidth="75.0" text="Ngày lập" />
-                                    <TableColumn prefWidth="75.0" text="Thành tiền" />
-                                    <TableColumn prefWidth="75.0" text="Tình trạng" />
-                                    <TableColumn prefWidth="75.0" text="Nhân viên bán hàng" />
+                                    <TableColumn fx:id="sttColumn" prefWidth="65.59996944665909" text="STT" />
+                                    <TableColumn fx:id="sohoadonColumn" prefWidth="75.0" text="Số hóa đơn" />
+                                    <TableColumn fx:id="tenkhachhangColumn" prefWidth="75.0" text="Tên khách hàng" />
+                                    <TableColumn fx:id="ngaylapColumn" prefWidth="75.0" text="Ngày lập" />
+                                    <TableColumn fx:id="thanhtienColumn" prefWidth="75.0" text="Thành tiền" />
+                                    <TableColumn fx:id="tinhtrangColumn" prefWidth="75.0" text="Tình trạng" />
+                                    <TableColumn fx:id="nhanvienbanhangColumn" prefWidth="75.0" text="Nhân viên bán hàng" />
                                     <TableColumn prefWidth="75.0" text="Ghi chú" />
                                  </columns>
                                  <columnResizePolicy>

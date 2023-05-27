@@ -39,8 +39,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import model.SanPham;
+import model.LoaiSanPham;
+
 
 public class QLSanPhamController implements Initializable{
+	
+	
+//------------------------------------------SẢN PHẨM--------------------------------------
+	
 	@FXML
 	private TableView<SanPham> table;
 	
@@ -122,6 +128,8 @@ public class QLSanPhamController implements Initializable{
 	@FXML
 	AnchorPane root;
 	
+
+	
 	private static String maSPDaChon;
 
 	
@@ -164,9 +172,71 @@ public class QLSanPhamController implements Initializable{
 	}
 	
 	
+	
+//-----------------------------------------LOẠI SẢN PHẨM----------------------------------------------
+	
+	@FXML
+	private TableView<LoaiSanPham> tableLoaiSP;
+	
+	@FXML
+	private TableColumn<LoaiSanPham,String> maLoaiSPColumn;
+	
+	@FXML
+	private TableColumn<LoaiSanPham,String> sttLoaiSPColumn;
+	
+	
+	@FXML
+	private TableColumn<LoaiSanPham,String> tenLoaiSPColumn;
+	
+	@FXML
+	private TableColumn<LoaiSanPham,String> moTaLoaiSPColumn;
+	
+	@FXML
+	private TableColumn<LoaiSanPham,Double> soLuongMatHangLoaiSPColumn;
+	
+	@FXML
+	private TableColumn<LoaiSanPham,String> tinhTrangLoaiSPColumn;
+	
+	@FXML
+	private TableColumn<LoaiSanPham,String> ghiChuLoaiSPColumn;
+	
+	private ObservableList<LoaiSanPham> listLoaiSP;
+	
+	
 
 
+	private void createCenteredCellFactoryLSP(TableColumn<LoaiSanPham, String> column) {
+	    column.setCellFactory(col -> new TableCell<LoaiSanPham, String>() {
+	        @Override
+	        protected void updateItem(String item, boolean empty) {
+	            super.updateItem(item, empty);
 
+	            if (item == null || empty) {
+	                setText(null);
+	            } else {
+	                setText(item);
+	                setAlignment(Pos.CENTER); // Center-align the text
+	            }
+	        }
+	    });
+	}
+	
+	private void createCenteredCellFactoryDoubleLSP(TableColumn<LoaiSanPham, Double> column) {
+	    column.setCellFactory(col -> new TableCell<LoaiSanPham, Double>() {
+	        @Override
+	        protected void updateItem(Double item, boolean empty) {
+	            super.updateItem(item, empty);
+
+	            if (item == null || empty) {
+	                setText(null);
+	            } else {
+	                setText(String.valueOf(item));
+	                setAlignment(Pos.CENTER); // Center-align the text
+	            }
+	        }
+	    });
+	}
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -352,12 +422,37 @@ public class QLSanPhamController implements Initializable{
 			});
 	        
 	        timKiemButton.setOnMouseClicked((MouseEvent event) -> {
-				String timKiem = timSanPhamTextField.getText();
-				if(timKiem != null) {
-					String query = "SELECT * FROM SANPHAM WHERE TENSP = '" + timKiem + "'";
-					updateList(query);
-				}
-			});
+	        	listSP.clear();
+	            String timKiem = timSanPhamTextField.getText();
+	            if (timKiem != null && !timKiem.isEmpty()) {
+	                try {
+	                    String query = "SELECT * FROM SANPHAM WHERE TEN_SP = ?";
+	                    PreparedStatement statement = database.connection.prepareStatement(query);
+	                    statement.setString(1, timKiem);
+	                 
+	                    
+	                    ResultSet resultSet = statement.executeQuery();
+	                    while (resultSet.next()) {
+	        				SanPham newSP = new SanPham();
+	        				newSP.setMaSP(resultSet.getString("MA_SP"));
+	        				newSP.setTenSP(resultSet.getString("TEN_SP"));
+	        				newSP.setSoLuong(resultSet.getInt("SO_LUONG"));
+	        				newSP.setDanhMuc(resultSet.getString("MA_LSP"));
+	        				newSP.setTinhTrang(resultSet.getString("tinhTrang"));
+	        				newSP.setDonViTinh(resultSet.getString("Dvt"));
+	        				newSP.setGhiChu(resultSet.getString("Mo_ta"));
+	        			    listSP.add(newSP);
+	        			}
+	                    
+	                    // Process the ResultSet as needed
+	                    
+
+	                    statement.close();
+	                } catch (SQLException e) {
+	                    System.out.println("Query failed: " + e.getMessage());
+	                }
+	            }
+	        });
 	        
 	        xemChiTietButton.setOnMouseClicked((MouseEvent event) -> {
 				try {
@@ -395,19 +490,20 @@ public class QLSanPhamController implements Initializable{
 	            ObservableList<String> dataDonViTinh = FXCollections.observableArrayList();
 	            
 	            Statement statement = database.connection.createStatement();
-	            ResultSet resultSet = statement.executeQuery("SELECT Distinct MaLSP FROM SanPham");
+	            ResultSet resultSet = statement.executeQuery("SELECT Distinct Ma_LSP FROM LOAISanPham");
 	            while (resultSet.next()) {
-	                String name1 = resultSet.getString("MaLSP");
+	                String name1 = resultSet.getString("Ma_LSP");
 	                dataMaLSP.add(name1);
 	            }
 	            resultSet = statement.executeQuery("SELECT Distinct tinhtrang FROM SanPham");
 	            while (resultSet.next()) {
-	                String name2 = resultSet.getString("TinhTrang");
+	                String name2 = resultSet.getString("TINHTRANG");
+	                System.out.println(name2);
 	                dataTinhTrang.add(name2);
 	            }
-	            resultSet = statement.executeQuery("SELECT  Distinct donvitinh FROM SanPham");
+	            resultSet = statement.executeQuery("SELECT Distinct dvt FROM SanPham");
 	            while (resultSet.next()) {
-	                String name3 = resultSet.getString("DonViTinh");
+	                String name3 = resultSet.getString("dvt");
 	                dataDonViTinh.add(name3);
 	            }
 
@@ -434,7 +530,7 @@ public class QLSanPhamController implements Initializable{
 	                    
 		            String query = "SELECT * FROM SANPHAM WHERE 1=1 ";
 	                    if (selectedMaLSP != null) {
-	                        query += " AND maLSP = " ;
+	                        query += " AND ma_LSP = " ;
 	                        query = query +  "'" + selectedMaLSP + "'";
 	                    }
 	                    
@@ -444,7 +540,7 @@ public class QLSanPhamController implements Initializable{
 	                    }
 	                    
 	                    if (selectedDonViTinh != null) {
-	                        query += " AND DonViTinh = ";
+	                        query += " AND Dvt = ";
 	                        query = query +  "'" + selectedDonViTinh + "'";
 	                    }
 	                    
@@ -465,7 +561,7 @@ public class QLSanPhamController implements Initializable{
 	            ObservableList<SanPham> selectedItems = table.getSelectionModel().getSelectedItems();
 	            if (!selectedItems.isEmpty()) {
 	                try {
-	                	String deleteQuery = "DELETE FROM SANPHAM WHERE MASP = ?";
+	                	String deleteQuery = "DELETE FROM SANPHAM WHERE MA_SP = ?";
 	                    PreparedStatement deleteStatement = database.connection.prepareStatement(deleteQuery);
 
 	                    // Delete each selected row
@@ -498,6 +594,29 @@ public class QLSanPhamController implements Initializable{
 		    System.out.println("Query failed: " + e.getMessage());
 			}
 	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+//------------------------------------------------LOẠI SẢN PHẨM----------------------------------------------------
+
+	        listLoaiSP = FXCollections.observableArrayList();
+			updateLoaiSPList();
+			sttLoaiSPColumn.setCellValueFactory(new PropertyValueFactory<LoaiSanPham,String>("stt"));
+			maLoaiSPColumn.setCellValueFactory(new PropertyValueFactory<LoaiSanPham,String>("maLoaiSP"));
+			tenLoaiSPColumn.setCellValueFactory(new PropertyValueFactory<LoaiSanPham,String>("tenLoaiSP"));
+			moTaLoaiSPColumn.setCellValueFactory(new PropertyValueFactory<LoaiSanPham,String>("moTaLoaiSP"));
+			soLuongMatHangLoaiSPColumn.setCellValueFactory(new PropertyValueFactory<LoaiSanPham,Double>("soLuongMatHang"));
+			tinhTrangLoaiSPColumn.setCellValueFactory(new PropertyValueFactory<LoaiSanPham,String>("tinhTrangLoaiSP"));
+			ghiChuLoaiSPColumn.setCellValueFactory(new PropertyValueFactory<LoaiSanPham,String>("ghiChuLoaiSP"));
+			tableLoaiSP.setItems(listLoaiSP);
+			
+			
 
 	}
 	
@@ -507,18 +626,18 @@ public class QLSanPhamController implements Initializable{
 	
 	public void updateList() {
 		try {
-			String query = "SELECT * FROM SANPHAM";
+			String query = "SELECT * FROM SANPHAM ORDER BY MA_SP ASC";
 			Statement statement = database.connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			while (resultSet.next()) {
 				SanPham newSP = new SanPham();
-				newSP.setMaSP(resultSet.getString("MASP"));
-				newSP.setTenSP(resultSet.getString("TENSP"));
-				newSP.setSoLuong(resultSet.getInt("SOLUONG"));
-				newSP.setDanhMuc(resultSet.getString("MALSP"));
+				newSP.setMaSP(resultSet.getString("MA_SP"));
+				newSP.setTenSP(resultSet.getString("TEN_SP"));
+				newSP.setSoLuong(resultSet.getInt("SO_LUONG"));
+				newSP.setDanhMuc(resultSet.getString("MA_LSP"));
 				newSP.setTinhTrang(resultSet.getString("tinhTrang"));
-				newSP.setDonViTinh(resultSet.getString("DONVITINH"));
-				newSP.setGhiChu(resultSet.getString("GHICHU"));
+				newSP.setDonViTinh(resultSet.getString("Dvt"));
+				newSP.setGhiChu(resultSet.getString("Mo_ta"));
 			    listSP.add(newSP);
 			}
 		} catch (SQLException e) {
@@ -532,13 +651,13 @@ public class QLSanPhamController implements Initializable{
 			ResultSet resultSet = statement.executeQuery(query);
 			while (resultSet.next()) {
 				SanPham newSP = new SanPham();
-				newSP.setMaSP(resultSet.getString("MASP"));
-				newSP.setTenSP(resultSet.getString("TENSP"));
-				newSP.setSoLuong(resultSet.getInt("SOLUONG"));
-				newSP.setDanhMuc(resultSet.getString("MALSP"));
+				newSP.setMaSP(resultSet.getString("MA_SP"));
+				newSP.setTenSP(resultSet.getString("TEN_SP"));
+				newSP.setSoLuong(resultSet.getInt("SO_LUONG"));
+				newSP.setDanhMuc(resultSet.getString("MA_LSP"));
 				newSP.setTinhTrang(resultSet.getString("tinhTrang"));
-				newSP.setDonViTinh(resultSet.getString("DONVITINH"));
-				newSP.setGhiChu(resultSet.getString("GHICHU"));
+				newSP.setDonViTinh(resultSet.getString("Dvt"));
+				newSP.setGhiChu(resultSet.getString("Mo_ta"));
 			    listSP.add(newSP);
 			}
 		} catch (SQLException e) {
@@ -546,5 +665,51 @@ public class QLSanPhamController implements Initializable{
 		}
 	}
 	
+	
+	public void updateLoaiSPList() {
+		try {
+			String query = "SELECT\r\n"
+					+ "		    lsp.ma_lsp,\r\n"
+					+ "		    lsp.ten_lsp,\r\n"
+					+ "		    lsp.mo_ta,\r\n"
+					+ "		    COALESCE(SUM(sp.so_luong), 0) AS slmh,\r\n"
+					+ "		    CASE WHEN COALESCE(SUM(sp.so_luong), 0) = 0 THEN 'Het hang' ELSE 'Con hang' END AS TinhTrang,\r\n"
+					+ "		    lsp.ghi_chu\r\n"
+					+ "		FROM\r\n"
+					+ "		    loaisanpham lsp\r\n"
+					+ "		LEFT JOIN\r\n"
+					+ "		    sanpham sp ON lsp.ma_lsp = sp.ma_lsp\r\n"
+					+ "		GROUP BY\r\n"
+					+ "		    lsp.ma_lsp,\r\n"
+					+ "		    lsp.ten_lsp,\r\n"
+					+ "		    lsp.mo_ta,\r\n"
+					+ "		    lsp.ghi_chu"
+					+ "     ORDER BY MA_LSP ASC";
 
+			Statement statement = database.connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			int stt = 1;
+			while (resultSet.next()) {
+				LoaiSanPham newLoaiSP = new LoaiSanPham();
+				newLoaiSP.setStt(stt);
+				newLoaiSP.setMaLoaiSP(resultSet.getString("MA_LSP"));
+				newLoaiSP.setTenLoaiSP(resultSet.getString("TEN_LSP"));
+				newLoaiSP.setSoLuongMatHang(resultSet.getInt("SLMH"));
+				newLoaiSP.setMoTaLoaiSP(resultSet.getString("MO_TA"));
+				newLoaiSP.setTinhTrangLoaiSP(resultSet.getString("TINHTRANG"));
+				newLoaiSP.setGhiChuLoaiSP(resultSet.getString("GHI_CHU"));
+			    listLoaiSP.add(newLoaiSP);
+			    stt++;
+			}
+		} catch (SQLException e) {
+	    System.out.println("Query failed: " + e.getMessage());
+		}
+	}
+	
+//	private String maLoaiSP;
+//	private String tenLoaiSP;
+//	private String moTaLoaiSP;
+//	private double soLuongMatHang;
+//	private String tinhTrangLoaiSP;
+//	private String ghiChuLoaiSP;
 }

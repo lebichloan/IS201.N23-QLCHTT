@@ -26,7 +26,7 @@ public class Test extends Application {
         try {
         	database.connecting();
         	//database.SelectFromSanPham();
-            Parent root = FXMLLoader.load(this.getClass().getResource("/view/Login.fxml"));
+            Parent root = FXMLLoader.load(this.getClass().getResource("/view/QLSanPham.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

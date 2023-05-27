@@ -6,4 +6,6 @@
   -fx-alignment: CENTER;
 }
 
-
+#tableLoaiSP .table-column {
+  -fx-alignment: CENTER;
+}

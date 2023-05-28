@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.control.DatePicker;
+
 public class SanPham {
     private String maSP;
     private String tenSP;
@@ -10,14 +12,14 @@ public class SanPham {
     private String kichThuoc;
     private String tinhTrang;
     private String ghiChu;
-    private String ngayThem;
+    private DatePicker ngayThem;
     private String gia;
     private String thuongHieu;
 
-	public String getNgayThem() {
+	public DatePicker getNgayThem() {
 		return ngayThem;
 	}
-	public void setNgayThem(String ngayThem) {
+	public void setNgayThem(DatePicker ngayThem) {
 		this.ngayThem = ngayThem;
 	}
 	public String getGia() {

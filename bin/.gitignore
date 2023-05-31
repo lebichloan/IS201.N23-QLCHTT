@@ -1,3 +1,6 @@
 /controller/
-/view/
 /model/
+/test/
+/view/
+/db/
+/module-info.class

@@ -138,15 +138,7 @@ public class ThongTinSanPhamController implements Initializable {
                 String maLSP = chonDanhMucMenuButton.getText();
                 // ... Get values from other fields as needed
                 
-                System.out.println("maSP: " + maSP);
-                System.out.println("tenSP: " + tenSP);
-                System.out.println("moTa: " + moTa);
-                System.out.println("thuongHieu: " + thuongHieu);
-                System.out.println("donViTinh: " + donViTinh);
-                System.out.println("kichThuoc: " + kichThuoc);
-                System.out.println("mauSac: " + mauSac);
-                System.out.println("soLuong: " + soLuong);
-                System.out.println("maLSP: " + maLSP);
+
 
                 String updateQuery = "UPDATE SanPham SET "
                         + "ten_sp = ?, mo_ta = ?, thuong_hieu = ?, dvt = ?, kich_thuoc = ?, mau_sac = ?, "

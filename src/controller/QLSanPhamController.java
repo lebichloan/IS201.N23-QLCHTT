@@ -23,7 +23,10 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SelectionMode;
@@ -121,7 +124,7 @@ public class QLSanPhamController implements Initializable {
 //	private Button update;
 //	
 	@FXML
-	private Button xoaSanPhambutton;
+	private Button xoaSanPhamButton;
 
 	@FXML
 	AnchorPane root;
@@ -187,6 +190,22 @@ public class QLSanPhamController implements Initializable {
 	
 	@FXML
 	Text tongSoLSPText;
+	
+	
+	@FXML
+	Text themMaLoaiSPText;
+	
+	@FXML
+	TextField themTenLoaiSPTextField;
+	
+	@FXML
+	TextField themMoTaLoaiSPTextField;
+	
+	@FXML
+	TextField themGhiChuTextField;
+	
+	@FXML
+	Button luuThemLoaiSPButton;
 
 
 	@Override
@@ -201,8 +220,30 @@ public class QLSanPhamController implements Initializable {
 		donViTinhColumn.setCellValueFactory(new PropertyValueFactory<SanPham, Double>("donViTinh"));
 		ghiChuSPColumn.setCellValueFactory(new PropertyValueFactory<SanPham, String>("ghiChu"));
 		table.setItems(listSP);
-
+		xemChiTietButton.setDisable(true);
+		xoaSanPhamButton.setDisable(true);
 		table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
+		table.getSelectionModel().getSelectedItems().addListener((ListChangeListener<SanPham>) change -> {
+		    int selectedRowCount = change.getList().size();
+
+		    if (selectedRowCount == 0) {
+		        // No rows selected, disable both buttons
+		        xemChiTietButton.setDisable(true);
+		        xoaSanPhamButton.setDisable(true);
+		    } else {
+		        // Rows selected, enable the xoaSanPhamButton
+		        xoaSanPhamButton.setDisable(false);
+
+		        if (selectedRowCount >= 2) {
+		            // More than 2 rows selected, disable xemChiTietButton
+		            xemChiTietButton.setDisable(true);
+		        } else {
+		            // 2 or fewer rows selected, enable xemChiTietButton
+		            xemChiTietButton.setDisable(false);
+		        }
+		    }
+		});
 
 //			table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 //		        if (newSelection != null) {
@@ -415,6 +456,8 @@ public class QLSanPhamController implements Initializable {
 		            window.setResizable(false);
 		            window.show();
 		            table.getSelectionModel().clearSelection();
+		            
+		            
 		        }
 		    } catch (IOException e) {
 		        e.printStackTrace();
@@ -490,6 +533,7 @@ public class QLSanPhamController implements Initializable {
 		table.getSelectionModel().getSelectedItems().addListener((ListChangeListener<SanPham>) c -> {
 			int selectedCount = table.getSelectionModel().getSelectedItems().size();
 			daChonText.setText("Đã chọn: " + selectedCount);
+			xoaSanPhamButton.setText("Xóa đã chọn: " + selectedCount);
 		});
 		
 		listSP.addListener((ListChangeListener<SanPham>) c -> {
@@ -501,28 +545,39 @@ public class QLSanPhamController implements Initializable {
 		tongSoText.setText("Tổng số: " + listSP.size());
 
 		// Button click event for deleting selected rows
-		xoaSanPhambutton.setOnAction(event -> {
-			ObservableList<SanPham> selectedItems = table.getSelectionModel().getSelectedItems();
-			if (!selectedItems.isEmpty()) {
-				try {
-					String deleteQuery = "DELETE FROM SANPHAM WHERE MA_SP = ?";
-					PreparedStatement deleteStatement = database.connection.prepareStatement(deleteQuery);
+		xoaSanPhamButton.setOnAction(event -> {
+            ObservableList<SanPham> selectedItems = table.getSelectionModel().getSelectedItems();
+            if (!selectedItems.isEmpty()) {
+                // Show confirmation dialog before deleting
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Xác nhận xóa");
+                alert.setHeaderText("Xác nhận xóa");
+                alert.setContentText("Bạn có chắc chắn muốn xóa các dòng đã chọn?");
 
-					// Delete each selected row
-					for (SanPham selectedItem : selectedItems) {
-						String id = selectedItem.getMaSP();
-						System.out.println(id);// Assuming you have an ID property in the SanPham class
-						deleteStatement.setString(1, id);
-						deleteStatement.executeUpdate();
-					}
-					// After deleting, remove the selected rows from the ObservableList
-					listSP.removeAll(selectedItems);
-					table.getSelectionModel().clearSelection();
-				} catch (SQLException ex) {
-					System.out.println("Delete failed: " + ex.getMessage());
-				}
-			}
-		});
+                alert.showAndWait().ifPresent(buttonType -> {
+                    if (buttonType == ButtonType.OK) {
+                        try {
+                            String deleteQuery = "DELETE FROM SANPHAM WHERE MA_SP = ?";
+                            PreparedStatement deleteStatement = database.connection.prepareStatement(deleteQuery);
+
+                            // Delete each selected row
+                            for (SanPham selectedItem : selectedItems) {
+                                String id = selectedItem.getMaSP();
+                                System.out.println(id);// Assuming you have an ID property in the SanPham class
+                                deleteStatement.setString(1, id);
+                                deleteStatement.executeUpdate();
+                            }
+
+                            // After deleting, remove the selected rows from the ObservableList
+                            listSP.removeAll(selectedItems);
+                            table.getSelectionModel().clearSelection();
+                        } catch (SQLException ex) {
+                            System.out.println("Delete failed: " + ex.getMessage());
+                        }
+                    }
+                });
+            }
+        });
 
 
 
@@ -665,8 +720,73 @@ public class QLSanPhamController implements Initializable {
 			}
 
 		});
+		
+		setLoaiSPTextFieldStatus(false);
+		String largestMaLSP = getLargestMaLSPFromDatabase();
+		String nextMaLSP = generateNextMaLSP(largestMaLSP);
+		themMaLoaiSPText.setText(nextMaLSP);
+
+		tableLoaiSP.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			int selectedRowCount = tableLoaiSP.getSelectionModel().getSelectedItems().size();
+		    if (newValue != null && selectedRowCount == 1) {
+		        setLoaiSPTextFieldStatus(false);
+		        String selectedMaLoaiSP = newValue.getMaLoaiSP();
+		        themMaLoaiSPText.setText(selectedMaLoaiSP);
+		    } else if (newValue == null && selectedRowCount == 0){
+		        setLoaiSPTextFieldStatus(false);
+		        themMaLoaiSPText.setText(nextMaLSP);
+		    }
+		    else {
+		    	setLoaiSPTextFieldStatus(true);
+		    }
+		});
+
+		luuThemLoaiSPButton.setOnAction(new EventHandler<ActionEvent>() {
+	        @Override
+	        public void handle(ActionEvent event) {
+	        	String largestMaLSP = getLargestMaLSPFromDatabase();
+    			String nextMaLSP = generateNextMaLSP(largestMaLSP);
+				if(themMaLoaiSPText.getText().equals(nextMaLSP)) {
+					System.out.println("1");
+					LoaiSanPham newLoaiSP = new LoaiSanPham();
+		        	newLoaiSP.setMaLoaiSP(themMaLoaiSPText.getText());
+		        	newLoaiSP.setTenLoaiSP(themTenLoaiSPTextField.getText());
+		        	newLoaiSP.setMoTaLoaiSP(themMoTaLoaiSPTextField.getText());
+		        	newLoaiSP.setGhiChuLoaiSP(themGhiChuTextField.getText());
+		    	    
+		    	    // Add the new SanPham to the database
+		    	    try {
+		    	        String query = "INSERT INTO LOAISANPHAM (ma_LSP, ten_LSP, Mo_ta, slmh, ghi_chu) " +
+		    	                       "VALUES (?, ?, ?, ?, ?)";
+		    	        PreparedStatement statement10 = database.connection.prepareStatement(query);
+		    	        statement10.setString(1, newLoaiSP.getMaLoaiSP());
+		    	        statement10.setString(2, newLoaiSP.getTenLoaiSP());
+		    	        statement10.setString(3, newLoaiSP.getMoTaLoaiSP());
+		    	        statement10.setInt(4, 0);
+		    	        statement10.setString(5, newLoaiSP.getGhiChuLoaiSP());
+		    	        statement10.executeUpdate();
+		    	        largestMaLSP = getLargestMaLSPFromDatabase();
+		    			nextMaLSP = generateNextMaLSP(largestMaLSP);
+		    			themMaLoaiSPText.setText(nextMaLSP);
+		    	        
+		    	        System.out.println("New LoaiSanPham added to database: " + newLoaiSP);
+		    	    } catch (SQLException e) {
+		    	        System.out.println("Error adding LoaiSanPham to database: " + e.getMessage());
+		    	    }
+		    	    
+		    	    // Add the new SanPham to the TableView
+		    	    listLoaiSP.add(newLoaiSP);
+					
+				}
+	        	
+	        }
+	    });
+
+
 
 	}
+	
+	
 
 	public static String getMaSPDaChon() {
 		return maSPDaChon;
@@ -765,6 +885,55 @@ public class QLSanPhamController implements Initializable {
 			System.out.println("Query failed: " + e.getMessage());
 		}
 	}
+	
+	public void setLoaiSPTextFieldStatus(Boolean bool) {
+		themMaLoaiSPText.setDisable(bool);
+		themTenLoaiSPTextField.setDisable(bool);
+		themMoTaLoaiSPTextField.setDisable(bool);
+		themGhiChuTextField.setDisable(bool);
+		luuThemLoaiSPButton.setDisable(bool);
+
+	}
+	
+	
+	private String getLargestMaLSPFromDatabase() {
+        String largestMaLSP = "";
+
+        try {
+            // Establish the database connection
+            Statement statement = database.connection.createStatement();
+
+            // Execute the query to retrieve the largest ma_LSP
+            String query = "SELECT MAX(ma_LSP) FROM LoaisanPham";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if (resultSet.next()) {
+                largestMaLSP = resultSet.getString(1);
+            }
+
+            // Close the resources
+            resultSet.close();
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+
+        return largestMaLSP;
+    }
+
+    private String generateNextMaLSP(String largestMaLSP) {
+        String nextMaLSP = "";
+
+        if (largestMaLSP != null && !largestMaLSP.isEmpty()) {
+            String numericPart = largestMaLSP.substring(3); // Extract the numeric part, assuming the format is consistent
+            int nextNumber = Integer.parseInt(numericPart) + 1;
+            nextMaLSP = "LSP" + String.format("%03d", nextNumber); // Format the incremented value with leading zeros
+        } else {
+            nextMaLSP = "LSP001"; // If no existing ma_LSP found, start from LSP001
+        }
+
+        return nextMaLSP;
+    }
 //	private String maLoaiSP;
 //	private String tenLoaiSP;
 //	private String moTaLoaiSP;

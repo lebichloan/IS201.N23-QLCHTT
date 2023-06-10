@@ -1,33 +1,34 @@
 package controller;
 
-import java.io.IOException;
 import java.net.URL;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.scene.control.ButtonBar;
+
 import db.database;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ThongTinSanPhamController implements Initializable {
-    @FXML
+public class ThemSanPhamController implements Initializable{
+	
+	@FXML
     private Button quayLaiButton;
     @FXML
     private Button luuButton;
@@ -53,18 +54,13 @@ public class ThongTinSanPhamController implements Initializable {
     private MenuButton chonDanhMucMenuButton;
     @FXML
     private DatePicker ngayThemDatePicker;
+    
 
-    public static String maSP;
-
-    public String getMaSP() {
-        return maSP;
-    }
-
-
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-    	luuButton.setDisable(true);
-        loadData();
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+		luuButton.setDisable(true);
         tenSanPhamTextField.textProperty().addListener((observable, oldValue, newValue) -> updateLuuButtonDisable());
         moTaTextField.textProperty().addListener((observable, oldValue, newValue) -> updateLuuButtonDisable());
         thuongHieuTextField.textProperty().addListener((observable, oldValue, newValue) -> updateLuuButtonDisable());
@@ -75,10 +71,12 @@ public class ThongTinSanPhamController implements Initializable {
         donGiaTextField.textProperty().addListener((observable, oldValue, newValue) -> updateLuuButtonDisable());
 
         // Add a listener to the date picker
-        ngayThemDatePicker.setDisable(true);
+        ngayThemDatePicker.valueProperty().addListener((observable, oldValue, newValue) -> updateLuuButtonDisable());
 
         // Add a listener to the menu button
         chonDanhMucMenuButton.setOnAction(event -> updateLuuButtonDisable());
+        populateDanhMucMenuButton();
+        maSPText.setText(generateNextMaSP());
         
         quayLaiButton.setOnMouseClicked((MouseEvent event) -> {
         	 Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
@@ -114,7 +112,7 @@ public class ThongTinSanPhamController implements Initializable {
             Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
             confirmationDialog.setTitle("Confirmation");
             confirmationDialog.setHeaderText(null);
-            confirmationDialog.setContentText("Lưu giá trị thay đổi?");
+            confirmationDialog.setContentText("Xác nhận thêm sản phẩm?");
 
             // Add buttons to the confirmation dialog
             ButtonType yesButton = new ButtonType("Yes");
@@ -137,27 +135,25 @@ public class ThongTinSanPhamController implements Initializable {
                 String kichThuoc = kichThuocTextField.getText();
                 String mauSac = mauSacTextField.getText();
                 int soLuong = Integer.parseInt(soLuongTextField.getText());
-                String maLSP = chonDanhMucMenuButton.getText();
                 Double gia = Double.parseDouble(donGiaTextField.getText());
+                String maLSP = chonDanhMucMenuButton.getText();
                 
 
 
-                String updateQuery = "UPDATE SanPham SET "
-                        + "ten_sp = ?, mo_ta = ?, thuong_hieu = ?, dvt = ?, kich_thuoc = ?, mau_sac = ?, "
-                        + "so_luong = ?, ma_lsp = ?, gia = ? "
-                        + "WHERE ma_sp = ?";
+                String updateQuery = "INSERT INTO SanPham (MA_SP, TEN_SP, MO_TA, THUONG_HIEU, DVT, KICH_THUOC, MAU_SAC, SO_LUONG, GIA, MA_LSP,  Ngay_Them) "
+                        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE) ";
 
                 try (PreparedStatement statement = database.connection.prepareStatement(updateQuery)) {
-                    statement.setString(1, tenSP);
-                    statement.setString(2, moTa);
-                    statement.setString(3, thuongHieu);
-                    statement.setString(4, donViTinh);
-                    statement.setString(5, kichThuoc);
-                    statement.setString(6, mauSac);
-                    statement.setInt(7, soLuong);
-                    statement.setString(8, maLSP);
+                	statement.setString(1, maSP);
+                    statement.setString(2, tenSP);
+                    statement.setString(3, moTa);
+                    statement.setString(4, thuongHieu);
+                    statement.setString(5, donViTinh);
+                    statement.setString(6, kichThuoc);
+                    statement.setString(7, mauSac);
+                    statement.setInt(8, soLuong);
                     statement.setDouble(9, gia);
-                    statement.setString(10, maSP);
+                    statement.setString(10, maLSP);
 
                     int rowsAffected = statement.executeUpdate();
                     if (rowsAffected > 0) {
@@ -167,6 +163,7 @@ public class ThongTinSanPhamController implements Initializable {
                         // Update failed
                         System.out.println("Update failed");
                     }
+                    
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -182,14 +179,14 @@ public class ThongTinSanPhamController implements Initializable {
                 // User closed the dialog or clicked cancel, close the confirmation dialog
                 confirmationDialog.close();
             }
+            QLSanPhamController.updateList();
+            QLSanPhamController.updateLoaiSPList();
             
-    	    QLSanPhamController.updateList();
-    	    QLSanPhamController.updateLoaiSPList();
         });
-    
-    }
-    
-    private void updateLuuButtonDisable() {
+		
+	}
+
+	private void updateLuuButtonDisable() {
         boolean isNotNullAndChanged = !tenSanPhamTextField.getText().isEmpty() &&
                 !moTaTextField.getText().isEmpty() &&
                 !thuongHieuTextField.getText().isEmpty() &&
@@ -202,44 +199,8 @@ public class ThongTinSanPhamController implements Initializable {
         luuButton.setDisable(!isNotNullAndChanged);
     }
 
-    private void loadData() {
-        // Retrieve data from the database based on the maSP value
-        String query = "SELECT * FROM SanPham WHERE ma_SP = ?";
-        try {
-        	PreparedStatement statement = database.connection.prepareStatement(query);
-            statement.setString(1, maSP);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                // Retrieve the data from the result set
-                String tenSP = resultSet.getString("ten_SP");
-                String moTa = resultSet.getString("mo_ta");
-                String thuongHieu = resultSet.getString("thuong_hieu");
-                String donViTinh = resultSet.getString("dvt");
-                String kichThuoc = resultSet.getString("kich_thuoc");
-                String mauSac = resultSet.getString("mau_sac");
-                int soLuong = resultSet.getInt("so_luong");
-                LocalDate ngayThem = resultSet.getDate("ngay_them").toLocalDate();
-                String gia = resultSet.getString("gia");
-                String maLSP = resultSet.getString("ma_lsp");
 
-                // Set the retrieved data to the respective UI controls
-                maSPText.setText(maSP);
-                tenSanPhamTextField.setText(tenSP);
-                moTaTextField.setText(moTa);
-                thuongHieuTextField.setText(thuongHieu);
-                donViTinhTextField.setText(donViTinh);
-                kichThuocTextField.setText(kichThuoc);
-                mauSacTextField.setText(mauSac);
-                soLuongTextField.setText(String.valueOf(soLuong));
-                ngayThemDatePicker.setValue(ngayThem);
-                donGiaTextField.setText(gia);
-                populateDanhMucMenuButton();
-                chonDanhMucMenuButton.setText(maLSP);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+   
 
     // Add event handlers for the buttons or any other controls as needed
     private void populateDanhMucMenuButton() {
@@ -257,14 +218,53 @@ public class ThongTinSanPhamController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    private String generateNextMaSP() {
+        String nextMaSP = "";
+        try {
+            // Establish the database connection
+            Statement statement = database.connection.createStatement();
 
-    @FXML
-    private void handleQuayLaiButtonAction() {
-        // Handle the action for the "quayLaiButton"
+            // Execute the PL/SQL block to generate the next MaSP
+            String query = "DECLARE\r\n"
+                    + "   v_MaSP NVARCHAR2(10);\r\n"
+                    + "   v_TotalSP NVARCHAR2(10);\r\n"
+                    + "BEGIN\r\n"
+                    + "   SELECT MAX(MA_SP) INTO v_MaSP FROM SANPHAM;\r\n"
+                    + "   SELECT COUNT(MA_SP) INTO v_TotalSP FROM SANPHAM;\r\n"
+                    + "   \r\n"
+                    + "   IF v_MaSP IS NULL THEN\r\n"
+                    + "      v_MaSP := 'SP001';\r\n"
+                    + "   ELSIF v_MaSP = v_TotalSP THEN\r\n"
+                    + "      -- Increment the numerical part of the string\r\n"
+                    + "      v_MaSP := 'SP' || TO_CHAR(TO_NUMBER(SUBSTR(v_MaSP, 3)) + 1, 'FM000');\r\n"
+                    + "   ELSE\r\n"
+                    + "      -- Find the smallest available string by incrementing the numerical part\r\n"
+                    + "      SELECT 'SP' || TO_CHAR(TO_NUMBER(MIN(SUBSTR(MA_SP, 3))) + 1, 'FM000') INTO v_MaSP\r\n"
+                    + "      FROM SANPHAM\r\n"
+                    + "      WHERE ('SP' || TO_CHAR(TO_NUMBER(SUBSTR(MA_SP, 3)) + 1, 'FM000')) NOT IN (SELECT MA_SP FROM SANPHAM);\r\n"
+                    + "   END IF;\r\n"
+                    + "\r\n"
+                    + "   ? := v_MaSP; -- Assign the generated value to the output parameter\r\n"
+                    + "END;";
+            
+            CallableStatement callableStatement = database.connection.prepareCall(query);
+            callableStatement.registerOutParameter(1, Types.NVARCHAR); // Register the output parameter
+            callableStatement.execute();
+            
+            nextMaSP = callableStatement.getString(1); // Retrieve the generated value
+            System.out.println(nextMaSP);
+            
+            // Close the resources
+            callableStatement.close();
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        
+        return nextMaSP;
     }
 
-    @FXML
-    private void handleLuuButtonAction() {
-        // Handle the action for the "luuButton"
-    }
+	
+
 }

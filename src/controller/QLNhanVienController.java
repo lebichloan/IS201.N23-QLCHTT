@@ -83,7 +83,7 @@ public class QLNhanVienController implements Initializable {
 	}
 	void getData() {
 		nvList.clear();
-		database.connecting();
+		database.connect();
 		Connection conn = database.connection;
 		String sql = "select * from NHANVIEN";
 		Statement statement = null;

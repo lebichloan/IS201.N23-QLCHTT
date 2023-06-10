@@ -88,7 +88,7 @@ public class QLSanPhamController implements Initializable {
 	@FXML
 	private Text daChonText;
 
-	private ObservableList<SanPham> listSP;
+	private static ObservableList<SanPham> listSP;
 
 	@FXML
 	private Text tongSoText;
@@ -165,7 +165,7 @@ public class QLSanPhamController implements Initializable {
 	@FXML
 	private TableColumn<LoaiSanPham, String> ghiChuLoaiSPColumn;
 
-	private ObservableList<LoaiSanPham> listLoaiSP;
+	private static ObservableList<LoaiSanPham> listLoaiSP;
 
 	@FXML
 	private ComboBox<String> chonTinhTrangLSPComboBox;
@@ -245,135 +245,6 @@ public class QLSanPhamController implements Initializable {
 		    }
 		});
 
-//			table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-//		        if (newSelection != null) {
-//		        	maSPTextField.setText(newSelection.getMaSP());
-//		            maSPTextField.setDisable(true); // Disable the maSPTextField
-//		            tenSPTextField.setText(newSelection.getTenSP());
-//		            mauSacTextField.setText(newSelection.getMauSac());
-//		            kichThuocTextField.setText(newSelection.getKichThuoc());
-//		            tinhTrangTextField.setText(newSelection.getTinhTrang());
-//		            maLSPTextField.setText(newSelection.getMaLSP());
-//		        } else {
-//		            maSPTextField.setDisable(false); // Enable the maSPTextField
-//		            tenSPTextField.setText("");
-//		            mauSacTextField.setText("");
-//		            kichThuocTextField.setText("");
-//		            tinhTrangTextField.setText("");
-//		            maLSPTextField.setText("");
-//		        }
-//		    });
-
-//			// Clear the selection when the table loses focus
-//		    table.focusedProperty().addListener((observable, oldValue, newValue) -> {
-//		        if (!newValue) {
-//		            table.getSelectionModel().clearSelection();
-//		        }
-//		    });
-//
-//		    // Clear the selection when the user clicks on something else on the screen
-//		    table.getParent().addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-//		        if (!table.getBoundsInParent().contains(event.getX(), event.getY())) {
-//		            table.getSelectionModel().clearSelection();
-//		        }
-//		    });
-
-//			add.setOnAction(new EventHandler<ActionEvent>() {
-//		        @Override
-//		        public void handle(ActionEvent event) {
-//		        	SanPham newSP = new SanPham();
-//		    	    newSP.setMaSP(maSPTextField.getText());
-//		    	    newSP.setTenSP(tenSPTextField.getText());
-//		    	    newSP.setMauSac(mauSacTextField.getText());
-//		    	    newSP.setKichThuoc(kichThuocTextField.getText());
-//		    	    newSP.setTinhTrang(tinhTrangTextField.getText());
-//		    	    newSP.setMaLSP(maLSPTextField.getText());
-//		    	    
-//		    	    // Add the new SanPham to the database
-//		    	    try {
-//		    	        String query = "INSERT INTO SANPHAM (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) " +
-//		    	                       "VALUES (?, ?, ?, ?, ?, ?)";
-//		    	        PreparedStatement statement = database.connection.prepareStatement(query);
-//		    	        statement.setString(1, newSP.getMaSP());
-//		    	        statement.setString(2, newSP.getTenSP());
-//		    	        statement.setString(3, newSP.getMauSac());
-//		    	        statement.setString(4, newSP.getKichThuoc());
-//		    	        statement.setString(5, newSP.getTinhTrang());
-//		    	        statement.setString(6, newSP.getMaLSP());
-//		    	        statement.executeUpdate();
-//		    	        String insertStatement = "INSERT INTO SANPHAM (maSP, tenSP, mauSac, kichThuoc, tinhTrang, maLSP) " +
-//		    	                "VALUES ('" + newSP.getMaSP() + "', '" + newSP.getTenSP() + "', '" + newSP.getMauSac() + "', '" +
-//		    	                newSP.getKichThuoc() + "', '" + newSP.getTinhTrang() + "', '" + newSP.getMaLSP() + "')";
-//		    	        FileWriter fileWriter = new FileWriter("QLCHTT.sql", true);
-//		    	        fileWriter.write(insertStatement + ";\n");
-//		    	        fileWriter.close();
-//		    	        System.out.println("New SanPham added to database: " + newSP);
-//		    	    } catch (SQLException | IOException ex) {
-//		    	        System.out.println("Error adding SanPham to database: " + ex.getMessage());
-//		    	    }
-//		    	    
-//		    	    // Add the new SanPham to the TableView
-//		    	    listSP.add(newSP);
-//		        }
-//		    });
-//			
-//			
-//			update.setOnAction(new EventHandler<ActionEvent>() {
-//		        @Override
-//		        public void handle(ActionEvent event) {
-//		        	
-//		        		try {
-//				    	    
-//		        			SanPham updateSP = new SanPham();
-//		        			updateSP.setMaSP(maSPTextField.getText());
-//				    	    String query = "UPDATE SANPHAM SET tensp=?, mausac=?, kichthuoc=?, tinhtrang=?, malsp=? WHERE masp=?";
-//				            PreparedStatement statement = database.connection.prepareStatement(query);
-//				            statement.setString(1, tenSPTextField.getText());
-//				            statement.setString(2, mauSacTextField.getText());
-//				            statement.setString(3, kichThuocTextField.getText());
-//				            statement.setString(4, tinhTrangTextField.getText());
-//				            statement.setString(5, maLSPTextField.getText());
-//				            statement.setString(6, updateSP.getMaSP());
-//				            statement.executeUpdate();
-//				            updateSP.setTenSP(tenSPTextField.getText());
-//				            updateSP.setMauSac(mauSacTextField.getText());
-//				            updateSP.setKichThuoc(kichThuocTextField.getText());
-//				            updateSP.setTinhTrang(tinhTrangTextField.getText());
-//				            updateSP.setMaLSP(maLSPTextField.getText());
-//				            int selectedIndex = table.getSelectionModel().getSelectedIndex();
-//				            listSP.set(selectedIndex, updateSP);
-//				            table.setItems(listSP);
-//				            
-//		        		}catch (SQLException e) {
-//		    	            System.out.println("Query failed: " + e.getMessage());
-//		    	        }
-//		        	}
-//		        
-//			});
-//			
-//			//ergeg
-//			delete.setOnAction(new EventHandler<ActionEvent>() {
-//		        @Override
-//		        public void handle(ActionEvent event) {
-//		        	SanPham selected = table.getSelectionModel().getSelectedItem();
-//		    	    if (selected != null) {
-//		    	        try {
-//		    	            String deleteQuery = "DELETE FROM SANPHAM WHERE maSP = ?";
-//		    	            PreparedStatement statement = database.connection.prepareStatement(deleteQuery);
-//		    	            statement.setString(1, selected.getMaSP());
-//		    	            int rowsDeleted = statement.executeUpdate();
-//		    	            if (rowsDeleted > 0) {
-//		    	                listSP.remove(selected);
-//		    	                System.out.println("Deleted " + rowsDeleted + " row(s) from the database");
-//		    	            } else {
-//		    	                System.out.println("No rows deleted from the database");
-//		    	            }
-//		    	        } catch (SQLException ex) {
-//		    	            System.out.println("Query failed: " + ex.getMessage());
-//		    	        }
-//		    	    }
-//		        }
-//			});
 
 		themSanPhamButton.setOnMouseClicked((MouseEvent event) -> {
 			try {
@@ -577,6 +448,8 @@ public class QLSanPhamController implements Initializable {
                     }
                 });
             }
+            updateList();
+            updateLoaiSPList();
         });
 
 
@@ -593,6 +466,13 @@ public class QLSanPhamController implements Initializable {
 		tinhTrangLoaiSPColumn.setCellValueFactory(new PropertyValueFactory<LoaiSanPham, String>("tinhTrangLoaiSP"));
 		ghiChuLoaiSPColumn.setCellValueFactory(new PropertyValueFactory<LoaiSanPham, String>("ghiChuLoaiSP"));
 		tableLoaiSP.setItems(listLoaiSP);
+
+		
+		luuThemLoaiSPButton.setDisable(true);
+        themTenLoaiSPTextField.textProperty().addListener((observable, oldValue, newValue) -> updateLuuButtonDisable());
+        themMoTaLoaiSPTextField.textProperty().addListener((observable, oldValue, newValue) -> updateLuuButtonDisable());
+        themGhiChuTextField.textProperty().addListener((observable, oldValue, newValue) -> updateLuuButtonDisable());
+
 		
 		tableLoaiSP.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		daChonLSPText.setText("Đã chọn: 0");
@@ -722,8 +602,7 @@ public class QLSanPhamController implements Initializable {
 		});
 		
 		setLoaiSPTextFieldStatus(false);
-		String largestMaLSP = getLargestMaLSPFromDatabase();
-		String nextMaLSP = generateNextMaLSP(largestMaLSP);
+		String nextMaLSP = generateNextMaLSP();
 		themMaLoaiSPText.setText(nextMaLSP);
 
 		tableLoaiSP.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -732,9 +611,16 @@ public class QLSanPhamController implements Initializable {
 		        setLoaiSPTextFieldStatus(false);
 		        String selectedMaLoaiSP = newValue.getMaLoaiSP();
 		        themMaLoaiSPText.setText(selectedMaLoaiSP);
+		        themTenLoaiSPTextField.setText(newValue.getTenLoaiSP());
+		        themMoTaLoaiSPTextField.setText(newValue.getMoTaLoaiSP());
+		        themGhiChuTextField.setText(newValue.getGhiChuLoaiSP());
+		        
 		    } else if (newValue == null && selectedRowCount == 0){
 		        setLoaiSPTextFieldStatus(false);
 		        themMaLoaiSPText.setText(nextMaLSP);
+		        themTenLoaiSPTextField.clear();
+		        themMoTaLoaiSPTextField.clear();
+		        themGhiChuTextField.clear();
 		    }
 		    else {
 		    	setLoaiSPTextFieldStatus(true);
@@ -742,46 +628,73 @@ public class QLSanPhamController implements Initializable {
 		});
 
 		luuThemLoaiSPButton.setOnAction(new EventHandler<ActionEvent>() {
-	        @Override
-	        public void handle(ActionEvent event) {
-	        	String largestMaLSP = getLargestMaLSPFromDatabase();
-    			String nextMaLSP = generateNextMaLSP(largestMaLSP);
-				if(themMaLoaiSPText.getText().equals(nextMaLSP)) {
-					System.out.println("1");
-					LoaiSanPham newLoaiSP = new LoaiSanPham();
-		        	newLoaiSP.setMaLoaiSP(themMaLoaiSPText.getText());
-		        	newLoaiSP.setTenLoaiSP(themTenLoaiSPTextField.getText());
-		        	newLoaiSP.setMoTaLoaiSP(themMoTaLoaiSPTextField.getText());
-		        	newLoaiSP.setGhiChuLoaiSP(themGhiChuTextField.getText());
-		    	    
-		    	    // Add the new SanPham to the database
-		    	    try {
-		    	        String query = "INSERT INTO LOAISANPHAM (ma_LSP, ten_LSP, Mo_ta, slmh, ghi_chu) " +
-		    	                       "VALUES (?, ?, ?, ?, ?)";
-		    	        PreparedStatement statement10 = database.connection.prepareStatement(query);
-		    	        statement10.setString(1, newLoaiSP.getMaLoaiSP());
-		    	        statement10.setString(2, newLoaiSP.getTenLoaiSP());
-		    	        statement10.setString(3, newLoaiSP.getMoTaLoaiSP());
-		    	        statement10.setInt(4, 0);
-		    	        statement10.setString(5, newLoaiSP.getGhiChuLoaiSP());
-		    	        statement10.executeUpdate();
-		    	        largestMaLSP = getLargestMaLSPFromDatabase();
-		    			nextMaLSP = generateNextMaLSP(largestMaLSP);
-		    			themMaLoaiSPText.setText(nextMaLSP);
-		    	        
-		    	        System.out.println("New LoaiSanPham added to database: " + newLoaiSP);
-		    	    } catch (SQLException e) {
-		    	        System.out.println("Error adding LoaiSanPham to database: " + e.getMessage());
-		    	    }
-		    	    
-		    	    // Add the new SanPham to the TableView
-		    	    listLoaiSP.add(newLoaiSP);
-					
-				}
-	        	
-	        }
-	    });
+			@Override
+			public void handle(ActionEvent event) {
+				int selectedRowCount = tableLoaiSP.getSelectionModel().getSelectedItems().size();
+				if (selectedRowCount == 0) {
+					String nextMaLSP = generateNextMaLSP();
+					if (themMaLoaiSPText.getText().equals(nextMaLSP)) {
+						LoaiSanPham newLoaiSP = new LoaiSanPham();
+						newLoaiSP.setMaLoaiSP(themMaLoaiSPText.getText());
+						newLoaiSP.setTenLoaiSP(themTenLoaiSPTextField.getText());
+						newLoaiSP.setMoTaLoaiSP(themMoTaLoaiSPTextField.getText());
+						newLoaiSP.setGhiChuLoaiSP(themGhiChuTextField.getText());
 
+						// Add the new SanPham to the database
+						try {
+							String query = "INSERT INTO LOAISANPHAM (ma_LSP, ten_LSP, Mo_ta, slmh, ghi_chu) "
+									+ "VALUES (?, ?, ?, ?, ?)";
+							PreparedStatement statement10 = database.connection.prepareStatement(query);
+							statement10.setString(1, newLoaiSP.getMaLoaiSP());
+							statement10.setString(2, newLoaiSP.getTenLoaiSP());
+							statement10.setString(3, newLoaiSP.getMoTaLoaiSP());
+							statement10.setInt(4, 0);
+							statement10.setString(5, newLoaiSP.getGhiChuLoaiSP());
+							statement10.executeUpdate();
+							nextMaLSP = generateNextMaLSP();
+							themMaLoaiSPText.setText(nextMaLSP);
+
+							System.out.println("New LoaiSanPham added to database: " + newLoaiSP);
+						} catch (SQLException e) {
+							System.out.println("Error adding LoaiSanPham to database: " + e.getMessage());
+						}
+
+						// Add the new SanPham to the TableView
+						listLoaiSP.add(newLoaiSP);
+					}
+
+				}
+				
+				else if(selectedRowCount == 1) {
+					LoaiSanPham newLoaiSP = new LoaiSanPham();
+					newLoaiSP.setMaLoaiSP(themMaLoaiSPText.getText());
+					newLoaiSP.setTenLoaiSP(themTenLoaiSPTextField.getText());
+					newLoaiSP.setMoTaLoaiSP(themMoTaLoaiSPTextField.getText());
+					newLoaiSP.setGhiChuLoaiSP(themGhiChuTextField.getText());
+
+					// Add the new SanPham to the database
+					try {
+						String query = "UPDATE LOAISANPHAM SET ten_LSP = ?, Mo_ta = ?, slmh = ?, ghi_chu = ?) "
+								+ "WHERE MA_LSP = ?" ;
+						PreparedStatement statement10 = database.connection.prepareStatement(query);
+						statement10.setString(1, newLoaiSP.getTenLoaiSP());
+						statement10.setString(2, newLoaiSP.getMoTaLoaiSP());
+						statement10.setInt(3, 0);
+						statement10.setString(4, newLoaiSP.getGhiChuLoaiSP());
+						statement10.setString(5, newLoaiSP.getMaLoaiSP());
+						statement10.executeUpdate();
+
+						System.out.println("New LoaiSanPham added to database: " + newLoaiSP);
+					} catch (SQLException e) {
+						System.out.println("Error adding LoaiSanPham to database: " + e.getMessage());
+					}
+
+				}
+	            updateList();
+	            updateLoaiSPList();
+			}
+			
+		});
 
 
 	}
@@ -792,8 +705,9 @@ public class QLSanPhamController implements Initializable {
 		return maSPDaChon;
 	}
 
-	public void updateList() {
+	public static void updateList() {
 		try {
+			listSP.clear();
 			String query = "SELECT * FROM SANPHAM ORDER BY MA_SP ASC";
 			Statement statement = database.connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
@@ -833,8 +747,9 @@ public class QLSanPhamController implements Initializable {
 		}
 	}
 
-	public void updateLoaiSPList() {
+	public static void updateLoaiSPList() {
 		try {
+			listLoaiSP.clear();
 			String query = "SELECT\r\n" + "		    lsp.ma_lsp,\r\n" + "		    lsp.ten_lsp,\r\n"
 					+ "		    lsp.mo_ta,\r\n" + "		    COALESCE(SUM(sp.so_luong), 0) AS slmh,\r\n"
 					+ "		    CASE WHEN COALESCE(SUM(sp.so_luong), 0) = 0 THEN 'Het hang' ELSE 'Con hang' END AS TinhTrang,\r\n"
@@ -896,44 +811,65 @@ public class QLSanPhamController implements Initializable {
 	}
 	
 	
-	private String getLargestMaLSPFromDatabase() {
-        String largestMaLSP = "";
+	
+	
+	
+	
+	private String generateNextMaLSP() {
+	    String nextMaLSP = "";
+	    try {
+	        // Establish the database connection
+	        Statement statement = database.connection.createStatement();
 
-        try {
-            // Establish the database connection
-            Statement statement = database.connection.createStatement();
-
-            // Execute the query to retrieve the largest ma_LSP
-            String query = "SELECT MAX(ma_LSP) FROM LoaisanPham";
-            ResultSet resultSet = statement.executeQuery(query);
-
-            if (resultSet.next()) {
-                largestMaLSP = resultSet.getString(1);
-            }
-
-            // Close the resources
-            resultSet.close();
-            statement.close();
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }
-
-        return largestMaLSP;
+	        // Execute the PL/SQL block to generate the next MaLSP
+	        String query = "DECLARE\r\n"
+	                + "   v_MaLSP NVARCHAR2(10);\r\n"
+	                + "   v_TotalLSP NVARCHAR2(10);\r\n"
+	                + "BEGIN\r\n"
+	                + "   SELECT MAX(MA_LSP) INTO v_MaLSP FROM LOAISANPHAM;\r\n"
+	                + "   SELECT COUNT(MA_LSP) INTO v_TotalLSP FROM LOAISANPHAM;\r\n"
+	                + "   \r\n"
+	                + "   IF v_MaLSP IS NULL THEN\r\n"
+	                + "      v_MaLSP := 'LSP001';\r\n"
+	                + "   ELSIF v_MaLSP = v_TotalLSP THEN\r\n"
+	                + "      -- Increment the numerical part of the string\r\n"
+	                + "      v_MaLSP := 'LSP' || TO_CHAR(TO_NUMBER(SUBSTR(v_MaLSP, 4)) + 1, 'FM000');\r\n"
+	                + "   ELSE\r\n"
+	                + "      -- Find the smallest available string by incrementing the numerical part\r\n"
+	                + "      SELECT 'LSP' || TO_CHAR(TO_NUMBER(MIN(SUBSTR(MA_LSP, 4))) + 1, 'FM000') INTO v_MaLSP\r\n"
+	                + "      FROM LOAISANPHAM\r\n"
+	                + "      WHERE ('LSP' || TO_CHAR(TO_NUMBER(SUBSTR(MA_LSP, 4)) + 1, 'FM000')) NOT IN (SELECT MA_LSP FROM LOAISANPHAM);\r\n"
+	                + "   END IF;\r\n"
+	                + "\r\n"
+	                + "   ? := v_MaLSP; -- Assign the generated value to the output parameter\r\n"
+	                + "END;";
+	        
+	        CallableStatement callableStatement = database.connection.prepareCall(query);
+	        callableStatement.registerOutParameter(1, Types.NVARCHAR); // Register the output parameter
+	        callableStatement.execute();
+	        
+	        nextMaLSP = callableStatement.getString(1); // Retrieve the generated value
+	        
+	        // Close the resources
+	        callableStatement.close();
+	        statement.close();
+	    } catch (SQLException ex) {
+	        System.out.println("Error: " + ex.getMessage());
+	    }
+	    
+	    return nextMaLSP;
+	}
+	
+	private void updateLuuButtonDisable() {
+        boolean isNotNullAndChanged = !themTenLoaiSPTextField.getText().isEmpty() &&
+                !themMoTaLoaiSPTextField.getText().isEmpty() &&
+                !themGhiChuTextField.getText().isEmpty();
+        luuThemLoaiSPButton.setDisable(!isNotNullAndChanged);
     }
 
-    private String generateNextMaLSP(String largestMaLSP) {
-        String nextMaLSP = "";
 
-        if (largestMaLSP != null && !largestMaLSP.isEmpty()) {
-            String numericPart = largestMaLSP.substring(3); // Extract the numeric part, assuming the format is consistent
-            int nextNumber = Integer.parseInt(numericPart) + 1;
-            nextMaLSP = "LSP" + String.format("%03d", nextNumber); // Format the incremented value with leading zeros
-        } else {
-            nextMaLSP = "LSP001"; // If no existing ma_LSP found, start from LSP001
-        }
+	
 
-        return nextMaLSP;
-    }
 //	private String maLoaiSP;
 //	private String tenLoaiSP;
 //	private String moTaLoaiSP;

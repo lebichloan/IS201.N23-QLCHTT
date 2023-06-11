@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import db.database;
 import model.HoaDon;
 import model.KhachHang;
+import model.NhanVien;
 
 public class KhachHangDAO implements DAOInterface<KhachHang>{
 
@@ -59,15 +60,19 @@ public class KhachHangDAO implements DAOInterface<KhachHang>{
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
-
 	    return listKhachHang;
 	}
 
 
 	@Override
-	public KhachHang selectedById(KhachHang t) {
-		// TODO Auto-generated method stub
-		return null;
+	public KhachHang selectedById(String t) {
+		ArrayList<KhachHang> danhSachKhachHang = this.selectAll();
+	    for (KhachHang khachHang : danhSachKhachHang) {
+	        if (khachHang.getMaKh().equals(t)) {
+	            return khachHang;
+	        }
+	    }
+	    return null;
 	}
 
 	@Override

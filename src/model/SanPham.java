@@ -1,51 +1,73 @@
 package model;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import db.database;
+
 public class SanPham {
-    private String maSP;
-    private String tenSP;
-    private String danhMuc;
+    private String maSanPham;
+    private String tenSanPham;
+    private Date ngayThem;
+    private String moTa;
+    private String thuongHieu;
     private String donViTinh;
-    private int soLuong;
     private String mauSac;
     private String kichThuoc;
-    private String tinhTrang;
-    private String ghiChu;
-    public String getDanhMuc() {
-		return danhMuc;
+    private int soLuong;
+    private int donGia;
+    private String maLoaiSanPham;
+	public SanPham(String maSanPham, String tenSanPham, Date ngayThem, String moTa, String thuongHieu, String donViTinh,
+			String mauSac, String kichThuoc, int soLuong, int donGia, String maLoaiSanPham) {
+		this.maSanPham = maSanPham;
+		this.tenSanPham = tenSanPham;
+		this.ngayThem = ngayThem;
+		this.moTa = moTa;
+		this.thuongHieu = thuongHieu;
+		this.donViTinh = donViTinh;
+		this.mauSac = mauSac;
+		this.kichThuoc = kichThuoc;
+		this.soLuong = soLuong;
+		this.donGia = donGia;
+		this.maLoaiSanPham = maLoaiSanPham;
 	}
-	public void setDanhMuc(String danhMuc) {
-		this.danhMuc = danhMuc;
+	public String getMaSanPham() {
+		return maSanPham;
+	}
+	public void setMaSanPham(String maSanPham) {
+		this.maSanPham = maSanPham;
+	}
+	public String getTenSanPham() {
+		return tenSanPham;
+	}
+	public void setTenSanPham(String tenSanPham) {
+		this.tenSanPham = tenSanPham;
+	}
+	public Date getNgayThem() {
+		return ngayThem;
+	}
+	public void setNgayThem(Date ngayThem) {
+		this.ngayThem = ngayThem;
+	}
+	public String getMoTa() {
+		return moTa;
+	}
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
+	}
+	public String getThuongHieu() {
+		return thuongHieu;
+	}
+	public void setThuongHieu(String thuongHieu) {
+		this.thuongHieu = thuongHieu;
 	}
 	public String getDonViTinh() {
 		return donViTinh;
 	}
 	public void setDonViTinh(String donViTinh) {
 		this.donViTinh = donViTinh;
-	}
-	public int getSoLuong() {
-		return soLuong;
-	}
-	public void setSoLuong(int soLuong) {
-		this.soLuong = soLuong;
-	}
-	public String getGhiChu() {
-		return ghiChu;
-	}
-	public void setGhiChu(String ghiChu) {
-		this.ghiChu = ghiChu;
-	}
-	private String maLSP;
-	public String getMaSP() {
-		return maSP;
-	}
-	public void setMaSP(String maSP) {
-		this.maSP = maSP;
-	}
-	public String getTenSP() {
-		return tenSP;
-	}
-	public void setTenSP(String tenSP) {
-		this.tenSP = tenSP;
 	}
 	public String getMauSac() {
 		return mauSac;
@@ -59,28 +81,25 @@ public class SanPham {
 	public void setKichThuoc(String kichThuoc) {
 		this.kichThuoc = kichThuoc;
 	}
-	public String getTinhTrang() {
-		return tinhTrang;
+	public int getSoLuong() {
+		return soLuong;
 	}
-	public void setTinhTrang(String tinhTrang) {
-		this.tinhTrang = tinhTrang;
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
 	}
-	public String getMaLSP() {
-		return maLSP;
+	public int getDonGia() {
+		return donGia;
 	}
-	public void setMaLSP(String maLSP) {
-		this.maLSP = maLSP;
+	public void setDonGia(int donGia) {
+		this.donGia = donGia;
 	}
-	public SanPham(String maSP, String tenSP, String mauSac, String kichThuoc, String tinhTrang, String maLSP) {
-		this.maSP = maSP;
-		this.tenSP = tenSP;
-		this.mauSac = mauSac;
-		this.kichThuoc = kichThuoc;
-		this.tinhTrang = tinhTrang;
-		this.maLSP = maLSP;
+	public String getMaLoaiSanPham() {
+		return maLoaiSanPham;
+	}
+	public void setMaLoaiSanPham(String maLoaiSanPham) {
+		this.maLoaiSanPham = maLoaiSanPham;
 	}
 	public SanPham() {
-		this.maSP="0";
 	}
-    
+
 }

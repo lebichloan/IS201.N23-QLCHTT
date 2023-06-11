@@ -137,11 +137,15 @@ public class ThemSanPhamController implements Initializable{
                 int soLuong = Integer.parseInt(soLuongTextField.getText());
                 Double gia = Double.parseDouble(donGiaTextField.getText());
                 String maLSP = chonDanhMucMenuButton.getText();
+                String tinhtrang = "Het hang";
+                if(soLuong > 0) {
+                	tinhtrang = "Con hang";
+                }
                 
 
 
-                String updateQuery = "INSERT INTO SanPham (MA_SP, TEN_SP, MO_TA, THUONG_HIEU, DVT, KICH_THUOC, MAU_SAC, SO_LUONG, GIA, MA_LSP,  Ngay_Them) "
-                        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE) ";
+                String updateQuery = "INSERT INTO SanPham (MA_SP, TEN_SP, MO_TA, THUONG_HIEU, DVT, KICH_THUOC, MAU_SAC, SO_LUONG, GIA, MA_LSP,  Ngay_Them, TinhTrang) "
+                        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, ?) ";
 
                 try (PreparedStatement statement = database.connection.prepareStatement(updateQuery)) {
                 	statement.setString(1, maSP);
@@ -154,6 +158,7 @@ public class ThemSanPhamController implements Initializable{
                     statement.setInt(8, soLuong);
                     statement.setDouble(9, gia);
                     statement.setString(10, maLSP);
+                    statement.setString(11, tinhtrang);
 
                     int rowsAffected = statement.executeUpdate();
                     if (rowsAffected > 0) {
@@ -187,6 +192,7 @@ public class ThemSanPhamController implements Initializable{
 	}
 
 	private void updateLuuButtonDisable() {
+		
         boolean isNotNullAndChanged = !tenSanPhamTextField.getText().isEmpty() &&
                 !moTaTextField.getText().isEmpty() &&
                 !thuongHieuTextField.getText().isEmpty() &&

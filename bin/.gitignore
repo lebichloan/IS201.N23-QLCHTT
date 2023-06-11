@@ -1,7 +1,6 @@
-/controller/
 /dao/
 /db/
 /model/
-/module-info.class
 /test/
 /view/
+/controller/

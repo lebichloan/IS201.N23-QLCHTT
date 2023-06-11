@@ -19,7 +19,7 @@
                         <Button fx:id="sanPhamButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="188.0" text="Sản phẩm" />
                         <Button fx:id="nhanVienButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="193.0" text="Nhân viên" />
                         <Button fx:id="hoaDonButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="194.0" text="Hóa đơn" />
-                        <Button fx:id="trangChuButton1" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" text="Thống kê doanh thu" />
+                        <Button fx:id="thongKeButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" text="Thống kê doanh thu" />
                      </children>
                   </VBox>
                </children>

@@ -37,6 +37,9 @@ public class TrangChuController implements Initializable {
 	Button nhanVienButton;
 	
 	@FXML
+	Button thongKeButton;
+	
+	@FXML
 	Button dangXuatButton;
 	
 	@FXML
@@ -138,6 +141,7 @@ public class TrangChuController implements Initializable {
 	    sanPhamButton.setOnAction(event -> handleButtonClick(sanPhamButton, "/view/QLSanPham.fxml"));
 	    khachhangButton.setOnAction(event -> handleButtonClick(khachhangButton, "/view/QLKhachHang.fxml"));
 	    nhanVienButton.setOnAction(event -> handleButtonClick(nhanVienButton, "/view/QLNhanVien.fxml"));
+	    thongKeButton.setOnAction(event -> handleButtonClick(thongKeButton, "/view/ThongKe.fxml"));
 	    dangXuatButton.setOnMouseClicked((MouseEvent event) -> {
             common.sceneTransition("/view/Login.fxml", event);
         });

@@ -26,9 +26,11 @@ public class Test extends Application {
         try {
         	database.connect();
         	//database.SelectFromSanPham();
-            Parent root = FXMLLoader.load(this.getClass().getResource("/view/QLSanPham.fxml"));
+            Parent root = FXMLLoader.load(this.getClass().getResource("/view/TrangChu.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setMaximized(true);
+            primaryStage.setResizable(false);
             primaryStage.show();
         }catch (Exception e){
         	e.printStackTrace();

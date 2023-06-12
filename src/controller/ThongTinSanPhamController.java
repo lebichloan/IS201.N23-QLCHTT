@@ -139,12 +139,16 @@ public class ThongTinSanPhamController implements Initializable {
                 int soLuong = Integer.parseInt(soLuongTextField.getText());
                 String maLSP = chonDanhMucMenuButton.getText();
                 Double gia = Double.parseDouble(donGiaTextField.getText());
+                String tinhtrang = "Het hang";
+                if(soLuong > 0) {
+                	tinhtrang = "Con hang";
+                }
                 
 
 
                 String updateQuery = "UPDATE SanPham SET "
                         + "ten_sp = ?, mo_ta = ?, thuong_hieu = ?, dvt = ?, kich_thuoc = ?, mau_sac = ?, "
-                        + "so_luong = ?, ma_lsp = ?, gia = ? "
+                        + "so_luong = ?, ma_lsp = ?, gia = ?, Tinhtrang = ? "
                         + "WHERE ma_sp = ?";
 
                 try (PreparedStatement statement = database.connection.prepareStatement(updateQuery)) {
@@ -158,6 +162,7 @@ public class ThongTinSanPhamController implements Initializable {
                     statement.setString(8, maLSP);
                     statement.setDouble(9, gia);
                     statement.setString(10, maSP);
+                    statement.setString(11, maSP);
 
                     int rowsAffected = statement.executeUpdate();
                     if (rowsAffected > 0) {

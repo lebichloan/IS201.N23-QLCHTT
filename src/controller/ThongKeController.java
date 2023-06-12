@@ -1,8 +1,12 @@
 package controller;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import db.database;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -79,22 +83,27 @@ public class ThongKeController implements Initializable {
         dataSeries.getData().add(new XYChart.Data<>(11, 166.8));
         dataSeries.getData().add(new XYChart.Data<>(12, 200.8));
         
-        for (XYChart.Data<Number, Number> data : dataSeries.getData()) {
-            Node node = data.getNode();
-            Tooltip tooltip = new Tooltip(data.getYValue().toString());
-            Tooltip.install(node, tooltip);
-        }
-
+        
+        
 
         // Add the series to the line chart
         lineChart.getData().add(dataSeries);
 
-        lineChart.setLayoutX(120);
+        lineChart.setLayoutX(60);
         lineChart.setLayoutY(40);
         lineChart.setPrefHeight(350);
         lineChart.setPrefWidth(1100);
+       
 
         giaoDienAnchorPane.getChildren().add(lineChart);
+        for (XYChart.Data<Number, Number> data : dataSeries.getData()) {
+            Node node = data.getNode();
+            Tooltip tooltip = new Tooltip(data.getYValue().toString());
+            Tooltip.install(node, tooltip);
+
+            node.setOnMouseEntered(event -> tooltip.show(node, event.getScreenX(), event.getScreenY() + 10));
+            node.setOnMouseExited(event -> tooltip.hide());
+        }
     }
     
     public void Top3KhachHangCoDoanhThuCaoNhat() {
@@ -120,11 +129,7 @@ public class ThongKeController implements Initializable {
         // Add the series to the bar chart
         barChart.getData().add(dataSeries);
         
-        for (XYChart.Data<String, Number> data : dataSeries.getData()) {
-            Node node = data.getNode();
-            Tooltip tooltip = new Tooltip(data.getYValue().toString());
-            Tooltip.install(node, tooltip);
-        }
+        
 
         barChart.setLayoutX(800);
         barChart.setLayoutY(460);
@@ -132,6 +137,14 @@ public class ThongKeController implements Initializable {
         barChart.setPrefWidth(400);
 
         giaoDienAnchorPane.getChildren().add(barChart);
+        for (XYChart.Data<String, Number> data : dataSeries.getData()) {
+            Node node = data.getNode();
+            Tooltip tooltip = new Tooltip(data.getYValue().toString());
+            Tooltip.install(node, tooltip);
+
+            node.setOnMouseEntered(event -> tooltip.show(node, event.getScreenX(), event.getScreenY() + 10));
+            node.setOnMouseExited(event -> tooltip.hide());
+        }
     }
     
     public void Top3SanPhamCoDoanhThuCaoNhat() {
@@ -168,32 +181,55 @@ public class ThongKeController implements Initializable {
         barChart.setPrefWidth(400);
 
         giaoDienAnchorPane.getChildren().add(barChart);
+        
+        for (XYChart.Data<String, Number> data : dataSeries.getData()) {
+            Node node = data.getNode();
+            Tooltip tooltip = new Tooltip(data.getYValue().toString());
+            Tooltip.install(node, tooltip);
+
+            node.setOnMouseEntered(event -> tooltip.show(node, event.getScreenX(), event.getScreenY() + 10));
+            node.setOnMouseExited(event -> tooltip.hide());
+        }
     }
     
     public void SoLuongSanPhamCacLoai() {
-    	 // Create the pie chart
+        // Create the pie chart
         PieChart pieChart = new PieChart();
 
-        // Create the data slices
-        PieChart.Data slice1 = new PieChart.Data("Ao LSP001", 40);
-        PieChart.Data slice2 = new PieChart.Data("Quan LSP002", 40);
-        PieChart.Data slice3 = new PieChart.Data("Khan LSP003", 15);
-        PieChart.Data slice4 = new PieChart.Data("Mu LSP004", 5);
-        PieChart.Data slice5 = new PieChart.Data("Kinh LSP005", 0);
+        try {
+            // Establish a database connection
+            Statement statement = database.connection.createStatement();
 
-        // Add the data slices to the pie chart
-        pieChart.getData().add(slice1);
-        pieChart.getData().add(slice2);
-        pieChart.getData().add(slice3);
-        pieChart.getData().add(slice4);
-        pieChart.getData().add(slice5);
-        
+            // Execute the query
+            String query = "SELECT LoaiSanPham.Ten_LSP, SUM(SanPham.So_Luong) AS TotalQuantity " +
+                           "FROM SanPham " +
+                           "INNER JOIN LoaiSanPham ON SanPham.Ma_LSP = LoaiSanPham.Ma_LSP " +
+                           "GROUP BY LoaiSanPham.Ten_LSP";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            // Iterate through the result set and create data slices
+            while (resultSet.next()) {
+                String loaiSanPham = resultSet.getString("Ten_LSP");
+                int totalQuantity = resultSet.getInt("TotalQuantity");
+
+                PieChart.Data slice = new PieChart.Data(loaiSanPham, totalQuantity);
+                pieChart.getData().add(slice);
+            }
+
+            // Close the database connection
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         pieChart.setLayoutX(420);
         pieChart.setLayoutY(420);
         pieChart.setPrefHeight(300);
         pieChart.setPrefWidth(400);
 
-        giaoDienAnchorPane.getChildren().add(pieChart);
+        giaoDienAnchorPane.getChildren().add(pieChart);    
+        
     }
     
     

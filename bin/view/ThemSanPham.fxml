@@ -35,7 +35,7 @@
                                     <AnchorPane prefHeight="250.0" prefWidth="200.0">
                                        <children>
                                           <TextField fx:id="tenSanPhamTextField" layoutX="173.0" layoutY="108.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="341.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="105.0" />
-                                          <MenuButton fx:id="chonDanhMucMenuButton" layoutX="153.0" layoutY="61.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" text="Chọn danh mục" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="60.0">
+                                          <MenuButton fx:id="chonDanhMucMenuButton" layoutX="153.0" layoutY="61.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" text="LSP001" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="60.0">
                                           </MenuButton>
                                           <Text layoutX="29.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã sản phẩm:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
                                              <font>

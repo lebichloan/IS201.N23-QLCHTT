@@ -214,7 +214,7 @@ public class QLSanPhamController implements Initializable {
 		updateList();
 		maSPColumn.setCellValueFactory(new PropertyValueFactory<SanPham, String>("maSP"));
 		tenSPColumn.setCellValueFactory(new PropertyValueFactory<SanPham, String>("tenSP"));
-		danhmucSPColumn.setCellValueFactory(new PropertyValueFactory<SanPham, String>("danhMuc"));
+		danhmucSPColumn.setCellValueFactory(new PropertyValueFactory<SanPham, String>("maLSP"));
 		soLuongColumn.setCellValueFactory(new PropertyValueFactory<SanPham, Double>("soLuong"));
 		tinhTrangSPColumn.setCellValueFactory(new PropertyValueFactory<SanPham, String>("tinhTrang"));
 		donViTinhColumn.setCellValueFactory(new PropertyValueFactory<SanPham, Double>("donViTinh"));
@@ -288,7 +288,7 @@ public class QLSanPhamController implements Initializable {
 						newSP.setMaSP(resultSet.getString("MA_SP"));
 						newSP.setTenSP(resultSet.getString("TEN_SP"));
 						newSP.setSoLuong(resultSet.getInt("SO_LUONG"));
-						newSP.setDanhMuc(resultSet.getString("MA_LSP"));
+						newSP.setMaLSP(resultSet.getString("MA_LSP"));
 						newSP.setTinhTrang(resultSet.getString("tinhTrang"));
 						newSP.setDonViTinh(resultSet.getString("Dvt"));
 						newSP.setGhiChu(resultSet.getString("Mo_ta"));
@@ -716,7 +716,7 @@ public class QLSanPhamController implements Initializable {
 				newSP.setMaSP(resultSet.getString("MA_SP"));
 				newSP.setTenSP(resultSet.getString("TEN_SP"));
 				newSP.setSoLuong(resultSet.getInt("SO_LUONG"));
-				newSP.setDanhMuc(resultSet.getString("MA_LSP"));
+				newSP.setMaLSP(resultSet.getString("MA_LSP"));
 				newSP.setTinhTrang(resultSet.getString("tinhTrang"));
 				newSP.setDonViTinh(resultSet.getString("Dvt"));
 				newSP.setGhiChu(resultSet.getString("Mo_ta"));
@@ -736,7 +736,7 @@ public class QLSanPhamController implements Initializable {
 				newSP.setMaSP(resultSet.getString("MA_SP"));
 				newSP.setTenSP(resultSet.getString("TEN_SP"));
 				newSP.setSoLuong(resultSet.getInt("SO_LUONG"));
-				newSP.setDanhMuc(resultSet.getString("MA_LSP"));
+				newSP.setMaLSP(resultSet.getString("MA_LSP"));
 				newSP.setTinhTrang(resultSet.getString("tinhTrang"));
 				newSP.setDonViTinh(resultSet.getString("Dvt"));
 				newSP.setGhiChu(resultSet.getString("Mo_ta"));

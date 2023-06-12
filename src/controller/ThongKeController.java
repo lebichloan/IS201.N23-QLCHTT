@@ -84,7 +84,7 @@ public class ThongKeController implements Initializable {
         dataSeries.getData().add(new XYChart.Data<>(12, 200.8));
         
         
-
+        
 
         // Add the series to the line chart
         lineChart.getData().add(dataSeries);

@@ -26,14 +26,14 @@ public class HoaDonDAO implements DAOInterface<HoaDon> {
 		try {
 			Connection conn = database.getConnection();
 
-			String sql = "INSERT INTO hoadon (so_hd, ngay_lap, slmh, khuyen_mai, tong_tien, tinh_trang, ma_nv, ma_kh) VALUES (?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO hoadon (so_hd, ngay_lap, slmh, khuyen_mai, tong_tien, Trang_Thai, ma_nv, ma_kh) VALUES (?,?,?,?,?,?,?,?)";
 			PreparedStatement st = conn.prepareStatement(sql);
 
 			st.setString(1, t.getSoHd());
 			st.setDate(2, t.getNgayLap());
 			st.setInt(3, t.getSlmh());
-			st.setInt(4, t.getKhuyenMai());
-			st.setInt(5, t.getTongTien());
+			st.setDouble(4, t.getKhuyenMai());
+			st.setDouble(5, t.getTongTien());
 			st.setString(6, t.getTinhTrang());
 			st.setString(7, t.getMaNv());
 			st.setString(8, t.getMaKh());
@@ -57,13 +57,13 @@ public class HoaDonDAO implements DAOInterface<HoaDon> {
 		try {
 			Connection conn = database.getConnection();
 
-			String sql = "UPDATE hoadon SET ngay_lap=?, slmh=?, khuyen_mai=?, tong_tien=?, tinh_trang=?, ma_nv=?, ma_kh=? WHERE so_hd=?";
+			String sql = "UPDATE hoadon SET ngay_lap=?, slmh=?, khuyen_mai=?, tong_tien=?, Trang_Thai=?, ma_nv=?, ma_kh=? WHERE so_hd=?";
 			PreparedStatement st = conn.prepareStatement(sql);
 
 			st.setDate(1, t.getNgayLap());
 			st.setInt(2, t.getSlmh());
-			st.setInt(3, t.getKhuyenMai());
-			st.setInt(4, t.getTongTien());
+			st.setDouble(3, t.getKhuyenMai());
+			st.setDouble(4, t.getTongTien());
 			st.setString(5, t.getTinhTrang());
 			st.setString(6, t.getMaNv());
 			st.setString(7, t.getMaKh());
@@ -83,27 +83,33 @@ public class HoaDonDAO implements DAOInterface<HoaDon> {
 
 	@Override
 	public int delete(HoaDon t) {
-		int result = 0;
+	    int result = 0;
 
-		try {
-			Connection conn = database.getConnection();
+	    try {
+	        Connection conn = database.getConnection();
 
-			String sql = "DELETE FROM hoadon WHERE so_hd=?";
-			PreparedStatement st = conn.prepareStatement(sql);
+	        // Xoá các bản ghi liên quan đến hoá đơn trong bảng cthd
+	        String sql = "DELETE FROM CTHD WHERE so_hd=?";
+	        PreparedStatement st = conn.prepareStatement(sql);
+	        st.setString(1, t.getSoHd());
+	        st.executeUpdate();
 
-			st.setString(1, t.getSoHd());
+	        // Xoá hoá đơn
+	        sql = "DELETE FROM hoadon WHERE so_hd=?";
+	        st = conn.prepareStatement(sql);
+	        st.setString(1, t.getSoHd());
+	        result = st.executeUpdate();
 
-			result = st.executeUpdate();
+	        conn.close();
 
-			conn.close();
-
-			System.out.println("Ban da thuc thi cau lenh: " + sql);
-			System.out.println("So dong du lieu duoc xoa: " + result);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
+	        System.out.println("Ban da thuc thi cau lenh: " + sql);
+	        System.out.println("So dong du lieu duoc xoa: " + result);
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return result;
 	}
+
 
 	@Override
 	public ArrayList<HoaDon> selectAll() {
@@ -121,9 +127,9 @@ public class HoaDonDAO implements DAOInterface<HoaDon> {
 				String soHd = rs.getString("so_hd");
 				java.sql.Date ngayLap = rs.getDate("ngay_lap");
 				int slmh = rs.getInt("slmh");
-				int khuyenMai = rs.getInt("khuyen_mai");
-				int tongTien = rs.getInt("tong_tien");
-				String tinhTrang = rs.getString("tinh_trang");
+				double khuyenMai = rs.getInt("khuyen_mai");
+				double tongTien = rs.getInt("tong_tien");
+				String tinhTrang = rs.getString("Trang_Thai");
 				String maNv = rs.getString("ma_nv");
 				String maKh = rs.getString("ma_kh");
 
@@ -139,7 +145,7 @@ public class HoaDonDAO implements DAOInterface<HoaDon> {
 	}
 
 	@Override
-	public HoaDon selectedById(HoaDon t) {
+	public HoaDon selectedById(String t) {
 		HoaDon hoaDon = null;
 
 		try {
@@ -148,7 +154,7 @@ public class HoaDonDAO implements DAOInterface<HoaDon> {
 			String sql = "SELECT * FROM hoadon WHERE so_hd=?";
 			PreparedStatement st = conn.prepareStatement(sql);
 
-			st.setString(1, t.getSoHd());
+			st.setString(1, t);
 
 			ResultSet rs = st.executeQuery();
 
@@ -156,9 +162,9 @@ public class HoaDonDAO implements DAOInterface<HoaDon> {
 				String soHd = rs.getString("so_hd");
 				java.sql.Date ngayLap = rs.getDate("ngay_lap");
 				int slmh = rs.getInt("slmh");
-				int khuyenMai = rs.getInt("khuyen_mai");
-				int tongTien = rs.getInt("tong_tien");
-				String tinhTrang = rs.getString("tinh_trang");
+				double khuyenMai = rs.getInt("khuyen_mai");
+				double tongTien = rs.getInt("tong_tien");
+				String tinhTrang = rs.getString("Trang_Thai");
 				String maNv = rs.getString("ma_nv");
 				String maKh = rs.getString("ma_kh");
 
@@ -188,9 +194,9 @@ public class HoaDonDAO implements DAOInterface<HoaDon> {
 				String soHd = rs.getString("so_hd");
 				java.sql.Date ngayLap = rs.getDate("ngay_lap");
 				int slmh = rs.getInt("slmh");
-				int khuyenMai = rs.getInt("khuyen_mai");
-				int tongTien = rs.getInt("tong_tien");
-				String tinhTrang = rs.getString("tinh_trang");
+				double khuyenMai = rs.getDouble("khuyen_mai");
+				double tongTien = rs.getDouble("tong_tien");
+				String tinhTrang = rs.getString("Trang_Thai");
 				String maNv = rs.getString("ma_nv");
 				String maKh = rs.getString("ma_kh");
 

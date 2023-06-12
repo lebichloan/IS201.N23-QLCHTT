@@ -1,31 +1,33 @@
 package model;
 
+import java.sql.Date;
+
 import javafx.scene.control.DatePicker;
 
 public class SanPham {
     private String maSP;
     private String tenSP;
-    private String danhMuc;
 	private String donViTinh;
     private int soLuong;
     private String mauSac;
     private String kichThuoc;
     private String tinhTrang;
     private String ghiChu;
-    private DatePicker ngayThem;
-    private String gia;
+    private Date ngayThem;
+    private int gia;
     private String thuongHieu;
+	private String maLSP;
 
-	public DatePicker getNgayThem() {
+	public Date getNgayThem() {
 		return ngayThem;
 	}
-	public void setNgayThem(DatePicker ngayThem) {
+	public void setNgayThem(Date ngayThem) {
 		this.ngayThem = ngayThem;
 	}
-	public String getGia() {
+	public int getGia() {
 		return gia;
 	}
-	public void setGia(String gia) {
+	public void setGia(int gia) {
 		this.gia = gia;
 	}
 	public String getThuongHieu() {
@@ -52,7 +54,6 @@ public class SanPham {
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
-	private String maLSP;
 	public String getMaSP() {
 		return maSP;
 	}
@@ -89,23 +90,30 @@ public class SanPham {
 	public void setMaLSP(String maLSP) {
 		this.maLSP = maLSP;
 	}
-	public SanPham(String maSP, String tenSP, String mauSac, String kichThuoc, String tinhTrang, String maLSP) {
+	
+	
+	public SanPham(String maSP, String tenSP, String donViTinh, int soLuong, String mauSac,
+			String kichThuoc, String tinhTrang, String ghiChu, Date ngayThem, int gia, String thuongHieu,
+			String maLSP) {
+		super();
 		this.maSP = maSP;
 		this.tenSP = tenSP;
+		this.donViTinh = donViTinh;
+		this.soLuong = soLuong;
 		this.mauSac = mauSac;
 		this.kichThuoc = kichThuoc;
 		this.tinhTrang = tinhTrang;
+		this.ghiChu = ghiChu;
+		this.ngayThem = ngayThem;
+		this.gia = gia;
+		this.thuongHieu = thuongHieu;
 		this.maLSP = maLSP;
 	}
+	
+
 	public SanPham() {
 		this.maSP="0";
 	}
-	public String getDanhMuc() {
-		return danhMuc;
-	}
-	public void setDanhMuc(String danhMuc) {
-		this.danhMuc = danhMuc;
-	}
-	
+
 
 }

@@ -1,5 +1,6 @@
 package test;
 
+
 import java.sql.Connection;
 
 import db.database;
@@ -10,5 +11,5 @@ public class TestDataBase {
 			Connection connection = database.getConnection();
 			System.out.println(connection);
 	}
-
 }
+

@@ -234,7 +234,8 @@
                                                                <children>
                                                                   <TableView fx:id="cthdTable" prefHeight="750.0" prefWidth="606.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                      <columns>
-                                                                        <TableColumn fx:id="tenSanPhamColumn" prefWidth="468.800048828125" text="Tên sản phẩm" />
+                                                                        <TableColumn fx:id="maSanPhamColumn" prefWidth="75.0" text="Mã sản phẩm" />
+                                                                        <TableColumn fx:id="tenSanPhamColumn" prefWidth="75.0" text="Tên sản phẩm" />
                                                                         <TableColumn fx:id="soLuongColumn" prefWidth="75.0" text="Số lượng" />
                                                                         <TableColumn fx:id="donViTinhColumn" prefWidth="75.0" text="Đơn vị tính" />
                                                                         <TableColumn fx:id="donGiaColumn" prefWidth="75.0" text="Đơn giá" />

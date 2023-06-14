@@ -8,6 +8,7 @@ import dao.CTHDDAO;
 import dao.KhachHangDAO;
 import dao.NhanVienDAO;
 import dao.SanPhamDAO;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -41,6 +42,8 @@ public class ThongTinHoaDonController implements Initializable{
 	private CheckBox daThanhToanCheckBox,chuaThanhToanCheckBox,daHuyCheckBox;
 	@FXML
 	private TableView<CTHD> cthdTable;
+	@FXML
+	private TableColumn<CTHD, String> maSanPhamColumn;
 	@FXML
 	private TableColumn<CTHD, String> tenSanPhamColumn;
 	@FXML
@@ -101,9 +104,18 @@ public class ThongTinHoaDonController implements Initializable{
 			tongSoLuongMatHangTextFiled.setText(String.valueOf(hoaDon.getSlmh()));
 	}
 	private void khoitaoCTHDTable(String soHD){
-		tenSanPhamColumn.setCellValueFactory(new PropertyValueFactory<>("maSp"));
+		maSanPhamColumn.setCellValueFactory(new PropertyValueFactory<>("maSp"));
+		tenSanPhamColumn.setCellValueFactory(cellData -> {
+		    String maSanPham = cellData.getValue().getMaSp();
+		    String tenSanPham = SanPhamDAO.getInstance().selectedById(maSanPham).getTenSanPham();
+		    return new SimpleStringProperty(tenSanPham);
+		});
         soLuongColumn.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
-        donViTinhColumn.setCellValueFactory(new PropertyValueFactory<>("donViTinh"));
+        donViTinhColumn.setCellValueFactory(cellData -> {
+		    String maSanPham = cellData.getValue().getMaSp();
+		    String donViTinh = SanPhamDAO.getInstance().selectedById(maSanPham).getDonViTinh();
+		    return new SimpleStringProperty(donViTinh);
+		});
         donGiaColumn.setCellValueFactory(new PropertyValueFactory<>("Gia"));
         khuyenMaiColumn.setCellValueFactory(new PropertyValueFactory<>("khuyenMai"));
         thanhTienColumn.setCellValueFactory(new PropertyValueFactory<>("thanhTien"));

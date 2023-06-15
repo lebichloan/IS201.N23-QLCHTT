@@ -21,6 +21,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/HP/Desktop/bt java/IS201/IS201.N23.QLCHTT/src/lib/itextpdf-5.5.9.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/HP/Downloads/ojdbc11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -32,6 +32,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -230,10 +231,16 @@ public class QLHoaDonController implements Initializable {
 	private void handleThemMoiHoaDon() {
 		ThemMoiButton.setOnAction(event -> {
 	        try {
-	            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ThemHoaDon.fxml"));
-	            Parent root = loader.load();
-	            Stage stage = (Stage) ThemMoiButton.getScene().getWindow();
-	            stage.setScene(new Scene(root));
+	        	FXMLLoader loader = new FXMLLoader(common.class.getResource("/view/ThemHoaDon.fxml"));
+				AnchorPane root = loader.load();
+
+				// Create a Scene object with the root node and set it to the primary stage
+				Scene scene = new Scene(root);
+				Stage window = new Stage();
+				window.setScene(scene);
+				// window.setMaximized(true);
+				window.setResizable(false);
+				window.show();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }

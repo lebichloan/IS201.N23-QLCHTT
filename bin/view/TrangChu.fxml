@@ -9,22 +9,22 @@
    <children>
       <SplitPane dividerPositions="0.1397919375812744" layoutX="102.0" layoutY="36.0" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="584.0" prefWidth="58.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="584.0" prefWidth="58.0" style="-fx-background-color: #A0C3C9;">
                <children>
-                  <Button fx:id="dangXuatButton" layoutY="646.0" maxHeight="100.0" maxWidth="191.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="191.0" text="Đăng xuất" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="646.0" />
+                  <Button fx:id="dangXuatButton" layoutY="646.0" maxHeight="100.0" maxWidth="191.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" style="-fx-background-color: #44707A; -fx-font-size: 13; -fx-font-weight: BOLD;" text="Đăng xuất" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="650.0" />
                   <VBox prefHeight="369.0" prefWidth="188.0">
                      <children>
-                        <Button fx:id="trangChuButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" text="Trang chủ" />
-                        <Button fx:id="khachhangButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" text="Khách hàng" />
-                        <Button fx:id="sanPhamButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="188.0" text="Sản phẩm" />
-                        <Button fx:id="nhanVienButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="193.0" text="Nhân viên" />
-                        <Button fx:id="hoaDonButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="194.0" text="Hóa đơn" />
-                        <Button fx:id="thongKeButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" text="Thống kê doanh thu" />
+                        <Button fx:id="trangChuButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" style="-fx-background-color: #44707A; -fx-font-size: 13; -fx-font-weight: BOLD;" text="Trang chủ" textFill="WHITE" />
+                        <Button fx:id="khachhangButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" style="-fx-background-color: #44707A; -fx-font-size: 13; -fx-font-weight: BOLD;" text="Khách hàng" textFill="WHITE" />
+                        <Button fx:id="sanPhamButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="188.0" style="-fx-background-color: #44707A; -fx-font-size: 13; -fx-font-weight: BOLD;" text="Sản phẩm" textFill="WHITE" />
+                        <Button fx:id="nhanVienButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="193.0" style="-fx-background-color: #44707A; -fx-font-size: 13; -fx-font-weight: BOLD;" text="Nhân viên" textFill="WHITE" />
+                        <Button fx:id="hoaDonButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="194.0" style="-fx-background-color: #44707A; -fx-font-size: 13; -fx-font-weight: BOLD;" text="Hóa đơn" textFill="WHITE" />
+                        <Button fx:id="thongKeButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="189.0" style="-fx-background-color: #44707A; -fx-font-size: 13; -fx-font-weight: BOLD;" text="Thống kê doanh thu" textFill="WHITE" />
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
-          <AnchorPane fx:id="thaoTacAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+          <AnchorPane fx:id="thaoTacAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #A0C3C9;" />
         </items>
       </SplitPane>
    </children>

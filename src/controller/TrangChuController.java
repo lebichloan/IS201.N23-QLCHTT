@@ -150,9 +150,9 @@ public class TrangChuController implements Initializable {
 	
 	private void handleButtonClick(Button clickedButton, String path) {
 	    if (selectedButton != null) {
-	        selectedButton.setStyle(""); // Set the style of the previously selected button to its normal state
+	        selectedButton.setStyle("-fx-background-color: #44707A; -fx-font-size: 13; -fx-font-weight: BOLD;"); // Set the style of the previously selected button to its normal state
 	    }
-	    clickedButton.setStyle("-fx-background-color: #537188;"); // Set the style of the clicked button to the desired color
+	    clickedButton.setStyle("-fx-background-color: #1EB2A6; -fx-font-size: 13; -fx-font-weight: BOLD;"); // Set the style of the clicked button to the desired color
 	    selectedButton = clickedButton; // Update the selected button to the clicked button
 	    
 	    try {

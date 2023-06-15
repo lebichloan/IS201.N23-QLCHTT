@@ -157,14 +157,10 @@ public class ThayDoiHoaDonController implements Initializable{
 	}
 	@FXML
 	private void handleQuayLai() {
-	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/QLHoaDon.fxml"));
-	        Parent root = loader.load();
-	        Stage stage = (Stage) quayLaiButton.getScene().getWindow();
-	        stage.setScene(new Scene(root));
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+	    Stage stage = (Stage) quayLaiButton.getScene().getWindow();
+	    System.out.println("1");
+	    stage.close();
+	   
 	}
 	
 	public void capNhatThanhTien() {

@@ -27,16 +27,16 @@
                            <items>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <SplitPane dividerPositions="0.5791442250149611" layoutX="202.0" layoutY="36.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <SplitPane dividerPositions="0.5142215568862275" layoutX="202.0" layoutY="36.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <items>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="225.0" prefWidth="704.0" style="-fx-background-color: #A0C3C9;">
                                              <children>
-                                                <Text fill="#44707a" layoutX="-72.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 35; -fx-font-weight: BOLD;" text="Danh sách khách hàng" underline="true" wrappingWidth="380.7998901367188" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
+                                                <Text fill="#44707a" layoutX="80.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 35; -fx-font-weight: BOLD;" text="Danh sách khách hàng" underline="true" wrappingWidth="380.7998901367188" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="33.2314453125">
                                                    <font>
                                                       <Font size="35.0" />
                                                    </font>
                                                 </Text>
-                                                <SplitPane dividerPositions="0.39396067415730346, 0.7661516853932585" layoutX="50.0" layoutY="80.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0">
+                                                <SplitPane dividerPositions="0.39396067415730346, 0.7661516853932585" layoutX="86.0" layoutY="80.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="86.0" AnchorPane.topAnchor="80.0">
                                                    <items>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                          <children>
@@ -49,7 +49,7 @@
                                                       </AnchorPane>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="116.0">
                                                          <children>
-                                                            <Text layoutX="1.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn (5)" textAlignment="CENTER" wrappingWidth="97.23241806030273">
+                                                            <Text layoutX="4.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn (5)" textAlignment="CENTER" wrappingWidth="97.23241806030273">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
@@ -67,11 +67,11 @@
                                                       </AnchorPane>
                                                    </items>
                                                 </SplitPane>
-                                                <Button layoutX="350.0" layoutY="153.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Tìm kiếm" textFill="WHITE" AnchorPane.rightAnchor="321.0" AnchorPane.topAnchor="153.0" />
-                                                <TextField layoutX="120.0" layoutY="153.0" maxHeight="50.0" maxWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="Nhập thông tin cần tìm" AnchorPane.rightAnchor="421.0" AnchorPane.topAnchor="153.0" />
+                                                <Button layoutX="380.0" layoutY="153.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Tìm kiếm" textFill="WHITE" AnchorPane.rightAnchor="204.0" AnchorPane.topAnchor="153.0" />
+                                                <TextField layoutX="80.0" layoutY="153.0" maxHeight="50.0" maxWidth="300.0" prefHeight="40.0" prefWidth="218.0" promptText="Nhập thông tin cần tìm" AnchorPane.rightAnchor="304.0" AnchorPane.topAnchor="153.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="225.0" prefWidth="585.0" style="-fx-background-color: #A0C3C9;">
                                              <children>
                                                 <Text fill="WHITE" layoutX="30.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã khách hàng*" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0">
                                                    <font>

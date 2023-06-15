@@ -25,8 +25,8 @@ public class Test extends Application {
     public void start(Stage primaryStage) {
         try {
         	database.connect();
-        	//database.SelectFromSanPham();
-            Parent root = FXMLLoader.load(this.getClass().getResource("/view/TrangChu.fxml"));
+        	Parent root = FXMLLoader.load(this.getClass().getResource("/view/QLHoaDon.fxml"));
+            //Parent root = FXMLLoader.load(this.getClass().getResource("/view/TrangChu.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setMaximized(true);

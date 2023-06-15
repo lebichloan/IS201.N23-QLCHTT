@@ -13,6 +13,9 @@ import model.NhanVien;
 
 public class NhanVienDAO implements DAOInterface<NhanVien>{
 
+	public static NhanVienDAO getInstance() {
+		return new NhanVienDAO();
+	}
 	@Override
 	public int insert(NhanVien t) {
 		// TODO Auto-generated method stub

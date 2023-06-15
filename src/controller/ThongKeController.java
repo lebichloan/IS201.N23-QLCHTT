@@ -70,18 +70,18 @@ public class ThongKeController implements Initializable {
 
         // Create a series of data points
         XYChart.Series<Number, Number> dataSeries = new XYChart.Series<>();
-        dataSeries.getData().add(new XYChart.Data<>(1, 191.6));
-        dataSeries.getData().add(new XYChart.Data<>(2, 111.5));
-        dataSeries.getData().add(new XYChart.Data<>(3, 112.7));
-        dataSeries.getData().add(new XYChart.Data<>(4, 111.9));
-        dataSeries.getData().add(new XYChart.Data<>(5, 132.5));
-        dataSeries.getData().add(new XYChart.Data<>(6, 161.7));
-        dataSeries.getData().add(new XYChart.Data<>(7, 181.6));
-        dataSeries.getData().add(new XYChart.Data<>(8, 172.7));
-        dataSeries.getData().add(new XYChart.Data<>(9, 132.6));
-        dataSeries.getData().add(new XYChart.Data<>(10, 111.7));
-        dataSeries.getData().add(new XYChart.Data<>(11, 166.8));
-        dataSeries.getData().add(new XYChart.Data<>(12, 200.8));
+        dataSeries.getData().add(new XYChart.Data<>(1, 23.6));
+        dataSeries.getData().add(new XYChart.Data<>(2, 19.5));
+        dataSeries.getData().add(new XYChart.Data<>(3, 23.7));
+        dataSeries.getData().add(new XYChart.Data<>(4, 25.9));
+        dataSeries.getData().add(new XYChart.Data<>(5,0));
+        dataSeries.getData().add(new XYChart.Data<>(6, 0));
+        dataSeries.getData().add(new XYChart.Data<>(7, 0));
+        dataSeries.getData().add(new XYChart.Data<>(8, 0));
+        dataSeries.getData().add(new XYChart.Data<>(9, 0));
+        dataSeries.getData().add(new XYChart.Data<>(10, 0));
+        dataSeries.getData().add(new XYChart.Data<>(11, 0));
+        dataSeries.getData().add(new XYChart.Data<>(12, 0));
         
         
         
@@ -120,9 +120,37 @@ public class ThongKeController implements Initializable {
         // Create a series of data points
         XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
         dataSeries.setName(null); // Remove the data series name
-        dataSeries.getData().add(new XYChart.Data<>("Nguyễn Văn A", 22));
-        dataSeries.getData().add(new XYChart.Data<>("Phạm Thị B", 19.6));
-        dataSeries.getData().add(new XYChart.Data<>("Trịnh Quang C", 18.8));
+        try {
+            // Establish a database connection
+            Statement statement = database.connection.createStatement();
+
+            // Execute the query
+            String query = "SELECT Ten_KH, SUM(tong_tien) AS TotalMoney\r\n"
+            		+ "FROM (\r\n"
+            		+ "    SELECT KhachHang.Ten_KH, HoaDon.tong_tien\r\n"
+            		+ "    FROM KhachHang\r\n"
+            		+ "    INNER JOIN HoaDon ON KhachHang.Ma_kh = HoaDon.Ma_kh\r\n"
+            		+ "    ORDER BY HoaDon.tong_tien DESC\r\n"
+            		+ ")\r\n"
+            		+ "WHERE ROWNUM <= 3\r\n"
+            		+ "GROUP BY Ten_KH\r\n"
+            		+ "ORDER BY TotalMoney DESC";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            // Iterate through the result set and create data slices
+            while (resultSet.next()) {
+                String tenKhachHang = resultSet.getString("Ten_KH");
+                int totalMoney = resultSet.getInt("TotalMoney");
+
+                dataSeries.getData().add(new XYChart.Data<>(tenKhachHang, totalMoney));
+            }
+
+            // Close the database connection
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         barChart.setCategoryGap(50); // Adjust the gap between bars
         barChart.setBarGap(10); // Adjust the gap between categories
 
@@ -161,9 +189,36 @@ public class ThongKeController implements Initializable {
         // Create a series of data points
         XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
         dataSeries.setName(null); // Remove the data series name
-        dataSeries.getData().add(new XYChart.Data<>("Áo thun Nam SP005", 22));
-        dataSeries.getData().add(new XYChart.Data<>("Quan kaki SP007", 21));
-        dataSeries.getData().add(new XYChart.Data<>("Quan Thi SP023", 17));
+        try {
+            // Establish a database connection
+            Statement statement = database.connection.createStatement();
+
+            // Execute the query
+            String query = "SELECT Ten_SP, SUM(SO_LUONG) AS TotalProduct\r\n"
+            		+ "FROM (\r\n"
+            		+ "    SELECT SanPham.Ten_SP, CTHD.SO_LUONG\r\n"
+            		+ "    FROM SANPHAM\r\n"
+            		+ "    INNER JOIN CTHD ON SANPHAM.Ma_SP = CTHD.Ma_SP\r\n"
+            		+ ")\r\n"
+            		+ "WHERE ROWNUM <= 3\r\n"
+            		+ "GROUP BY Ten_SP\r\n"
+            		+ "ORDER BY TotalProduct DESC";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            // Iterate through the result set and create data slices
+            while (resultSet.next()) {
+                String tenKhachHang = resultSet.getString("Ten_SP");
+                int totalMoney = resultSet.getInt("TotalProduct");
+
+                dataSeries.getData().add(new XYChart.Data<>(tenKhachHang, totalMoney));
+            }
+
+            // Close the database connection
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         barChart.setCategoryGap(50); // Adjust the gap between bars
         barChart.setBarGap(10); // Adjust the gap between categories
 

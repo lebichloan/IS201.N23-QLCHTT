@@ -80,7 +80,7 @@ public class ThongTinHoaDonController implements Initializable{
         nhanVienMenu.setText(hoaDon.getMaNv());
         NhanVien nv = nhanvienDAO.selectedById(hoaDon.getMaNv());
 //        //Lấy Tên Nhân Viên
-        tenNhanVienTextField.setText(nv.getHoTen());
+        tenNhanVienTextField.setText(nv.getHoten());
        loadThongTinKhachHang(hoaDon);
        loadThongTinChungHoaDon(hoaDon);
        khoitaoCTHDTable(hoaDon.getSoHd());

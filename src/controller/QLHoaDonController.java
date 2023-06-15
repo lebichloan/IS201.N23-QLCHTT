@@ -107,9 +107,9 @@ public class QLHoaDonController implements Initializable {
 		ObservableList<NhanVien> listNhanVien = FXCollections.observableArrayList(nhanvienDAO.selectAll());
 		nhanVienMenu.getItems().clear();
 		for (NhanVien nv : listNhanVien) {
-			MenuItem item = new MenuItem(nv.getMaNv());
+			MenuItem item = new MenuItem(nv.getMaNV());
 			item.setOnAction(e -> {
-				nhanVienMenu.setText(nv.getMaNv());
+				nhanVienMenu.setText(nv.getMaNV());
 			});
 			nhanVienMenu.getItems().add(item);
 		}

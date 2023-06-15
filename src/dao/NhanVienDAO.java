@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import db.database;
@@ -44,7 +45,7 @@ public class NhanVienDAO implements DAOInterface<NhanVien>{
 	            String manv = rs.getString("MA_NV");
 	            String hoTen = rs.getString("HO_TEN");
 	            String gioiTinh = rs.getString("GIOI_TINH");
-	            Date ngaySinh = rs.getDate("NGAY_SINH");
+	            LocalDate ngaySinh = rs.getDate("NGAY_SINH").toLocalDate();
 	            String diaChi = rs.getString("DIA_CHI");
 	            String sdt = rs.getString("SDT");
 	            String email = rs.getString("EMAIL");
@@ -52,7 +53,8 @@ public class NhanVienDAO implements DAOInterface<NhanVien>{
 	            String username = rs.getString("USERNAME");
 	            String password = rs.getString("PASSWORD");
 	            String maLnd = rs.getString("MA_LND");
-	            NhanVien nhanvien = new NhanVien(manv, hoTen, gioiTinh, ngaySinh, diaChi, sdt, email, ghiChu, username, password, maLnd);
+	            LocalDate NgayVaoLam = rs.getDate("NGAY_VL").toLocalDate();
+	            NhanVien nhanvien = new NhanVien(manv, hoTen, gioiTinh, ngaySinh, diaChi, sdt, email, ghiChu, NgayVaoLam, username, password, maLnd);
 	            
 	            listNhanVien.add(nhanvien);
 	        }
@@ -67,7 +69,7 @@ public class NhanVienDAO implements DAOInterface<NhanVien>{
 	public NhanVien selectedById(String id) {
 		ArrayList<NhanVien> danhSachNhanVien = this.selectAll();
 	    for (NhanVien nhanVien : danhSachNhanVien) {
-	        if (nhanVien.getMaNv().equals(id)) {
+	        if (nhanVien.getMaNV().equals(id)) {
 	            return nhanVien;
 	        }
 	    }

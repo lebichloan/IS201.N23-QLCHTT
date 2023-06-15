@@ -134,6 +134,4 @@ public class ThongTinHoaDonController implements Initializable{
 	        e.printStackTrace();
 	    }
 	}
-	
-	
 }

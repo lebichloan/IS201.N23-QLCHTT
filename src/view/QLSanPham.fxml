@@ -289,11 +289,15 @@
                                           </AnchorPane>
                                        </items>
                                     </SplitPane>
-                                    <Text fill="WHITE" layoutX="20.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách các loại sản phẩm" textOrigin="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="15.0">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Text>
+                                    <StackPane layoutX="45.0" layoutY="8.0" prefHeight="45.0" prefWidth="262.0" style="-fx-background-color: #A0C3C9;">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách các loại sản phẩm" textOrigin="CENTER">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </StackPane>
                                  </children>
                               </AnchorPane>
                           </items>

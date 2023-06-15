@@ -35,8 +35,8 @@
                   </Text>
                   <MenuButton fx:id="chonNamMenuButton" layoutX="902.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="116.0" style="-fx-background-color: #1EB2A6;" text="Chọn năm">
                     <items>
+                      <MenuItem mnemonicParsing="false" text="2023" />
                       <MenuItem mnemonicParsing="false" text="2022" />
-                      <MenuItem mnemonicParsing="false" text="2021" />
                     </items>
                   </MenuButton>
                </children>

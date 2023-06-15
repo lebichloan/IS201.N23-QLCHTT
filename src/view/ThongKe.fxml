@@ -13,27 +13,27 @@
          <items>
             <AnchorPane fx:id="giaoDienAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A4C4CB;">
                <children>
-                  <Text fx:id="namDoanhThuText" fill="#44707a" layoutX="327.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: BOLD; -fx-font-size: 35;" text="Doanh thu cửa hàng các tháng trong năm 2023" textAlignment="CENTER" wrappingWidth="530.2969970703125">
+                  <Text fx:id="namDoanhThuText" fill="#44707a" layoutX="104.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: BOLD; -fx-font-size: 35;" text="Doanh thu cửa hàng các tháng trong năm 2023" textAlignment="CENTER" wrappingWidth="797.2969970703125">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="93.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top 3 sản phẩm bán chạy nhất">
+                  <Text fill="#44707a" layoutX="93.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: BOLD;" text="Top 3 sản phẩm bán chạy nhất">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="490.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng sản phẩm các loại đang có trong cửa hàng" textAlignment="CENTER" wrappingWidth="278.865234375">
+                  <Text fill="#44707a" layoutX="490.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: BOLD;" text="Số lượng sản phẩm các loại đang có trong cửa hàng" textAlignment="CENTER" wrappingWidth="278.865234375">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="858.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top 3 khách hàng có doanh thu cao nhất" wrappingWidth="319.16650390625">
+                  <Text fill="#44707a" layoutX="844.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: BOLD;" text="Top 3 khách hàng có doanh thu cao nhất" wrappingWidth="319.16650390625">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <MenuButton fx:id="chonNamMenuButton" layoutX="902.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="116.0" style="-fx-background-color: #FFFFFF;" text="Chọn năm">
+                  <MenuButton fx:id="chonNamMenuButton" layoutX="902.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="116.0" style="-fx-background-color: #1EB2A6;" text="Chọn năm">
                     <items>
                       <MenuItem mnemonicParsing="false" text="2022" />
                       <MenuItem mnemonicParsing="false" text="2021" />

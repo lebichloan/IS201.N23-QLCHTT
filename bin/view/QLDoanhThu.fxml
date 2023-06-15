@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.3018092105263157" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -19,16 +18,16 @@
                <children>
                   <SplitPane layoutX="213.0" layoutY="98.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <items>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
                            <children>
-                              <Text layoutX="-72.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thống kê doanh thu" underline="true" wrappingWidth="326.3999267578125" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
+                              <Text fill="#44707a" layoutX="-72.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 35; -fx-font-weight: BOLD;" text="Thống kê doanh thu" underline="true" wrappingWidth="365.5999389648438" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
                                  <font>
                                     <Font size="35.0" />
                                  </font>
                               </Text>
                               <SplitPane dividerPositions="0.39396067415730346, 0.7661516853932585" layoutX="50.0" layoutY="80.0" prefHeight="30.0" prefWidth="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0">
                                  <items>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
                                           <Text layoutX="1.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tổng số (100)" textAlignment="CENTER" wrappingWidth="106.83242416381836" AnchorPane.leftAnchor="1.0">
                                              <font>
@@ -37,7 +36,7 @@
                                           </Text>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="116.0">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="116.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
                                           <Text layoutX="1.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn (5)" textAlignment="CENTER" wrappingWidth="97.23241806030273">
                                              <font>
@@ -46,7 +45,7 @@
                                           </Text>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane prefHeight="38.0" prefWidth="63.0">
+                                    <AnchorPane prefHeight="38.0" prefWidth="63.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
                                           <Text layoutX="1.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lọc" textAlignment="CENTER" wrappingWidth="62.8323335647583">
                                              <font>
@@ -58,22 +57,22 @@
                                  </items>
                               </SplitPane>
                               <TextField layoutX="379.0" layoutY="24.0" maxHeight="50.0" maxWidth="250.0" prefHeight="40.0" prefWidth="230.0" promptText="Nhập thông tin cần tìm" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="30.0" />
-                              <Button layoutX="730.0" layoutY="18.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Tìm kiếm" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0" />
+                              <Button layoutX="730.0" layoutY="18.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Tìm kiếm" textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0" />
                               <SplitPane dividerPositions="0.3592592592592592, 0.7712962962962963" layoutX="50.0" layoutY="135.0" maxWidth="600.0" minWidth="433.0" prefHeight="40.0" prefWidth="433.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="145.0">
                                  <items>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <ComboBox layoutX="-18.0" layoutY="1.0" prefHeight="40.0" prefWidth="150.0" promptText="Chọn tháng" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <ComboBox layoutX="-18.0" layoutY="1.0" prefHeight="40.0" prefWidth="150.0" promptText="Chọn tháng" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="498.0">
                                        <children>
-                                          <ComboBox prefHeight="40.0" prefWidth="150.0" promptText="Chọn năm" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <ComboBox prefHeight="40.0" prefWidth="150.0" promptText="Chọn năm" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <Button layoutX="164.0" layoutY="8.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Áp dụng" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Button layoutX="164.0" layoutY="8.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Áp dụng" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                  </items>
@@ -84,13 +83,13 @@
                   </SplitPane>
                </children>
             </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
                <children>
                   <SplitPane layoutX="75.0" layoutY="82.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
                      <items>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9; -fx-border-color: #ffffff; -fx-border-radius: 5; -fx-border-width: 1.5;">
                            <children>
-                              <TableView prefHeight="750.0" prefWidth="780.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                              <TableView prefHeight="750.0" prefWidth="780.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0">
                                  <columns>
                                     <TableColumn prefWidth="65.59996944665909" text="STT" />
                                     <TableColumn prefWidth="75.0" text="Tháng" />
@@ -107,7 +106,7 @@
                         </AnchorPane>
                      </items>
                   </SplitPane>
-                  <Text layoutX="93.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thống kê doanh thu" textOrigin="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="15.0">
+                  <Text fill="WHITE" layoutX="93.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thống kê doanh thu" textOrigin="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="15.0">
                      <font>
                         <Font size="20.0" />
                      </font>

@@ -141,14 +141,10 @@ public class ThemHoaDonController implements Initializable {
 	
 	@FXML
 	private void handleQuayLai() {
-	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/QLHoaDon.fxml"));
-	        Parent root = loader.load();
-	        Stage stage = (Stage) quayLaiButton.getScene().getWindow();
-	        stage.setScene(new Scene(root));
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+	    
+	    	Stage dialogStage = (Stage) quayLaiButton.getScene().getWindow();
+	        dialogStage.close();
+	    
 	}
 
 

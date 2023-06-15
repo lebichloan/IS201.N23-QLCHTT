@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -83,11 +84,15 @@
                                                             </AnchorPane>
                                                          </items>
                                                       </SplitPane>
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin khách hàng" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="35.0">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Text>
+                                                      <StackPane layoutX="26.0" layoutY="29.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9;">
+                                                         <children>
+                                                            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin khách hàng" textOrigin="CENTER">
+                                                               <font>
+                                                                  <Font size="20.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </StackPane>
                                                    </children>
                                                 </AnchorPane>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="325.0" prefWidth="395.0" style="-fx-background-color: #A4C4CB;">
@@ -117,11 +122,15 @@
                                                             </AnchorPane>
                                                          </items>
                                                       </SplitPane>
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin nhân viên xuất hóa đơn" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="15.0">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Text>
+                                                      <StackPane layoutX="27.0" layoutY="6.0" prefHeight="47.0" prefWidth="305.0" style="-fx-background-color: #A0C3C9;">
+                                                         <children>
+                                                            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin nhân viên xuất hóa đơn" textOrigin="CENTER">
+                                                               <font>
+                                                                  <Font size="20.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </StackPane>
                                                    </children>
                                                 </AnchorPane>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="325.0" prefWidth="395.0" style="-fx-background-color: #A4C4CB;">
@@ -174,11 +183,15 @@
                                                             </AnchorPane>
                                                          </items>
                                                       </SplitPane>
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin hóa đơn" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="15.0">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Text>
+                                                      <StackPane layoutX="23.0" layoutY="13.0" prefHeight="33.0" prefWidth="189.0" style="-fx-background-color: #A4C4CB;">
+                                                         <children>
+                                                            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin hóa đơn" textOrigin="CENTER">
+                                                               <font>
+                                                                  <Font size="20.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </StackPane>
                                                    </children>
                                                 </AnchorPane>
                                              </items>
@@ -244,12 +257,16 @@
                                                 </AnchorPane>
                                              </items>
                                           </SplitPane>
-                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết hóa đơn" textOrigin="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="35.0">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                          </Text>
                                           <Button layoutX="518.0" layoutY="15.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Xuất hóa đơn" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                                          <StackPane layoutX="25.0" layoutY="30.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #A0C3C9;">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết hóa đơn" textOrigin="CENTER">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </StackPane>
                                        </children>
                                     </AnchorPane>
                                  </items>

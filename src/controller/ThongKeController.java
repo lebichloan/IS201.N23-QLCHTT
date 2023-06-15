@@ -40,6 +40,11 @@ public class ThongKeController implements Initializable {
     private MenuButton chonNamMenuButton;
 
     private int selectedYear = 2023; // Variable to store the selected year
+    
+    static NumberAxis xAxis = new NumberAxis(1, 12, 1); // Set the lower and upper bounds of the X-axis
+    static NumberAxis yAxis = new NumberAxis();
+    static LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+    static XYChart.Series<Number, Number> dataSeries = new XYChart.Series<>();
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
     	DoanhThuCuaHangCacThang(2023);
@@ -56,32 +61,52 @@ public class ThongKeController implements Initializable {
     }
     
     public void DoanhThuCuaHangCacThang(int year) {
-    	NumberAxis xAxis = new NumberAxis(1, 12, 1); // Set the lower and upper bounds of the X-axis
-        NumberAxis yAxis = new NumberAxis();
+    	
 
         namDoanhThuText.setText("Doanh thu cửa hàng các tháng trong năm " + selectedYear);
         xAxis.setLabel("Tháng");
         yAxis.setLabel("Doanh thu (triệu đồng)");
 
         // Create the line chart
-        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        
         lineChart.setTitle(null);
         lineChart.setLegendVisible(false);
 
         // Create a series of data points
-        XYChart.Series<Number, Number> dataSeries = new XYChart.Series<>();
-        dataSeries.getData().add(new XYChart.Data<>(1, 23.6));
-        dataSeries.getData().add(new XYChart.Data<>(2, 19.5));
-        dataSeries.getData().add(new XYChart.Data<>(3, 23.7));
-        dataSeries.getData().add(new XYChart.Data<>(4, 25.9));
-        dataSeries.getData().add(new XYChart.Data<>(5,0));
-        dataSeries.getData().add(new XYChart.Data<>(6, 0));
-        dataSeries.getData().add(new XYChart.Data<>(7, 0));
-        dataSeries.getData().add(new XYChart.Data<>(8, 0));
-        dataSeries.getData().add(new XYChart.Data<>(9, 0));
-        dataSeries.getData().add(new XYChart.Data<>(10, 0));
-        dataSeries.getData().add(new XYChart.Data<>(11, 0));
-        dataSeries.getData().add(new XYChart.Data<>(12, 0));
+        
+        
+        dataSeries.getData().clear();
+        giaoDienAnchorPane.getChildren().remove(lineChart);
+        
+        if(year == 2023) {
+        	dataSeries.getData().add(new XYChart.Data<>(1, 33.6));
+            dataSeries.getData().add(new XYChart.Data<>(2, 29.5));
+            dataSeries.getData().add(new XYChart.Data<>(3, 23.7));
+            dataSeries.getData().add(new XYChart.Data<>(4, 25.9));
+            dataSeries.getData().add(new XYChart.Data<>(5,0));
+            dataSeries.getData().add(new XYChart.Data<>(6, 0));
+            dataSeries.getData().add(new XYChart.Data<>(7, 0));
+            dataSeries.getData().add(new XYChart.Data<>(8, 0));
+            dataSeries.getData().add(new XYChart.Data<>(9, 0));
+            dataSeries.getData().add(new XYChart.Data<>(10, 0));
+            dataSeries.getData().add(new XYChart.Data<>(11, 0));
+            dataSeries.getData().add(new XYChart.Data<>(12, 0));
+        }
+        else {
+        	dataSeries.getData().add(new XYChart.Data<>(1, 44.6));
+            dataSeries.getData().add(new XYChart.Data<>(2, 39.5));
+            dataSeries.getData().add(new XYChart.Data<>(3, 32.7));
+            dataSeries.getData().add(new XYChart.Data<>(4, 28.9));
+            dataSeries.getData().add(new XYChart.Data<>(5, 25.5));
+            dataSeries.getData().add(new XYChart.Data<>(6, 21.5));
+            dataSeries.getData().add(new XYChart.Data<>(7, 33.7));
+            dataSeries.getData().add(new XYChart.Data<>(8, 32.1));
+            dataSeries.getData().add(new XYChart.Data<>(9, 44.7));
+            dataSeries.getData().add(new XYChart.Data<>(10, 21.5));
+            dataSeries.getData().add(new XYChart.Data<>(11, 18.6));
+            dataSeries.getData().add(new XYChart.Data<>(12, 43.6));
+        }
+        
         
         
         

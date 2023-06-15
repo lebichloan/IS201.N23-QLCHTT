@@ -162,8 +162,10 @@ public class QLHoaDonController implements Initializable {
 	        Parent root = loader.load();
 	        ThayDoiHoaDonController controller = loader.getController();
 	        controller.setHoaDon(selectedHoaDon);
-	        Stage stage = (Stage) table.getScene().getWindow();
-	        stage.setScene(new Scene(root));
+	        Scene scene = new Scene(root);
+			Stage window = new Stage();
+			window.setScene(scene);
+			window.show();
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
 	    }
@@ -180,8 +182,10 @@ public class QLHoaDonController implements Initializable {
 	        Parent root = loader.load();
 	        ThongTinHoaDonController controller = loader.getController();
 	        controller.setHoaDon(selectedHoaDon);
-	        Stage stage = (Stage) table.getScene().getWindow();
-	        stage.setScene(new Scene(root));
+	        Scene scene = new Scene(root);
+			Stage window = new Stage();
+			window.setScene(scene);
+			window.show();
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
 	    }
@@ -238,7 +242,6 @@ public class QLHoaDonController implements Initializable {
 				Scene scene = new Scene(root);
 				Stage window = new Stage();
 				window.setScene(scene);
-				// window.setMaximized(true);
 				window.setResizable(false);
 				window.show();
 	        } catch (IOException e) {

@@ -1,101 +1,149 @@
 package model;
 
-import java.sql.Date;
+import java.time.LocalDate;
+
+import javafx.beans.property.BooleanProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.CheckBox;
 
 public class NhanVien {
-    private String maNv;
-    private String hoTen;
-    private String gioiTinh;
-    private Date ngaySinh;
-    private String diaChi;
-    private String sdt;
-    private String email;
-    private String ghiChu;
-    private String username;
-    private String password;
-    private String maLnd;
-	public NhanVien(String maNv, String hoTen, String gioiTinh, Date ngaySinh, String diaChi, String sdt, String email,
-			String ghiChu, String username, String password, String maLnd) {
-		this.maNv = maNv;
-		this.hoTen = hoTen;
+	private String maNV;
+	private String hoten;
+	private String gioiTinh;
+	private LocalDate NgaySinh;
+	private String diaChi;
+	private String sdt;
+	private String email;
+	private String ghiChu;
+	private LocalDate ngayVL;
+	private String username;
+	private String password;
+	private CheckBox checkBox;
+	String maLND;
+	
+	public NhanVien() {
+		checkBox = new CheckBox();
+		checkBox.setSelected(false);
+	}
+
+	public NhanVien(String maNV, String hoten, String gioiTinh, LocalDate ngaySinh, String diaChi, String sdt,
+			String email, String ghiChu, LocalDate ngayVL, String username, String password, String ma_lnd) {
+		super();
+		this.maNV = maNV;
+		this.hoten = hoten;
 		this.gioiTinh = gioiTinh;
-		this.ngaySinh = ngaySinh;
+		NgaySinh = ngaySinh;
 		this.diaChi = diaChi;
 		this.sdt = sdt;
 		this.email = email;
 		this.ghiChu = ghiChu;
+		this.ngayVL = ngayVL;
 		this.username = username;
 		this.password = password;
-		this.maLnd = maLnd;
+		this.maLND = ma_lnd;
+		checkBox = new CheckBox();
+		checkBox.setSelected(false);
 	}
-	public NhanVien() {
+
+	public String getMaLnd() {
+		return maLND;
 	}
-	public String getMaNv() {
-		return maNv;
+
+	public void setMaLnd(String maLnd) {
+		this.maLND = maLnd;
 	}
-	public void setMaNv(String maNv) {
-		this.maNv = maNv;
+
+	public String getMaNV() {
+		return maNV;
 	}
-	public String getHoTen() {
-		return hoTen;
+
+	public void setMaNV(String maNV) {
+		this.maNV = maNV;
 	}
-	public void setHoTen(String hoTen) {
-		this.hoTen = hoTen;
+
+	public String getHoten() {
+		return hoten;
 	}
+
+	public void setHoten(String hoten) {
+		this.hoten = hoten;
+	}
+
 	public String getGioiTinh() {
 		return gioiTinh;
 	}
+
 	public void setGioiTinh(String gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
-	public Date getNgaySinh() {
-		return ngaySinh;
+
+	public LocalDate getNgaySinh() {
+		return NgaySinh;
 	}
-	public void setNgaySinh(Date ngaySinh) {
-		this.ngaySinh = ngaySinh;
+
+	public void setNgaySinh(LocalDate ngaySinh) {
+		NgaySinh = ngaySinh;
 	}
+
 	public String getDiaChi() {
 		return diaChi;
 	}
+
 	public void setDiaChi(String diaChi) {
 		this.diaChi = diaChi;
 	}
+
 	public String getSdt() {
 		return sdt;
 	}
+
 	public void setSdt(String sdt) {
 		this.sdt = sdt;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getGhiChu() {
 		return ghiChu;
 	}
+
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
+
+	public LocalDate getNgayVL() {
+		return ngayVL;
+	}
+
+	public void setNgayVL(LocalDate ngayVL) {
+		this.ngayVL = ngayVL;
+	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getMaLnd() {
-		return maLnd;
+	
+	public CheckBox getCheckBox() {
+		return checkBox;
 	}
-	public void setMaLnd(String maLnd) {
-		this.maLnd = maLnd;
-	}
-    
-
+	
 }

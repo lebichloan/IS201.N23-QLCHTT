@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#exitFocused" prefHeight="600.0" prefWidth="1181.0" style="-fx-background-color: #E0D8B0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QLNhanVienController">
+   <top>
+      <AnchorPane prefHeight="180.0" prefWidth="1200.0" style="-fx-background-color: #E0D8B0;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutY="10.0" prefHeight="162.0" prefWidth="436.0" styleClass="top-left-pane" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <AnchorPane fx:id="employeePane" layoutX="188.0" layoutY="34.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" prefWidth="142.0" styleClass="employee-pane" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="184.0" AnchorPane.topAnchor="28.0">
+                     <children>
+                        <ImageView fitHeight="93.0" fitWidth="48.0" layoutX="8.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asset/employeeIcon.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="employeeLabel" layoutX="18.0" layoutY="35.0" prefHeight="59.0" prefWidth="107.0" styleClass="employee-text" stylesheets="@../css/NhanVien.css" text="Tổng số nhân viên" wrapText="true" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="30.0" />
+                        <Label fx:id="employeeTotalLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="93.0" layoutY="-1.0" prefHeight="30.0" prefWidth="48.0" style="-fx-background-color: #75CFB8; -fx-background-radius: 3 3 10 10;" styleClass="employee-text" stylesheets="@../css/NhanVien.css" text="100" textAlignment="CENTER" AnchorPane.leftAnchor="88.0" AnchorPane.topAnchor="-2.0">
+                           <padding>
+                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane layoutX="14.0" layoutY="28.0" prefHeight="100.0" prefWidth="130.0" styleClass="datetime-pane" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="28.0">
+                     <children>
+                        <VBox fx:id="datePane" layoutX="1.0" layoutY="-21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="117.0" prefWidth="127.0">
+                           <children>
+                              <AnchorPane prefHeight="17.0" prefWidth="192.0">
+                                 <children>
+                                    <ImageView fx:id="dateImg" fitHeight="93.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../asset/dateIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                 <children>
+                                    <Label fx:id="timeLabel" styleClass="time-text" stylesheets="@../css/NhanVien.css" text="09:35:00 AM" textFill="#bbff85">
+                                       <font>
+                                          <Font name="Open Sans Light" size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                 <children>
+                                    <Label fx:id="weekDayLabel" styleClass="date-text" stylesheets="@../css/NhanVien.css" text="CN," textFill="#09191b">
+                                       <font>
+                                          <Font name="Open Sans ExtraBold" size="30.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="dateLabel" styleClass="date-text" stylesheets="@../css/NhanVien.css" text="11/06" textFill="#bbff85">
+                                       <font>
+                                          <Font name="Open Sans ExtraBold" size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="351.0" layoutY="34.0" prefHeight="40.0" prefWidth="71.0" styleClass="genderPane" stylesheets="@../css/NhanVien.css">
+                     <children>
+                        <Label layoutX="10.0" layoutY="6.0" text="100" AnchorPane.leftAnchor="0.0">
+                           <font>
+                              <Font name="Arial Black" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../asset/maleIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="351.0" layoutY="85.0" prefHeight="40.0" prefWidth="71.0" styleClass="genderPane" stylesheets="@../css/NhanVien.css">
+                     <children>
+                        <Label layoutX="10.0" layoutY="6.0" text="100" AnchorPane.leftAnchor="0.0">
+                           <font>
+                              <Font name="Arial Black" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../asset/femaleIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="466.0" layoutY="14.0" prefHeight="166.0" prefWidth="714.0" styleClass="top-right-pane" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="456.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <VBox layoutX="340.0" layoutY="-39.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="31.0" prefWidth="751.0" styleClass="top-right-pane-top-bar" stylesheets="@../css/NhanVien.css">
+                           <children>
+                              <StackPane prefHeight="31.0" prefWidth="737.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="31.0" prefWidth="710.0">
+                                       <children>
+                                          <AnchorPane fx:id="tab1Sub1" layoutX="26.0" layoutY="30.0" prefHeight="11.0" prefWidth="148.0" style="-fx-background-color: #FF6969;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
+                                             <children>
+                                                <AnchorPane fx:id="tab1Sub2" layoutX="38.0" layoutY="19.0" prefHeight="11.0" prefWidth="5.0" style="-fx-background-color: #454545; -fx-background-radius: 0 0 10 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane fx:id="tab1Sub3" layoutX="140.0" layoutY="29.0" prefHeight="11.0" prefWidth="200.0" style="-fx-background-color: #454545; -fx-background-radius: 0 0 0 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="20.0" />
+                                          <AnchorPane fx:id="tab2Sub2" layoutX="130.0" layoutY="20.0" prefHeight="11.0" prefWidth="140.0" style="-fx-background-color: #EBB02D;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="20.0" />
+                                          <AnchorPane fx:id="tab2Sub1" layoutX="6.0" layoutY="20.0" prefHeight="11.0" prefWidth="140.0" style="-fx-background-color: #454545; -fx-background-radius: 0 0 10 0;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                                          <AnchorPane fx:id="tab2Sub3" layoutX="258.0" layoutY="20.0" prefHeight="11.0" prefWidth="140.0" style="-fx-background-color: #454545; -fx-background-radius: 0 0 0 10;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="258.0" AnchorPane.topAnchor="20.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox fx:id="topRightPaneHBox" prefHeight="31.0" prefWidth="736.0">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                       <children>
+                                          <Label fx:id="tab1" alignment="CENTER" onMouseClicked="#switchTab" prefHeight="23.0" prefWidth="135.0" styleClass="top-right-pane-tab1-active" stylesheets="@../css/NhanVien.css" text="Thông tin nhân viên">
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="tab2" alignment="CENTER" onMouseClicked="#switchTab" prefHeight="23.0" prefWidth="118.0" styleClass="top-right-pane-tab-inactive" stylesheets="@../css/NhanVien.css" text="Thêm nhân viên">
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Label>
+                                          <AnchorPane fx:id="maximizeBtnAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" styleClass="maximizeIcon" stylesheets="@../css/NhanVien.css">
+                                             <children>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" AnchorPane.bottomAnchor="2.5" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="2.5">
+                                                   <image>
+                                                      <Image url="@../asset/maximizeIcon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="415.0" />
+                                             </HBox.margin>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="infoBackgroundPane" prefHeight="131.0" prefWidth="710.0" style="-fx-background-color: #FF6969; -fx-background-radius: 0 0 10 10; -fx-border-width: 0;">
+                           <children>
+                              <ScrollPane fx:id="infoScrollPane" layoutX="-432.0" layoutY="-137.0" prefHeight="122.0" prefWidth="712.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+                                 <content>
+                                  <AnchorPane fx:id="infoContentPane" minHeight="0.0" minWidth="0.0" prefHeight="290.0" prefWidth="697.0" style="-fx-background-color: #FF6969; -fx-border-width: 0;">
+                                       <children>
+                                          <StackPane layoutX="22.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.181" prefWidth="113.386" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="3.0">
+                                             <children>
+                                                <AnchorPane fx:id="noPhotoPane" prefHeight="200.0" prefWidth="200.0" styleClass="nophoto-frame" stylesheets="@../css/NhanVien.css" visible="false" />
+                                                <AnchorPane fx:id="PhotoFrame" prefHeight="116.0" prefWidth="114.0" styleClass="photo-frame" stylesheets="@../css/NhanVien.css">
+                                                   <children>
+                                                      <ImageView fx:id="photoImageView" fitHeight="118.0" fitWidth="114.0" pickOnBounds="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </StackPane>
+                                          <Label layoutX="154.0" layoutY="12.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Mã NV:" AnchorPane.leftAnchor="154.0" AnchorPane.topAnchor="12.0" />
+                                          <TextField fx:id="maNVTextField" layoutX="207.0" layoutY="8.0" prefHeight="25.0" prefWidth="74.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="207.0" AnchorPane.topAnchor="8.0" />
+                                          <Label layoutX="154.0" layoutY="51.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Họ tên:" AnchorPane.leftAnchor="154.0" AnchorPane.topAnchor="51.0" />
+                                          <TextField fx:id="hoTenTextField" layoutX="207.0" layoutY="47.0" prefHeight="26.0" prefWidth="176.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="207.0" AnchorPane.topAnchor="47.0" />
+                                          <Label layoutX="145.0" layoutY="90.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Giới tính:" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="90.0" />
+                                          <JFXComboBox fx:id="gioiTinhComboBox" layoutX="207.0" layoutY="86.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="207.0" AnchorPane.topAnchor="86.0" />
+                                          <Label layoutX="388.0" layoutY="12.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Địa chỉ:" AnchorPane.rightAnchor="265.0" AnchorPane.topAnchor="12.0" />
+                                          <TextField fx:id="diaChiTextField" layoutX="441.0" layoutY="8.0" prefHeight="25.0" prefWidth="207.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="8.0" />
+                                          <Label layoutX="396.0" layoutY="51.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Email:" AnchorPane.rightAnchor="265.0" AnchorPane.topAnchor="51.0" />
+                                          <TextField fx:id="emailTextField" layoutX="441.0" layoutY="47.0" prefHeight="25.0" prefWidth="207.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="47.0" />
+                                          <Label layoutX="403.0" layoutY="90.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="SĐT:" AnchorPane.rightAnchor="265.0" AnchorPane.topAnchor="90.0" />
+                                          <TextField fx:id="sdtTextField" layoutX="442.0" layoutY="86.0" prefHeight="26.0" prefWidth="123.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="86.0" />
+                                          <Label layoutX="137.0" layoutY="134.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Ngày sinh:" AnchorPane.leftAnchor="137.0" AnchorPane.topAnchor="134.0" />
+                                          <DatePicker fx:id="ngaySinhDatePicker" layoutX="207.0" layoutY="130.0" prefHeight="25.0" prefWidth="124.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="207.0" AnchorPane.topAnchor="130.0" />
+                                          <Label layoutX="351.0" layoutY="134.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Ngày vào làm:" AnchorPane.rightAnchor="263.0" AnchorPane.topAnchor="134.0" />
+                                          <DatePicker fx:id="ngayVLDatePicker" layoutX="441.0" layoutY="130.0" prefHeight="25.0" prefWidth="124.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="130.0" />
+                                          <Line endX="-77.0" layoutX="100.0" layoutY="178.0" startX="-100.0" AnchorPane.leftAnchor="-0.5" AnchorPane.topAnchor="177.5" />
+                                          <Label layoutX="24.0" layoutY="169.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Thông tin tài khoản" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="169.0" />
+                                          <Line endX="48.0" layoutX="249.0" layoutY="178.0" startX="-110.0" AnchorPane.leftAnchor="138.5" AnchorPane.topAnchor="177.5" />
+                                          <Label layoutX="17.0" layoutY="204.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Tên đăng nhập:" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="204.0" />
+                                          <TextField fx:id="usernameTextField" layoutX="120.0" layoutY="199.0" prefHeight="25.0" prefWidth="170.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="199.0" />
+                                          <Label layoutX="50.0" layoutY="237.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Mật khẩu:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="237.0" />
+                                          <TextField fx:id="passwordTextField" layoutX="120.0" layoutY="232.0" prefHeight="25.0" prefWidth="170.0" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="232.0" />
+                                          <Line endX="-77.0" layoutX="697.0" layoutY="177.0" startX="-266.0" AnchorPane.rightAnchor="76.5" AnchorPane.topAnchor="176.5" />
+                                          <Label layoutX="622.0" layoutY="167.0" styleClass="employeePaneText" stylesheets="@../css/NhanVien.css" text="Ghi chú" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="167.0" />
+                                          <Line endX="72.0" layoutX="623.0" layoutY="176.0" startX="46.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="175.5" />
+                                          <TextArea fx:id="ghiChuTextArea" layoutX="443.0" layoutY="189.0" prefHeight="94.0" prefWidth="247.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-insets: -2; -fx-border-insets: -2; -fx-border-width: 2; -fx-border-color: linear-gradient(to top, #000428, #004e92);" styleClass="employeePaneInput" stylesheets="@../css/NhanVien.css" wrapText="true" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="189.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="429.0" prefWidth="1200.0" style="-fx-background-color: #E0D8B0;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="20.0" layoutY="10.0" prefHeight="400.0" prefWidth="1160.0" styleClass="white-background" stylesheets="@../css/NhanVien.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <TableView fx:id="employeeTable" layoutX="20.0" layoutY="112.0" prefHeight="270.0" prefWidth="1122.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="111.0">
+                    <columns>
+                      <TableColumn fx:id="maNVCol" prefWidth="59.0" text="Mã NV" />
+                      <TableColumn fx:id="hoTenCol" prefWidth="174.0" text="Họ tên" />
+                        <TableColumn fx:id="gioiTinhCol" minWidth="0.0" prefWidth="62.0" text="Giới tính" />
+                        <TableColumn fx:id="ngaySinhCol" prefWidth="102.0" text="Ngày sinh" />
+                        <TableColumn fx:id="sdtCol" prefWidth="152.0" text="SĐT" />
+                        <TableColumn fx:id="emailCol" prefWidth="131.0" text="Email" />
+                        <TableColumn fx:id="diaChiCol" prefWidth="148.0" text="Địa chỉ" />
+                        <TableColumn fx:id="ngayVLCol" minWidth="0.0" prefWidth="107.0" text="Ngày vào làm" />
+                        <TableColumn fx:id="actionCol" editable="false" minWidth="0.0" prefWidth="172.0" sortable="false" text="Thao tác" />
+                    </columns>
+                  </TableView>
+                  <TextField layoutX="20.0" layoutY="72.0" prefHeight="28.0" prefWidth="428.0" promptText="Nhập từ khoá tìm kiếm ..." styleClass="searchbar" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="20.0">
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="53.0" top="5.0" />
+                     </padding>
+                  </TextField>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="417.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asset/inActiveSearchIcon.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="20.0" layoutY="21.0" prefHeight="36.0" prefWidth="191.0" styleClass="rowNumberPane" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="20.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" text="Số dòng đang hiện:">
+                           <font>
+                              <Font name="Tahoma Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="150.0" layoutY="10.0" text="100">
+                           <font>
+                              <Font name="Tahoma Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="229.0" layoutY="21.0" prefHeight="36.0" prefWidth="170.0" styleClass="rowNumberPane" stylesheets="@../css/NhanVien.css" AnchorPane.leftAnchor="229.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" text="Số dòng đã chọn:">
+                           <font>
+                              <Font name="Tahoma Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="134.0" layoutY="10.0" text="100">
+                           <font>
+                              <Font name="Tahoma Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="393.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asset/clearIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="417.0" layoutY="22.0" styleClass="refreshIcon" stylesheets="@../css/NhanVien.css" />
+                  <Label layoutX="472.0" layoutY="11.0" text="Lọc:">
+                     <font>
+                        <Font name="Open Sans ExtraBold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="557.0" layoutY="8.0" text="Giới tính" />
+                  <JFXRadioButton layoutX="519.0" layoutY="35.0" text="Nam">
+                     <selectedColor>
+                        <Color red="0.7764706015586853" green="0.8705882430076599" blue="0.2549019753932953" />
+                     </selectedColor>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gender" />
+                     </toggleGroup></JFXRadioButton>
+                  <JFXRadioButton layoutX="603.0" layoutY="35.0" text="Nữ" toggleGroup="$gender">
+                     <selectedColor>
+                        <Color red="0.7764706015586853" green="0.8705882430076599" blue="0.2549019753932953" />
+                     </selectedColor></JFXRadioButton>
+                  <Label layoutX="726.0" layoutY="8.0" text="Tuổi" />
+                  <TextField alignment="CENTER" layoutX="676.0" layoutY="31.0" prefHeight="18.0" prefWidth="49.0" promptText="min" />
+                  <TextField alignment="CENTER" layoutX="755.0" layoutY="31.0" prefHeight="18.0" prefWidth="49.0" promptText="max" />
+                  <Label layoutX="738.0" layoutY="35.0" text="-" />
+                  <JFXComboBox layoutX="839.0" layoutY="31.0" />
+                  <Label layoutX="838.0" layoutY="8.0" text="Năm vào làm" />
+                  <JFXComboBox layoutX="957.0" layoutY="31.0" />
+                  <Label layoutX="958.0" layoutY="8.0" text="Ngày sinh" />
+                  <Label layoutX="1053.0" layoutY="8.0" text="Tháng sinh" />
+                  <JFXComboBox layoutX="1054.0" layoutY="31.0" />
+                  <Separator layoutX="466.0" layoutY="1.0" orientation="VERTICAL" prefHeight="110.0" prefWidth="2.0" />
+                  <Label layoutX="472.0" layoutY="79.0" text="Bộ lọc đã sử dụng:">
+                     <font>
+                        <Font name="Open Sans ExtraBold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="467.0" layoutY="67.0" prefHeight="0.0" prefWidth="673.0" />
+                  <HBox alignment="CENTER_LEFT" layoutX="619.0" layoutY="74.0" prefHeight="26.0" prefWidth="541.0" AnchorPane.leftAnchor="618.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
+                     <children>
+                        <Label contentDisplay="RIGHT" prefHeight="22.0" prefWidth="59.0" styleClass="filterCell" stylesheets="@../css/NhanVien.css" text="Nam">
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../asset/clearIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding></HBox>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="417.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="417.0">
+                     <image>
+                        <Image url="@../asset/refreshDataIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -74,7 +74,7 @@
                                                                         <MenuItem mnemonicParsing="false" text="Action 2" />
                                                                      </items>
                                                                   </MenuButton>
-                                                                  <MenuButton layoutX="325.0" layoutY="15.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="176.0" style="-fx-background-color: #FFFFFF;" text="Chọn loại khách hàng" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+                                                                  <MenuButton fx:id="loaiKhachHangMenuButton" layoutX="325.0" layoutY="15.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="176.0" style="-fx-background-color: #FFFFFF;" text="Chọn loại khách hàng" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
                                                                      <items>
                                                                         <MenuItem mnemonicParsing="false" text="Action 1" />
                                                                         <MenuItem mnemonicParsing="false" text="Action 2" />

@@ -21,6 +21,16 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/ojdbc11.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/HP/Desktop/bt java/IS201/IS201.N23.QLCHTT/src/lib/jfoenix-9.0.10.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/HP/Desktop/bt java/IS201/IS201.N23.QLCHTT/src/lib/ojdbc11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

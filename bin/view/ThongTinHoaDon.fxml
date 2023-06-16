@@ -74,7 +74,7 @@
                                                                         <MenuItem mnemonicParsing="false" text="Action 2" />
                                                                      </items>
                                                                   </MenuButton>
-                                                                  <MenuButton layoutX="325.0" layoutY="15.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="176.0" style="-fx-background-color: #FFFFFF;" text="Chọn loại khách hàng" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+                                                                  <MenuButton fx:id="loaiKhachHangMenuButton" layoutX="325.0" layoutY="15.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="176.0" style="-fx-background-color: #FFFFFF;" text="Chọn loại khách hàng" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
                                                                      <items>
                                                                         <MenuItem mnemonicParsing="false" text="Action 1" />
                                                                         <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -258,7 +258,7 @@
                                                 </AnchorPane>
                                              </items>
                                           </SplitPane>
-                                          <Button layoutX="518.0" layoutY="15.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Xuất hóa đơn" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                                          <Button fx:id="inHoaDonButton" layoutX="518.0" layoutY="15.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Xuất hóa đơn" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
                                           <StackPane layoutX="25.0" layoutY="30.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #A0C3C9;">
                                              <children>
                                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết hóa đơn" textOrigin="CENTER">

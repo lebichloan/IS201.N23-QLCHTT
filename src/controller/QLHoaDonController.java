@@ -21,6 +21,7 @@ import dao.KhachHangDAO;
 import dao.NhanVienDAO;
 import dao.SanPhamDAO;
 import db.database;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,7 +33,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -162,10 +162,8 @@ public class QLHoaDonController implements Initializable {
 	        Parent root = loader.load();
 	        ThayDoiHoaDonController controller = loader.getController();
 	        controller.setHoaDon(selectedHoaDon);
-	        Scene scene = new Scene(root);
-			Stage window = new Stage();
-			window.setScene(scene);
-			window.show();
+	        Stage stage = (Stage) table.getScene().getWindow();
+	        stage.setScene(new Scene(root));
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
 	    }
@@ -182,10 +180,8 @@ public class QLHoaDonController implements Initializable {
 	        Parent root = loader.load();
 	        ThongTinHoaDonController controller = loader.getController();
 	        controller.setHoaDon(selectedHoaDon);
-	        Scene scene = new Scene(root);
-			Stage window = new Stage();
-			window.setScene(scene);
-			window.show();
+	        Stage stage = (Stage) table.getScene().getWindow();
+	        stage.setScene(new Scene(root));
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
 	    }
@@ -217,12 +213,19 @@ public class QLHoaDonController implements Initializable {
 			}
 
 			sohoadonColumn.setCellValueFactory(new PropertyValueFactory<>("soHd"));
-			maKhColumn.setCellValueFactory(new PropertyValueFactory<>("maKh"));
+			maKhColumn.setCellValueFactory(cellData -> {
+			    String maKhachHang = cellData.getValue().getMaKh();
+			    String donViTinh = KhachHangDAO.getInstance().selectedById(maKhachHang).getTenKh();
+			    return new SimpleStringProperty(donViTinh);
+			});
 			ngaylapColumn.setCellValueFactory(new PropertyValueFactory<>("ngayLap"));
 			thanhtienColumn.setCellValueFactory(new PropertyValueFactory<>("tongTien"));
 			tinhtrangColumn.setCellValueFactory(new PropertyValueFactory<>("tinhTrang"));
-			nhanvienbanhangColumn.setCellValueFactory(new PropertyValueFactory<>("maNv"));
-
+			nhanvienbanhangColumn.setCellValueFactory(cellData -> {
+			    String maNhanVien = cellData.getValue().getMaNv();
+			    String donViTinh = nhanvienDAO.selectedById(maNhanVien).getHoTen();
+			    return new SimpleStringProperty(donViTinh);
+			});
 			table.setItems(dsHoaDon);
 
 		} catch (SQLException e) {
@@ -235,15 +238,10 @@ public class QLHoaDonController implements Initializable {
 	private void handleThemMoiHoaDon() {
 		ThemMoiButton.setOnAction(event -> {
 	        try {
-	        	FXMLLoader loader = new FXMLLoader(common.class.getResource("/view/ThemHoaDon.fxml"));
-				AnchorPane root = loader.load();
-
-				// Create a Scene object with the root node and set it to the primary stage
-				Scene scene = new Scene(root);
-				Stage window = new Stage();
-				window.setScene(scene);
-				window.setResizable(false);
-				window.show();
+	            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ThemHoaDon.fxml"));
+	            Parent root = loader.load();
+	            Stage stage = (Stage) ThemMoiButton.getScene().getWindow();
+	            stage.setScene(new Scene(root));
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }

@@ -9,13 +9,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.SplitPane.Divider;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 
@@ -48,6 +53,8 @@ public class TrangChuController implements Initializable {
 	@FXML
 	AnchorPane root;
 	Button selectedButton;
+	
+	@FXML SplitPane splitPaneNavigatorAndContent;
 	
 	public void exitFocused(MouseEvent event) {
 		if(event.getButton() == MouseButton.PRIMARY) {
@@ -140,12 +147,30 @@ public class TrangChuController implements Initializable {
 	    hoaDonButton.setOnAction(event -> handleButtonClick(hoaDonButton,"/view/QLHoaDon.fxml"));
 	    sanPhamButton.setOnAction(event -> handleButtonClick(sanPhamButton, "/view/QLSanPham.fxml"));
 	    khachhangButton.setOnAction(event -> handleButtonClick(khachhangButton, "/view/QLKhachHang.fxml"));
-	    nhanVienButton.setOnAction(event -> handleButtonClick(nhanVienButton, "/view/QLNhanVien.fxml"));
+	    nhanVienButton.setOnAction(event -> handleButtonClick(nhanVienButton, "/view/QLNhanVienView.fxml"));
 	    thongKeButton.setOnAction(event -> handleButtonClick(thongKeButton, "/view/ThongKe.fxml"));
 	    dangXuatButton.setOnMouseClicked((MouseEvent event) -> {
-            common.sceneTransition("/view/Login.fxml", event);
+            ((Stage)((dangXuatButton.getScene()).getWindow())).hide();
+    		Stage stg = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+    		stg.initStyle(StageStyle.TRANSPARENT);
+    		Scene scene;
+			try {
+				scene = new Scene(loader.load());
+				scene.setFill(Color.TRANSPARENT);
+	    		stg.setScene(scene);
+	    		stg.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         });
-	
+	    
+	    Divider divider = splitPaneNavigatorAndContent.getDividers().get(0);
+	    divider.positionProperty().addListener((observableVal,oldVal,newVal)->{
+	    	if(newVal.doubleValue() > 0.1386) 
+	    		divider.setPosition(0.1386);
+	    });
 	}
 	
 	private void handleButtonClick(Button clickedButton, String path) {
@@ -157,7 +182,7 @@ public class TrangChuController implements Initializable {
 	    
 	    try {
 	    	FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-	        AnchorPane fxmlRoot = loader.load();
+	        Parent fxmlRoot = loader.load();
 
 	        thaoTacAnchorPane.getChildren().setAll(fxmlRoot);
 	        AnchorPane.setTopAnchor(fxmlRoot, 0.0);

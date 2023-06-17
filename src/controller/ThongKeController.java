@@ -150,11 +150,19 @@ public class ThongKeController implements Initializable {
 			Statement statement = database.connection.createStatement();
 
 			// Execute the query
-			String query = "SELECT Ten_KH, SUM(tong_tien) AS TotalMoney\r\n" + "FROM (\r\n"
-					+ "    SELECT KhachHang.Ten_KH, HoaDon.tong_tien\r\n" + "    FROM KhachHang\r\n"
-					+ "    INNER JOIN HoaDon ON KhachHang.Ma_kh = HoaDon.Ma_kh\r\n"
-					+ "    ORDER BY HoaDon.tong_tien DESC\r\n" + ")\r\n" + "WHERE ROWNUM <= 3\r\n"
-					+ "GROUP BY Ten_KH\r\n" + "ORDER BY TotalMoney DESC";
+			String query = "SELECT Ten_KH, TotalMoney " +
+			        "FROM ( " +
+			        "    SELECT Ten_KH, SUM(Tong_tien) AS TotalMoney " +
+			        "    FROM ( " +
+			        "        SELECT KhachHang.Ten_KH, HOADON.Tong_tien " +
+			        "        FROM KhachHang " +
+			        "        INNER JOIN HoaDon ON KhachHang.Ma_KH = HoaDOn.Ma_KH " +
+			        "    ) " +
+			        "    GROUP BY Ten_KH " +
+			        "    ORDER BY TotalMoney DESC " +
+			        ") " +
+			        "WHERE ROWNUM <= 3";
+
 			ResultSet resultSet = statement.executeQuery(query);
 
 			// Iterate through the result set and create data slices

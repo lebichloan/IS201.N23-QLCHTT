@@ -170,6 +170,7 @@ public class TrangChuController implements Initializable {
 	    
 	    if(common.NV.getMaLnd().equals("LND002")){
 	    	nhanVienButton.setDisable(true);
+	    	thongKeButton.setDisable(true);
 	    }
 	    Divider divider = splitPaneNavigatorAndContent.getDividers().get(0);
 	    divider.positionProperty().addListener((observableVal,oldVal,newVal)->{

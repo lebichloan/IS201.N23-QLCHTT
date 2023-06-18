@@ -130,7 +130,7 @@ public class ThayDoiHoaDonController implements Initializable{
         // Hiển thị thông tin chi tiết của hoá đơn
         soHoaDonTuDongTao.setText(hoaDon.getSoHd());
         ngayTaoText.setText(hoaDon.getNgayLap().toString());
-        double TongTienHang = hoaDon.getKhuyenMai()+hoaDon.getTongTien();
+        double TongTienHang =  hoaDon.getTongTien() / ((100 - hoaDon.getKhuyenMai())/100);
 		TongTienHangTextField.setText(String.valueOf(TongTienHang));
 		tongKhuyenMaiTextField.setText(String.valueOf(hoaDon.getKhuyenMai()));
 		tongTienThanhToanTextField.setText(String.valueOf(hoaDon.getTongTien()));

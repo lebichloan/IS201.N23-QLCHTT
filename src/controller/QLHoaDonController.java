@@ -168,8 +168,9 @@ public class QLHoaDonController implements Initializable {
 	        Parent root = loader.load();
 	        ThayDoiHoaDonController controller = loader.getController();
 	        controller.setHoaDon(selectedHoaDon);
-	        Stage stage = (Stage) table.getScene().getWindow();
+	        Stage stage = new Stage();
 	        stage.setScene(new Scene(root));
+	        stage.show();
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
 	    }
@@ -186,8 +187,9 @@ public class QLHoaDonController implements Initializable {
 	        Parent root = loader.load();
 	        ThongTinHoaDonController controller = loader.getController();
 	        controller.setHoaDon(selectedHoaDon);
-	        Stage stage = (Stage) table.getScene().getWindow();
+	        Stage stage = new Stage();
 	        stage.setScene(new Scene(root));
+	        stage.show();
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
 	    }
@@ -221,7 +223,11 @@ public class QLHoaDonController implements Initializable {
 			sohoadonColumn.setCellValueFactory(new PropertyValueFactory<>("soHd"));
 			maKhColumn.setCellValueFactory(cellData -> {
 			    String maKhachHang = cellData.getValue().getMaKh();
-			    String donViTinh = KhachHangDAO.getInstance().selectedById(maKhachHang).getTenKh();
+			    String donViTinh = "";
+			    if(maKhachHang!=null) {
+				    donViTinh = KhachHangDAO.getInstance().selectedById(maKhachHang).getTenKh();
+				   
+			    }
 			    return new SimpleStringProperty(donViTinh);
 			});
 			ngaylapColumn.setCellValueFactory(new PropertyValueFactory<>("ngayLap"));
@@ -246,8 +252,9 @@ public class QLHoaDonController implements Initializable {
 	        try {
 	            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ThemHoaDon.fxml"));
 	            Parent root = loader.load();
-	            Stage stage = (Stage) ThemMoiButton.getScene().getWindow();
+		        Stage stage = new Stage();
 	            stage.setScene(new Scene(root));
+	            stage.show();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }

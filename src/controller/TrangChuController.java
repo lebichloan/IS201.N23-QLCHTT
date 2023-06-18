@@ -149,6 +149,8 @@ public class TrangChuController implements Initializable {
 	    khachhangButton.setOnAction(event -> handleButtonClick(khachhangButton, "/view/QLKhachHang.fxml"));
 	    nhanVienButton.setOnAction(event -> handleButtonClick(nhanVienButton, "/view/QLNhanVienView.fxml"));
 	    thongKeButton.setOnAction(event -> handleButtonClick(thongKeButton, "/view/ThongKe.fxml"));
+		trangChuButton.setOnAction(event -> handleButtonClick(thongKeButton, "/view/ThongTinTaiKhoan.fxml"));
+
 	    dangXuatButton.setOnMouseClicked((MouseEvent event) -> {
             ((Stage)((dangXuatButton.getScene()).getWindow())).hide();
     		Stage stg = new Stage();
@@ -166,6 +168,10 @@ public class TrangChuController implements Initializable {
 			}
         });
 	    
+	    if(common.NV.getMaLnd().equals("LND002")){
+	    	nhanVienButton.setDisable(true);
+	    	thongKeButton.setDisable(true);
+	    }
 	    Divider divider = splitPaneNavigatorAndContent.getDividers().get(0);
 	    divider.positionProperty().addListener((observableVal,oldVal,newVal)->{
 	    	if(newVal.doubleValue() > 0.1386) 

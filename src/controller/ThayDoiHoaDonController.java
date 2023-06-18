@@ -2,9 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import dao.CTHDDAO;
+import dao.HoaDonDAO;
 import dao.KhachHangDAO;
 import dao.NhanVienDAO;
 import dao.SanPhamDAO;
@@ -76,15 +78,19 @@ public class ThayDoiHoaDonController implements Initializable{
 	@FXML 
 	private TextField conLaiTextField,donGiaTextField,donViTinhTextField,thanhTienTextField;
 	@FXML
-	private Button luuCTHDButton;
+	private Button luuCTHDButton,luuHoaDonButton;
+	
+	public String maNhanVien;
 	
 	@FXML
 	private ObservableList<CTHD> invoiceDetails;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		invoiceDetails = FXCollections.observableArrayList();
 		handleLayThongTinCTHD();
 		capNhatThanhTien();
+		handleChonTinhTrangDonHang();
 	}
 
 	private void handleLayThongTinCTHD() {
@@ -116,6 +122,8 @@ public class ThayDoiHoaDonController implements Initializable{
        loadThongTinKhachHang(hoaDon);
        loadThongTinChungHoaDon(hoaDon);
        khoitaoCTHDTable(hoaDon.getSoHd());
+       updateCheckBoxes(hoaDon);
+       maNhanVien = hoaDon.getMaNv();
     }
 	public void loadThongTinChungHoaDon(HoaDon hoaDon) {
 		
@@ -126,6 +134,23 @@ public class ThayDoiHoaDonController implements Initializable{
 		TongTienHangTextField.setText(String.valueOf(TongTienHang));
 		tongKhuyenMaiTextField.setText(String.valueOf(hoaDon.getKhuyenMai()));
 		tongTienThanhToanTextField.setText(String.valueOf(hoaDon.getTongTien()));
+	}
+	private void tinhLaiThongTinHoaDon() {
+	    double tongTienHang = 0;
+	    double tongKhuyenMai = 0;
+	    double tongTienThanhToan = 0;
+
+	    for (CTHD cthd : invoiceDetails) {
+	        tongTienHang += cthd.getGia() * cthd.getSoLuong();
+	        tongKhuyenMai += cthd.getGia() * cthd.getKhuyenMai() * cthd.getSoLuong() / 100;
+	        tongTienThanhToan += cthd.getGia() * cthd.getSoLuong() - cthd.getGia() * cthd.getKhuyenMai() * cthd.getSoLuong() / 100;
+	    }
+
+	    tongSoLuongMatHangTextFiled.setText(Integer.toString(invoiceDetails.size()));
+	    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+	    TongTienHangTextField.setText(decimalFormat.format(tongTienHang));
+	    tongKhuyenMaiTextField.setText(decimalFormat.format(tongKhuyenMai));
+	    tongTienThanhToanTextField.setText(decimalFormat.format(tongTienThanhToan));
 	}
 	public void loadThongTinKhachHang(HoaDon hoaDon) {
 		 khachHangMenu.setText(hoaDon.getMaKh());
@@ -222,13 +247,6 @@ public class ThayDoiHoaDonController implements Initializable{
 	    double thanhTien = Double.parseDouble(thanhTienTextField.getText());
 	    // Lấy các thông tin khác từ các trường nhập liệu khác
 
-	    // Kiểm tra và xử lý lỗi nhập liệu (nếu có)
-//	    if (maSanPham.isEmpty() || tenSanPham.isEmpty()) {
-//	        // Hiển thị thông báo cho người dùng về lỗi nhập liệu
-//	        Alert alert = new Alert(Alert.AlertType.WARNING, "Vui lòng nhập đầy đủ thông tin sản phẩm");
-//	        alert.showAndWait();
-//	        return;
-//	    }
 
 	    // Cập nhật thông tin cho chi tiết hoá đơn
 	    selectedCTHD.setMaSp(maSanPham);
@@ -239,7 +257,7 @@ public class ThayDoiHoaDonController implements Initializable{
 	   
 	    // Cập nhật CTHD trong CSDL (hoặc danh sách CTHD)
 	    cthdDAO.update(selectedCTHD);
-
+	    tinhLaiThongTinHoaDon();
 	    // Hiển thị thông tin đã cập nhật lên giao diện
 	    cthdTable.refresh();; // Hàm này cập nhật lại dữ liệu trong bảng CTHD
 
@@ -247,7 +265,76 @@ public class ThayDoiHoaDonController implements Initializable{
 	    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Cập nhật thành công");
 	    alert.showAndWait();
 	}
+	private String getTinhTrang() {
+	    if (daThanhToanCheckBox.isSelected()) {
+	        return "Đã thanh toán";
+	    } else if (chuaThanhToanCheckBox.isSelected()) {
+	        return "Chưa thanh toán";
+	    } else if (daHuyCheckBox.isSelected()) {
+	        return "Đã hủy";
+	    } else {
+	        return ""; // Hoặc giá trị mặc định tùy thuộc vào yêu cầu của bạn
+	    }
+	}
+	
+	@FXML
+	private void handleCapNhatHoaDonButton() {
+	    String soHd = soHoaDonTuDongTao.getText();
+	    java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date ngayLap = new java.sql.Date(utilDate.getTime());
+	    int slmh = Integer.parseInt(tongSoLuongMatHangTextFiled.getText());
+	    double khuyenMai = Double.parseDouble(tongKhuyenMaiTextField.getText());
+	    double tongTien = Double.parseDouble(tongTienThanhToanTextField.getText());
+	    String tinhTrang = getTinhTrang();
+	    String maNv = maNhanVien;
+	    String maKh = khachHangMenu.getText();
 
+	    HoaDon hoaDon = new HoaDon(soHd, ngayLap, slmh, khuyenMai, tongTien, tinhTrang, maNv, maKh);
+	    HoaDonDAO.getInstance().update(hoaDon);
+
+	    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Cập nhật Hoá Đơn thành công");
+	    alert.showAndWait();
+	}
 	
-	
+	private void updateCheckBoxes(HoaDon hoaDon) {
+	    String tinhTrang = hoaDon.getTinhTrang();
+
+	    // Kiểm tra và tick CheckBox tương ứng với tình trạng của Hoá đơn
+	    if (tinhTrang.equals("Đã thanh toán")) {
+	        daThanhToanCheckBox.setSelected(true);
+	        chuaThanhToanCheckBox.setSelected(false);
+	        daHuyCheckBox.setSelected(false);
+	    } else if (tinhTrang.equals("Chưa thanh toán")) {
+	        daThanhToanCheckBox.setSelected(false);
+	        chuaThanhToanCheckBox.setSelected(true);
+	        daHuyCheckBox.setSelected(false);
+	    } else if (tinhTrang.equals("Đã hủy")) {
+	        daThanhToanCheckBox.setSelected(false);
+	        chuaThanhToanCheckBox.setSelected(false);
+	        daHuyCheckBox.setSelected(true);
+	    }
+	}
+	private void handleChonTinhTrangDonHang() {
+		// TODO Auto-generated method stub
+		daThanhToanCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+		    if (newValue) {
+		        chuaThanhToanCheckBox.setSelected(false);
+		        daHuyCheckBox.setSelected(false);
+		    }
+		});
+
+		chuaThanhToanCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+		    if (newValue) {
+		        daThanhToanCheckBox.setSelected(false);
+		        daHuyCheckBox.setSelected(false);
+		    }
+		});
+
+		daHuyCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+		    if (newValue) {
+		        daThanhToanCheckBox.setSelected(false);
+		        chuaThanhToanCheckBox.setSelected(false);
+		    }
+		});
+	}
 }

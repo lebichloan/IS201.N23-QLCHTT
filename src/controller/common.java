@@ -9,8 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.NhanVien;
 
 public class common {
+	
+	public static NhanVien NV;
 	
 	public static void sceneTransition (String path, ActionEvent event){
     	try {

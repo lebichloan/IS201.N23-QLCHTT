@@ -313,7 +313,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9;">
                <children>
-                  <Button layoutX="549.0" layoutY="4.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Lưu thay đổi" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="549.4000000000001" AnchorPane.topAnchor="5.0" />
+                  <Button fx:id="luuHoaDonButton" layoutX="549.0" layoutY="4.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" onAction="#luuHoaDonButton" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Lưu thay đổi" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="549.4000000000001" AnchorPane.topAnchor="5.0" />
                </children>
             </AnchorPane>
          </items>

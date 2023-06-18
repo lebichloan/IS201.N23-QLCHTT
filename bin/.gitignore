@@ -1,5 +1,8 @@
+/module-info.class
 /controller/
 /asset/
-/css/
+/dao/
+/db/
+/model/
 /test/
 /view/

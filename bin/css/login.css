@@ -1,0 +1,87 @@
+.loginPane {
+	/*-fx-background-color: rgba(1,1,1,0.65);*/
+	-fx-background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+	-fx-background-radius: 30;
+	-fx-border-radius: 30;
+	-fx-border-color: transparent;
+	-fx-border-width: 0;
+	
+}
+
+.button {
+	-fx-cursor: hand;
+}
+
+.button:hover {
+	-fx-background-color: linear-gradient(to right, rgba(253, 252, 71, 0.3), rgba(36, 254, 65,0.3));
+	-fx-background-radius: 15;
+}
+
+.enter-button:focused {
+	-fx-effect: dropshadow(three-pass-box,rgba(0, 255, 209, 0.65),7,0.65,0,0);
+	-fx-background-radius: 5px;
+	-fx-border-radius: 5px;
+}
+
+.text-field, #loginPassWordHBox{
+	-fx-background-color: transparent;
+	-fx-border-width: 0 0 1 0;
+	-fx-border-color: linear-gradient(to right, #34e89e, #0f3443);
+	-fx-font-size: 15px;
+	-fx-font-family: "Arial";
+	-fx-font-weight: bold;
+	-fx-cursor: text;
+	-fx-prompt-text-fill: #827f7a;
+	-fx-text-fill: #fffaf4;
+	-fx-border-radius: 3 3 0 0;
+	-fx-background-radius: 3 3 0 0;
+}
+
+.text-field:focused {
+	-fx-text-fill: #fffaf4;
+	-fx-border-color: linear-gradient(to right, #fdfc47, #24fe41);
+	-fx-border-width: 0 0 1.5 0;
+	-fx-border-radius: 3 3 0 0;
+	-fx-background-radius: 3 3 0 0;
+	-fx-prompt-text-fill: #827f7a;
+}
+
+.text-field:hover {
+	-fx-background-color: rgba(0, 0, 0, 0.35);
+	-fx-prompt-text-fill: #827f7a;
+	-fx-text-fill: #fffaf4;
+	-fx-border-color: linear-gradient(to right, #fdfc47, #24fe41);
+	-fx-border-width: 0 0 1.5 0;
+	-fx-border-radius: 3 3 0 0;
+	-fx-background-radius: 3 3 0 0;
+}
+
+#loginShowPassWord, #loginHidePassWord {
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+	-fx-border-radius: 3 3 0 0;
+	-fx-background-radius: 3 3 0 0;
+	-fx-cursor: text;
+	-fx-prompt-text-fill: #827f7a;
+	-fx-text-fill: #fffaf4;
+	-fx-font-size: 15px;
+	-fx-font-family: "Arial";
+	-fx-font-weight: bold;
+}
+
+#loginShowPassWord:focused, #loginHidePassWord:focused {
+	-fx-text-fill: #fffaf4;
+	-fx-prompt-text-fill: #827f7a;
+	-fx-effect: null;
+}
+
+#loginShowPassWord:hover, #loginHidePassWord:hover {
+	-fx-prompt-text-fill: #827f7a; 
+	-fx-text-fill: #fffaf4;
+}
+
+.login-err {
+	-fx-border-width: 0 0 1.5 0;
+	-fx-border-radius: 3 3 0 0;
+	-fx-border-color: #ff1a5f;
+}

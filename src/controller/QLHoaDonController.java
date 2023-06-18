@@ -89,13 +89,14 @@ public class QLHoaDonController implements Initializable {
 
 	private void loadTinhTrang() {
 	    ObservableList<String> listtinhTrang = FXCollections.observableArrayList(
-	        "Đã Thanh Toán", "Chưa thanh toán", "Đã Huỷ"
+	        "Đã thanh Toán", "Chưa thanh toán", "Đã huỷ"
 	    );
 	    TinhTrangMenu.getItems().clear();
 	    for(String tt :listtinhTrang) {
 	    	MenuItem item = new MenuItem(tt);
 	    	item.setOnAction(e -> {
 	    		TinhTrangMenu.setText(tt);
+	    		TinhTrangMenu.setUserData(tt);
 			});
 	    	TinhTrangMenu.getItems().add(item);
 	    }
@@ -103,36 +104,41 @@ public class QLHoaDonController implements Initializable {
 	
 
 	public void loadDanhSachNhanVien() {
-		nhanvienDAO = new NhanVienDAO();
-		ObservableList<NhanVien> listNhanVien = FXCollections.observableArrayList(nhanvienDAO.selectAll());
-		nhanVienMenu.getItems().clear();
-		for (NhanVien nv : listNhanVien) {
-			MenuItem item = new MenuItem(nv.getMaNV());
-			item.setOnAction(e -> {
-				nhanVienMenu.setText(nv.getMaNV());
-			});
-			nhanVienMenu.getItems().add(item);
-		}
+	    nhanvienDAO = new NhanVienDAO();
+	    ObservableList<NhanVien> listNhanVien = FXCollections.observableArrayList(nhanvienDAO.selectAll());
+	    nhanVienMenu.getItems().clear();
+	    for (NhanVien nv : listNhanVien) {
+	        MenuItem item = new MenuItem(nv.getHoten());
+	        item.setUserData(nv.getMaNV());
+
+	        item.setOnAction(e -> {
+	            nhanVienMenu.setText(nv.getHoten());
+	            nhanVienMenu.setUserData(nv.getMaNV());
+	        });
+	        nhanVienMenu.getItems().add(item);
+	    }
 	}
 	
 	public void loadDanhSachKhachHang() {
-		// Khởi tạo đối tượng DAO cho KhachHang và HoaDon: Kết nối csdl với khach hang
-		khachHangDAO = new KhachHangDAO();
+	    // Khởi tạo đối tượng DAO cho KhachHang và HoaDon: Kết nối csdl với khach hang
+	    khachHangDAO = new KhachHangDAO();
 
-		// Load danh sách khách hàng lên menu: hỏi tạo một list khách hàng lưu trữ danh sách khách hàng trong cơ sở dữ liệu
-		ObservableList<KhachHang> listKhachHang = FXCollections.observableArrayList(khachHangDAO.selectAll());
-		//xoá hết các lựa chọn trước của menu
-		khachHangMenu.getItems().clear();
-		
-		for (KhachHang kh : listKhachHang) {
-			//tạo một menu Item
-			MenuItem item = new MenuItem(kh.getMaKh());
-			
-			item.setOnAction(e -> {
-				khachHangMenu.setText(kh.getMaKh());
-			});
-			khachHangMenu.getItems().add(item);
-		}
+	    // Load danh sách khách hàng lên menu: hỏi tạo một list khách hàng lưu trữ danh sách khách hàng trong cơ sở dữ liệu
+	    ObservableList<KhachHang> listKhachHang = FXCollections.observableArrayList(khachHangDAO.selectAll());
+	    //xoá hết các lựa chọn trước của menu
+	    khachHangMenu.getItems().clear();
+
+	    for (KhachHang kh : listKhachHang) {
+	        //tạo một menu Item
+	        MenuItem item = new MenuItem(kh.getTenKh());
+	        item.setUserData(kh.getMaKh());
+
+	        item.setOnAction(e -> {
+	            khachHangMenu.setText(kh.getTenKh());
+	            khachHangMenu.setUserData(kh.getMaKh());
+	        });
+	        khachHangMenu.getItems().add(item);
+	    }
 	}
 
 	private void handleClickHoaDon() {

@@ -21,6 +21,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry kind="lib" path="D:/Documents/ojdbc11.jar"/>
+=======
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -32,5 +35,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/HP/Desktop/bt java/IS201/IS201.N23.QLCHTT/src/lib/ojdbc11.jar"/>
+>>>>>>> 9c7ceec205ea17acd8475e9f148b130b8c88b314
 	<classpathentry kind="output" path="bin"/>
 </classpath>

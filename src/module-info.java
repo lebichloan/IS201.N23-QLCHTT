@@ -16,5 +16,4 @@ module QLCHTT {
 	opens model to javafx.graphics, javafx.fxml;
 	opens test to javafx.graphics, javafx.fxml;
 	opens db to javafx.graphics, javafx.fxml;
-	opens asset to javafx.graphics, javafx.fxml;
 }

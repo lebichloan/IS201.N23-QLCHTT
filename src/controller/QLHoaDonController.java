@@ -21,7 +21,6 @@ import dao.KhachHangDAO;
 import dao.NhanVienDAO;
 import dao.SanPhamDAO;
 import db.database;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -33,6 +32,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -89,14 +89,13 @@ public class QLHoaDonController implements Initializable {
 
 	private void loadTinhTrang() {
 	    ObservableList<String> listtinhTrang = FXCollections.observableArrayList(
-	        "Đã thanh Toán", "Chưa thanh toán", "Đã huỷ"
+	        "Đã Thanh Toán", "Chưa thanh toán", "Đã Huỷ"
 	    );
 	    TinhTrangMenu.getItems().clear();
 	    for(String tt :listtinhTrang) {
 	    	MenuItem item = new MenuItem(tt);
 	    	item.setOnAction(e -> {
 	    		TinhTrangMenu.setText(tt);
-	    		TinhTrangMenu.setUserData(tt);
 			});
 	    	TinhTrangMenu.getItems().add(item);
 	    }
@@ -104,41 +103,36 @@ public class QLHoaDonController implements Initializable {
 	
 
 	public void loadDanhSachNhanVien() {
-	    nhanvienDAO = new NhanVienDAO();
-	    ObservableList<NhanVien> listNhanVien = FXCollections.observableArrayList(nhanvienDAO.selectAll());
-	    nhanVienMenu.getItems().clear();
-	    for (NhanVien nv : listNhanVien) {
-	        MenuItem item = new MenuItem(nv.getHoten());
-	        item.setUserData(nv.getMaNV());
-
-	        item.setOnAction(e -> {
-	            nhanVienMenu.setText(nv.getHoten());
-	            nhanVienMenu.setUserData(nv.getMaNV());
-	        });
-	        nhanVienMenu.getItems().add(item);
-	    }
+		nhanvienDAO = new NhanVienDAO();
+		ObservableList<NhanVien> listNhanVien = FXCollections.observableArrayList(nhanvienDAO.selectAll());
+		nhanVienMenu.getItems().clear();
+		for (NhanVien nv : listNhanVien) {
+			MenuItem item = new MenuItem(nv.getMaNV());
+			item.setOnAction(e -> {
+				nhanVienMenu.setText(nv.getMaNV());
+			});
+			nhanVienMenu.getItems().add(item);
+		}
 	}
 	
 	public void loadDanhSachKhachHang() {
-	    // Khởi tạo đối tượng DAO cho KhachHang và HoaDon: Kết nối csdl với khach hang
-	    khachHangDAO = new KhachHangDAO();
+		// Khởi tạo đối tượng DAO cho KhachHang và HoaDon: Kết nối csdl với khach hang
+		khachHangDAO = new KhachHangDAO();
 
-	    // Load danh sách khách hàng lên menu: hỏi tạo một list khách hàng lưu trữ danh sách khách hàng trong cơ sở dữ liệu
-	    ObservableList<KhachHang> listKhachHang = FXCollections.observableArrayList(khachHangDAO.selectAll());
-	    //xoá hết các lựa chọn trước của menu
-	    khachHangMenu.getItems().clear();
-
-	    for (KhachHang kh : listKhachHang) {
-	        //tạo một menu Item
-	        MenuItem item = new MenuItem(kh.getTenKh());
-	        item.setUserData(kh.getMaKh());
-
-	        item.setOnAction(e -> {
-	            khachHangMenu.setText(kh.getTenKh());
-	            khachHangMenu.setUserData(kh.getMaKh());
-	        });
-	        khachHangMenu.getItems().add(item);
-	    }
+		// Load danh sách khách hàng lên menu: hỏi tạo một list khách hàng lưu trữ danh sách khách hàng trong cơ sở dữ liệu
+		ObservableList<KhachHang> listKhachHang = FXCollections.observableArrayList(khachHangDAO.selectAll());
+		//xoá hết các lựa chọn trước của menu
+		khachHangMenu.getItems().clear();
+		
+		for (KhachHang kh : listKhachHang) {
+			//tạo một menu Item
+			MenuItem item = new MenuItem(kh.getMaKh());
+			
+			item.setOnAction(e -> {
+				khachHangMenu.setText(kh.getMaKh());
+			});
+			khachHangMenu.getItems().add(item);
+		}
 	}
 
 	private void handleClickHoaDon() {
@@ -168,9 +162,10 @@ public class QLHoaDonController implements Initializable {
 	        Parent root = loader.load();
 	        ThayDoiHoaDonController controller = loader.getController();
 	        controller.setHoaDon(selectedHoaDon);
-	        Stage stage = new Stage();
-	        stage.setScene(new Scene(root));
-	        stage.show();
+	        Scene scene = new Scene(root);
+			Stage window = new Stage();
+			window.setScene(scene);
+			window.show();
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
 	    }
@@ -187,9 +182,10 @@ public class QLHoaDonController implements Initializable {
 	        Parent root = loader.load();
 	        ThongTinHoaDonController controller = loader.getController();
 	        controller.setHoaDon(selectedHoaDon);
-	        Stage stage = new Stage();
-	        stage.setScene(new Scene(root));
-	        stage.show();
+	        Scene scene = new Scene(root);
+			Stage window = new Stage();
+			window.setScene(scene);
+			window.show();
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
 	    }
@@ -221,23 +217,12 @@ public class QLHoaDonController implements Initializable {
 			}
 
 			sohoadonColumn.setCellValueFactory(new PropertyValueFactory<>("soHd"));
-			maKhColumn.setCellValueFactory(cellData -> {
-			    String maKhachHang = cellData.getValue().getMaKh();
-			    String donViTinh = "";
-			    if(maKhachHang!=null) {
-				    donViTinh = KhachHangDAO.getInstance().selectedById(maKhachHang).getTenKh();
-				   
-			    }
-			    return new SimpleStringProperty(donViTinh);
-			});
+			maKhColumn.setCellValueFactory(new PropertyValueFactory<>("maKh"));
 			ngaylapColumn.setCellValueFactory(new PropertyValueFactory<>("ngayLap"));
 			thanhtienColumn.setCellValueFactory(new PropertyValueFactory<>("tongTien"));
 			tinhtrangColumn.setCellValueFactory(new PropertyValueFactory<>("tinhTrang"));
-			nhanvienbanhangColumn.setCellValueFactory(cellData -> {
-			    String maNhanVien = cellData.getValue().getMaNv();
-			    String donViTinh = nhanvienDAO.selectedById(maNhanVien).getHoten();
-			    return new SimpleStringProperty(donViTinh);
-			});
+			nhanvienbanhangColumn.setCellValueFactory(new PropertyValueFactory<>("maNv"));
+
 			table.setItems(dsHoaDon);
 
 		} catch (SQLException e) {
@@ -250,11 +235,15 @@ public class QLHoaDonController implements Initializable {
 	private void handleThemMoiHoaDon() {
 		ThemMoiButton.setOnAction(event -> {
 	        try {
-	            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ThemHoaDon.fxml"));
-	            Parent root = loader.load();
-		        Stage stage = new Stage();
-	            stage.setScene(new Scene(root));
-	            stage.show();
+	        	FXMLLoader loader = new FXMLLoader(common.class.getResource("/view/ThemHoaDon.fxml"));
+				AnchorPane root = loader.load();
+
+				// Create a Scene object with the root node and set it to the primary stage
+				Scene scene = new Scene(root);
+				Stage window = new Stage();
+				window.setScene(scene);
+				window.setResizable(false);
+				window.show();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
@@ -262,19 +251,17 @@ public class QLHoaDonController implements Initializable {
 	}
 	@FXML
 	private void handleApDung() {
-	    String maKhachHang = (String) khachHangMenu.getUserData();
-	    System.out.println(maKhachHang);
-	    String tinhTrang = (String) TinhTrangMenu.getUserData();
-	    System.out.println(tinhTrang);
-	    String maNhanVien = (String) nhanVienMenu.getUserData();
-	    System.out.println(maNhanVien);
+	    String maKhachHang = khachHangMenu.getText();
+	    String tinhTrang = TinhTrangMenu.getText();
+	    String maNhanVien = nhanVienMenu.getText();
 
 	    // Lọc danh sách các hoá đơn
 	    ObservableList<HoaDon> filteredList = dsHoaDon.filtered(hoaDon ->
-	        (maKhachHang == null || hoaDon.getMaKh().equals(maKhachHang)) &&
-	        (tinhTrang == null || hoaDon.getTinhTrang().equals(tinhTrang)) &&
-	        (maNhanVien == null || hoaDon.getMaNv().equals(maNhanVien))
+	        hoaDon.getMaKh().equals(maKhachHang) &&
+	        hoaDon.getTinhTrang().equals(tinhTrang) &&
+	        hoaDon.getMaNv().equals(maNhanVien)
 	    );
+
 	    // Hiển thị danh sách các hoá đơn đã lọc trên TableView
 	    table.setItems(filteredList);
 	}

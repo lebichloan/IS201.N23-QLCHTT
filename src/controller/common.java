@@ -15,7 +15,6 @@ public class common {
 	
 	public static NhanVien NV;
 	
-	
 	public static void sceneTransition (String path, ActionEvent event){
     	try {
             FXMLLoader loader = new FXMLLoader(common.class.getResource(path));

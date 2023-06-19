@@ -1,0 +1,11 @@
+.highlighted-row {
+    -fx-background-color: yellow;
+}
+
+#table .table-column {
+  -fx-alignment: CENTER;
+}
+
+#tableLoaiSP .table-column {
+  -fx-alignment: CENTER;
+}

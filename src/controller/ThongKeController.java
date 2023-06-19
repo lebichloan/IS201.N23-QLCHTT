@@ -30,289 +30,289 @@ import javafx.stage.Stage;
 
 public class ThongKeController implements Initializable {
 
-	@FXML
-	private AnchorPane giaoDienAnchorPane;
+    @FXML
+    private AnchorPane giaoDienAnchorPane;
+    
+    @FXML
+    private Text namDoanhThuText;
+    
+    @FXML 
+    private MenuButton chonNamMenuButton;
 
-	@FXML
-	private Text namDoanhThuText;
+    private int selectedYear = 2023; // Variable to store the selected year
+    
+    static NumberAxis xAxis = new NumberAxis(1, 12, 1); // Set the lower and upper bounds of the X-axis
+    static NumberAxis yAxis = new NumberAxis();
+    static LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+    static XYChart.Series<Number, Number> dataSeries = new XYChart.Series<>();
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+    	DoanhThuCuaHangCacThang(2023);
+    	
+    	chonNamMenuButton.getItems().forEach(item -> item.setOnAction(event -> {
+            MenuItem menuItem = (MenuItem) event.getSource();
+            selectedYear = Integer.parseInt(menuItem.getText());
+            DoanhThuCuaHangCacThang(selectedYear);
+        }));
+    	 
+        Top3KhachHangCoDoanhThuCaoNhat();
+        Top3SanPhamCoDoanhThuCaoNhat();
+        SoLuongSanPhamCacLoai();
+    }
+    
+    public void DoanhThuCuaHangCacThang(int year) {
+    	
 
-	@FXML
-	private MenuButton chonNamMenuButton;
+        namDoanhThuText.setText("Doanh thu cửa hàng các tháng trong năm " + selectedYear);
+        xAxis.setLabel("Tháng");
+        yAxis.setLabel("Doanh thu (triệu đồng)");
 
-	private int selectedYear = 2023; // Variable to store the selected year
+        // Create the line chart
+        
+        lineChart.setTitle(null);
+        lineChart.setLegendVisible(false);
 
-	static NumberAxis xAxis = new NumberAxis(1, 12, 1); // Set the lower and upper bounds of the X-axis
-	static NumberAxis yAxis = new NumberAxis();
-	static LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
-	static XYChart.Series<Number, Number> dataSeries = new XYChart.Series<>();
+        // Create a series of data points
+        
+        
+        dataSeries.getData().clear();
+        giaoDienAnchorPane.getChildren().remove(lineChart);
+        
+        if(year == 2023) {
+        	dataSeries.getData().add(new XYChart.Data<>(1, 33.6));
+            dataSeries.getData().add(new XYChart.Data<>(2, 29.5));
+            dataSeries.getData().add(new XYChart.Data<>(3, 23.7));
+            dataSeries.getData().add(new XYChart.Data<>(4, 25.9));
+            dataSeries.getData().add(new XYChart.Data<>(5,0));
+            dataSeries.getData().add(new XYChart.Data<>(6, 0));
+            dataSeries.getData().add(new XYChart.Data<>(7, 0));
+            dataSeries.getData().add(new XYChart.Data<>(8, 0));
+            dataSeries.getData().add(new XYChart.Data<>(9, 0));
+            dataSeries.getData().add(new XYChart.Data<>(10, 0));
+            dataSeries.getData().add(new XYChart.Data<>(11, 0));
+            dataSeries.getData().add(new XYChart.Data<>(12, 0));
+        }
+        else {
+        	dataSeries.getData().add(new XYChart.Data<>(1, 44.6));
+            dataSeries.getData().add(new XYChart.Data<>(2, 39.5));
+            dataSeries.getData().add(new XYChart.Data<>(3, 32.7));
+            dataSeries.getData().add(new XYChart.Data<>(4, 28.9));
+            dataSeries.getData().add(new XYChart.Data<>(5, 25.5));
+            dataSeries.getData().add(new XYChart.Data<>(6, 21.5));
+            dataSeries.getData().add(new XYChart.Data<>(7, 33.7));
+            dataSeries.getData().add(new XYChart.Data<>(8, 32.1));
+            dataSeries.getData().add(new XYChart.Data<>(9, 44.7));
+            dataSeries.getData().add(new XYChart.Data<>(10, 21.5));
+            dataSeries.getData().add(new XYChart.Data<>(11, 18.6));
+            dataSeries.getData().add(new XYChart.Data<>(12, 43.6));
+        }
+        
+        
+        
+        
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		DoanhThuCuaHangCacThang(2023);
+        // Add the series to the line chart
+        lineChart.getData().add(dataSeries);
 
-		chonNamMenuButton.getItems().forEach(item -> item.setOnAction(event -> {
-			MenuItem menuItem = (MenuItem) event.getSource();
-			selectedYear = Integer.parseInt(menuItem.getText());
-			DoanhThuCuaHangCacThang(selectedYear);
-		}));
+        lineChart.setLayoutX(60);
+        lineChart.setLayoutY(40);
+        lineChart.setPrefHeight(350);
+        lineChart.setPrefWidth(1100);
+       
 
-		Top3KhachHangCoDoanhThuCaoNhat();
-		Top3SanPhamCoDoanhThuCaoNhat();
-		SoLuongSanPhamCacLoai();
-	}
+        giaoDienAnchorPane.getChildren().add(lineChart);
+        for (XYChart.Data<Number, Number> data : dataSeries.getData()) {
+            Node node = data.getNode();
+            Tooltip tooltip = new Tooltip(data.getYValue().toString());
+            Tooltip.install(node, tooltip);
 
-	public void DoanhThuCuaHangCacThang(int year) {
+            node.setOnMouseEntered(event -> tooltip.show(node, event.getScreenX(), event.getScreenY() + 10));
+            node.setOnMouseExited(event -> tooltip.hide());
+        }
+    }
+    
+    public void Top3KhachHangCoDoanhThuCaoNhat() {
+    	CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
 
-		namDoanhThuText.setText("Doanh thu cửa hàng các tháng trong năm " + selectedYear);
-		xAxis.setLabel("Tháng");
-		yAxis.setLabel("Doanh thu (triệu đồng)");
+        xAxis.setLabel("Khách hàng");
+        yAxis.setLabel("Doanh thu (triệu đồng)");
 
-		// Create the line chart
+        // Create the bar chart
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        barChart.setTitle(null); // Remove the data series label
 
-		lineChart.setTitle(null);
-		lineChart.setLegendVisible(false);
+        // Create a series of data points
+        XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
+        dataSeries.setName(null); // Remove the data series name
+        try {
+            // Establish a database connection
+            Statement statement = database.connection.createStatement();
 
-		// Create a series of data points
+            // Execute the query
+            String query = "SELECT Ten_KH, SUM(tong_tien) AS TotalMoney\r\n"
+            		+ "FROM (\r\n"
+            		+ "    SELECT KhachHang.Ten_KH, HoaDon.tong_tien\r\n"
+            		+ "    FROM KhachHang\r\n"
+            		+ "    INNER JOIN HoaDon ON KhachHang.Ma_kh = HoaDon.Ma_kh\r\n"
+            		+ "    ORDER BY HoaDon.tong_tien DESC\r\n"
+            		+ ")\r\n"
+            		+ "WHERE ROWNUM <= 3\r\n"
+            		+ "GROUP BY Ten_KH\r\n"
+            		+ "ORDER BY TotalMoney DESC";
+            ResultSet resultSet = statement.executeQuery(query);
 
-		dataSeries.getData().clear();
-		giaoDienAnchorPane.getChildren().remove(lineChart);
+            // Iterate through the result set and create data slices
+            while (resultSet.next()) {
+                String tenKhachHang = resultSet.getString("Ten_KH");
+                int totalMoney = resultSet.getInt("TotalMoney");
 
-		String query = "SELECT EXTRACT(MONTH FROM NGAY_LAP) AS month, SUM(TONG_TIEN) as tongtien " +
-	               "FROM HOADON " +
-	               "WHERE EXTRACT(YEAR FROM NGAY_LAP) = " + year +
-	               "GROUP BY EXTRACT(MONTH FROM NGAY_LAP)";
+                dataSeries.getData().add(new XYChart.Data<>(tenKhachHang, totalMoney));
+            }
 
-	try {
-	    Statement stmt = database.connection.createStatement();
-	    ResultSet rs = stmt.executeQuery(query);
+            // Close the database connection
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        barChart.setCategoryGap(50); // Adjust the gap between bars
+        barChart.setBarGap(10); // Adjust the gap between categories
 
-	    // Create an array to track if a data point exists for each month
-	    boolean[] monthExists = new boolean[13];
+        // Add the series to the bar chart
+        barChart.getData().add(dataSeries);
+        
+        
 
-	    // Iterate over the query results
-	    while (rs.next()) {
-	        int month = rs.getInt("month");
-	        double tongTien = rs.getDouble("tongtien");
+        barChart.setLayoutX(800);
+        barChart.setLayoutY(460);
+        barChart.setPrefHeight(300);
+        barChart.setPrefWidth(400);
 
-	        // Add the data to the data series
-	        dataSeries.getData().add(new XYChart.Data<>(month, tongTien));
+        giaoDienAnchorPane.getChildren().add(barChart);
+        for (XYChart.Data<String, Number> data : dataSeries.getData()) {
+            Node node = data.getNode();
+            Tooltip tooltip = new Tooltip(data.getYValue().toString());
+            Tooltip.install(node, tooltip);
 
-	        // Mark the month as found in the array
-	        monthExists[month] = true;
-	    }
+            node.setOnMouseEntered(event -> tooltip.show(node, event.getScreenX(), event.getScreenY() + 10));
+            node.setOnMouseExited(event -> tooltip.hide());
+        }
+    }
+    
+    public void Top3SanPhamCoDoanhThuCaoNhat() {
+    	CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
 
-	    // Check if any months are missing and set their values to 0
-	    for (int month = 1; month <= 12; month++) {
-	        if (!monthExists[month]) {
-	            dataSeries.getData().add(new XYChart.Data<>(month, 0.0));
-	        }
-	    }
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
+        xAxis.setLabel("Sản Phẩm");
+        yAxis.setLabel("Số lượng");
 
+        // Create the bar chart
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        barChart.setTitle(null); // Remove the data series label
 
-		// Add the series to the line chart
-		lineChart.getData().add(dataSeries);
+        // Create a series of data points
+        XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
+        dataSeries.setName(null); // Remove the data series name
+        try {
+            // Establish a database connection
+            Statement statement = database.connection.createStatement();
 
-		lineChart.setLayoutX(60);
-		lineChart.setLayoutY(40);
-		lineChart.setPrefHeight(350);
-		lineChart.setPrefWidth(1100);
+            // Execute the query
+            String query = "SELECT Ten_SP, SUM(SO_LUONG) AS TotalProduct\r\n"
+            		+ "FROM (\r\n"
+            		+ "    SELECT SanPham.Ten_SP, CTHD.SO_LUONG\r\n"
+            		+ "    FROM SANPHAM\r\n"
+            		+ "    INNER JOIN CTHD ON SANPHAM.Ma_SP = CTHD.Ma_SP\r\n"
+            		+ ")\r\n"
+            		+ "WHERE ROWNUM <= 3\r\n"
+            		+ "GROUP BY Ten_SP\r\n"
+            		+ "ORDER BY TotalProduct DESC";
+            ResultSet resultSet = statement.executeQuery(query);
 
-		giaoDienAnchorPane.getChildren().add(lineChart);
-		for (XYChart.Data<Number, Number> data : dataSeries.getData()) {
-			Node node = data.getNode();
-			Tooltip tooltip = new Tooltip(data.getYValue().toString());
-			Tooltip.install(node, tooltip);
+            // Iterate through the result set and create data slices
+            while (resultSet.next()) {
+                String tenKhachHang = resultSet.getString("Ten_SP");
+                int totalMoney = resultSet.getInt("TotalProduct");
 
-			node.setOnMouseEntered(event -> tooltip.show(node, event.getScreenX(), event.getScreenY() + 10));
-			node.setOnMouseExited(event -> tooltip.hide());
-		}
-	}
+                dataSeries.getData().add(new XYChart.Data<>(tenKhachHang, totalMoney));
+            }
 
-	public void Top3KhachHangCoDoanhThuCaoNhat() {
-		CategoryAxis xAxis = new CategoryAxis();
-		NumberAxis yAxis = new NumberAxis();
+            // Close the database connection
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        barChart.setCategoryGap(50); // Adjust the gap between bars
+        barChart.setBarGap(10); // Adjust the gap between categories
 
-		xAxis.setLabel("Khách hàng");
-		yAxis.setLabel("Doanh thu (triệu đồng)");
+        // Add the series to the bar chart
+        barChart.getData().add(dataSeries);
+        for (XYChart.Data<String, Number> data : dataSeries.getData()) {
+            Node node = data.getNode();
+            Tooltip tooltip = new Tooltip(data.getYValue().toString());
+            Tooltip.install(node, tooltip);
+        }
 
-		// Create the bar chart
-		BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
-		barChart.setTitle(null); // Remove the data series label
+        barChart.setLayoutX(30);
+        barChart.setLayoutY(460);
+        barChart.setPrefHeight(300);
+        barChart.setPrefWidth(400);
 
-		// Create a series of data points
-		XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
-		dataSeries.setName(null); // Remove the data series name
-		try {
-			// Establish a database connection
-			Statement statement = database.connection.createStatement();
+        giaoDienAnchorPane.getChildren().add(barChart);
+        
+        for (XYChart.Data<String, Number> data : dataSeries.getData()) {
+            Node node = data.getNode();
+            Tooltip tooltip = new Tooltip(data.getYValue().toString());
+            Tooltip.install(node, tooltip);
 
-			// Execute the query
-			String query = "SELECT Ten_KH, TotalMoney " +
-			        "FROM ( " +
-			        "    SELECT Ten_KH, SUM(Tong_tien) AS TotalMoney " +
-			        "    FROM ( " +
-			        "        SELECT KhachHang.Ten_KH, HOADON.Tong_tien " +
-			        "        FROM KhachHang " +
-			        "        INNER JOIN HoaDon ON KhachHang.Ma_KH = HoaDOn.Ma_KH " +
-			        "    ) " +
-			        "    GROUP BY Ten_KH " +
-			        "    ORDER BY TotalMoney DESC " +
-			        ") " +
-			        "WHERE ROWNUM <= 3";
+            node.setOnMouseEntered(event -> tooltip.show(node, event.getScreenX(), event.getScreenY() + 10));
+            node.setOnMouseExited(event -> tooltip.hide());
+        }
+    }
+    
+    public void SoLuongSanPhamCacLoai() {
+        // Create the pie chart
+        PieChart pieChart = new PieChart();
 
-			ResultSet resultSet = statement.executeQuery(query);
+        try {
+            // Establish a database connection
+            Statement statement = database.connection.createStatement();
 
-			// Iterate through the result set and create data slices
-			while (resultSet.next()) {
-				String tenKhachHang = resultSet.getString("Ten_KH");
-				int totalMoney = resultSet.getInt("TotalMoney");
+            // Execute the query
+            String query = "SELECT LoaiSanPham.Ten_LSP, SUM(SanPham.So_Luong) AS TotalQuantity " +
+                           "FROM SanPham " +
+                           "INNER JOIN LoaiSanPham ON SanPham.Ma_LSP = LoaiSanPham.Ma_LSP " +
+                           "GROUP BY LoaiSanPham.Ten_LSP";
+            ResultSet resultSet = statement.executeQuery(query);
 
-				dataSeries.getData().add(new XYChart.Data<>(tenKhachHang, totalMoney));
-			}
+            // Iterate through the result set and create data slices
+            while (resultSet.next()) {
+                String loaiSanPham = resultSet.getString("Ten_LSP");
+                int totalQuantity = resultSet.getInt("TotalQuantity");
 
-			// Close the database connection
-			resultSet.close();
-			statement.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		barChart.setCategoryGap(50); // Adjust the gap between bars
-		barChart.setBarGap(10); // Adjust the gap between categories
+                PieChart.Data slice = new PieChart.Data(loaiSanPham, totalQuantity);
+                pieChart.getData().add(slice);
+            }
 
-		// Add the series to the bar chart
-		barChart.getData().add(dataSeries);
+            // Close the database connection
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-		barChart.setLayoutX(800);
-		barChart.setLayoutY(460);
-		barChart.setPrefHeight(300);
-		barChart.setPrefWidth(400);
+        pieChart.setLayoutX(420);
+        pieChart.setLayoutY(420);
+        pieChart.setPrefHeight(300);
+        pieChart.setPrefWidth(400);
 
-		giaoDienAnchorPane.getChildren().add(barChart);
-		for (XYChart.Data<String, Number> data : dataSeries.getData()) {
-			Node node = data.getNode();
-			Tooltip tooltip = new Tooltip(data.getYValue().toString());
-			Tooltip.install(node, tooltip);
-
-			node.setOnMouseEntered(event -> tooltip.show(node, event.getScreenX(), event.getScreenY() + 10));
-			node.setOnMouseExited(event -> tooltip.hide());
-		}
-	}
-
-	public void Top3SanPhamCoDoanhThuCaoNhat() {
-		CategoryAxis xAxis = new CategoryAxis();
-		NumberAxis yAxis = new NumberAxis();
-
-		xAxis.setLabel("Sản Phẩm");
-		yAxis.setLabel("Số lượng");
-
-		// Create the bar chart
-		BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
-		barChart.setTitle(null); // Remove the data series label
-
-		// Create a series of data points
-		XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
-		dataSeries.setName(null); // Remove the data series name
-		try {
-			// Establish a database connection
-			Statement statement = database.connection.createStatement();
-
-			// Execute the query
-			String query = "SELECT Ten_SP, TotalProduct " +
-			        "FROM ( " +
-			        "    SELECT Ten_SP, SUM(SO_LUONG) AS TotalProduct " +
-			        "    FROM ( " +
-			        "        SELECT SanPham.Ten_SP, CTHD.SO_LUONG " +
-			        "        FROM SANPHAM " +
-			        "        INNER JOIN CTHD ON SANPHAM.Ma_SP = CTHD.Ma_SP " +
-			        "    ) " +
-			        "    GROUP BY Ten_SP " +
-			        "    ORDER BY TotalProduct DESC " +
-			        ") " +
-			        "WHERE ROWNUM <= 3";
-
-			ResultSet resultSet = statement.executeQuery(query);
-
-			// Iterate through the result set and create data slices
-			while (resultSet.next()) {
-				String tenKhachHang = resultSet.getString("Ten_SP");
-				int totalMoney = resultSet.getInt("TotalProduct");
-
-				dataSeries.getData().add(new XYChart.Data<>(tenKhachHang, totalMoney));
-			}
-
-			// Close the database connection
-			resultSet.close();
-			statement.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		barChart.setCategoryGap(50); // Adjust the gap between bars
-		barChart.setBarGap(10); // Adjust the gap between categories
-
-		// Add the series to the bar chart
-		barChart.getData().add(dataSeries);
-		for (XYChart.Data<String, Number> data : dataSeries.getData()) {
-			Node node = data.getNode();
-			Tooltip tooltip = new Tooltip(data.getYValue().toString());
-			Tooltip.install(node, tooltip);
-		}
-
-		barChart.setLayoutX(30);
-		barChart.setLayoutY(460);
-		barChart.setPrefHeight(300);
-		barChart.setPrefWidth(400);
-
-		giaoDienAnchorPane.getChildren().add(barChart);
-
-		for (XYChart.Data<String, Number> data : dataSeries.getData()) {
-			Node node = data.getNode();
-			Tooltip tooltip = new Tooltip(data.getYValue().toString());
-			Tooltip.install(node, tooltip);
-
-			node.setOnMouseEntered(event -> tooltip.show(node, event.getScreenX(), event.getScreenY() + 10));
-			node.setOnMouseExited(event -> tooltip.hide());
-		}
-	}
-
-	public void SoLuongSanPhamCacLoai() {
-		// Create the pie chart
-		PieChart pieChart = new PieChart();
-
-		try {
-			// Establish a database connection
-			Statement statement = database.connection.createStatement();
-
-			// Execute the query
-			String query = "SELECT LoaiSanPham.Ten_LSP, SUM(SanPham.So_Luong) AS TotalQuantity " + "FROM SanPham "
-					+ "INNER JOIN LoaiSanPham ON SanPham.Ma_LSP = LoaiSanPham.Ma_LSP " + "GROUP BY LoaiSanPham.Ten_LSP";
-			ResultSet resultSet = statement.executeQuery(query);
-
-			// Iterate through the result set and create data slices
-			while (resultSet.next()) {
-				String loaiSanPham = resultSet.getString("Ten_LSP");
-				int totalQuantity = resultSet.getInt("TotalQuantity");
-
-				PieChart.Data slice = new PieChart.Data(loaiSanPham, totalQuantity);
-				pieChart.getData().add(slice);
-			}
-
-			// Close the database connection
-			resultSet.close();
-			statement.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		pieChart.setLayoutX(420);
-		pieChart.setLayoutY(420);
-		pieChart.setPrefHeight(300);
-		pieChart.setPrefWidth(400);
-
-		giaoDienAnchorPane.getChildren().add(pieChart);
-
-	}
+        giaoDienAnchorPane.getChildren().add(pieChart);    
+        
+    }
+    
+    
+    
 
 }

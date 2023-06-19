@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QLHoaDonController">
+   <children>
+      <SplitPane dividerPositions="0.3018092105263157" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <SplitPane dividerPositions="0.899311789347696" layoutX="213.0" layoutY="98.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
+                           <children>
+                              <Text fill="#44707a" layoutX="-72.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 35;" text="Quản lý hóa đơn" underline="true" wrappingWidth="326.3999267578125" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Text>
+                              <SplitPane dividerPositions="0.39396067415730346, 0.7661516853932585" layoutX="50.0" layoutY="80.0" prefHeight="30.0" prefWidth="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0">
+                                 <items>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <Text layoutX="1.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tổng số (100)" textAlignment="CENTER" wrappingWidth="106.83242416381836" AnchorPane.leftAnchor="1.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="116.0">
+                                       <children>
+                                          <Text layoutX="1.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn (5)" textAlignment="CENTER" wrappingWidth="97.23241806030273">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="38.0" prefWidth="63.0">
+                                       <children>
+                                          <Text layoutX="1.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lọc" textAlignment="CENTER" wrappingWidth="62.8323335647583">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
+                              <TextField fx:id="timKiemTextField" layoutX="379.0" layoutY="24.0" maxHeight="50.0" maxWidth="250.0" prefHeight="40.0" prefWidth="230.0" promptText="Nhập mã hoá đơn cần tìm" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="30.0" />
+                              <Button fx:id="timKiemButton" layoutX="730.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleTimKiem" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Tìm kiếm" textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0" />
+                              <SplitPane dividerPositions="0.2276069518716577, 0.48328877005347587, 0.7957887700534758" layoutX="50.0" layoutY="135.0" maxWidth="605.0" minWidth="600.0" prefHeight="40.0" prefWidth="919.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="145.0">
+                                 <items>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
+                                       <children>
+                                          <MenuButton fx:id="khachHangMenu" layoutX="2.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" style="-fx-background-color: #FFFFFF;" text="Lọc Khách Hàng">
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                                            </items>
+                                          </MenuButton>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="498.0" style="-fx-background-color: #FFFFFF;">
+                                       <children>
+                                          <MenuButton fx:id="TinhTrangMenu" layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: #FFFFFF;" text="Chọn Tình Trạng">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                          </MenuButton>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="141.0" style="-fx-background-color: #FFFFFF;">
+                                       <children>
+                                          <MenuButton fx:id="nhanVienMenu" layoutX="-5.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF;" text="Chọn Nhân Viên">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                          </MenuButton>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+                                       <children>
+                                          <Button fx:id="apdungButton" layoutX="164.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleApDung" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Áp dụng" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
+                              <Button fx:id="huyApDungButton" layoutX="656.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleHuyApDung" prefHeight="40.0" prefWidth="78.0" style="-fx-background-color: #1EB2A6;" text="Huỷ" textFill="WHITE" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
+                           <children>
+                              <TextField layoutX="95.0" layoutY="104.0" maxHeight="50.0" maxWidth="250.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="105.0">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </TextField>
+                              <Button fx:id="ThemMoiButton" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Thêm mới" textFill="WHITE" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
+               <children>
+                  <SplitPane layoutX="75.0" layoutY="82.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
+                     <items>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9; -fx-border-color: #FFFFFF; -fx-border-radius: 5; -fx-border-width: 1.5;">
+                           <children>
+                              <TableView fx:id="table" prefHeight="750.0" prefWidth="780.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0">
+                                 <columns>
+                                    <TableColumn id="sohoadonColumn" fx:id="sohoadonColumn" prefWidth="75.0" text="Số hóa đơn" />
+                                    <TableColumn id="maKhColumn" fx:id="maKhColumn" prefWidth="75.0" text="Tên khách hàng" />
+                                    <TableColumn id="ngaylapColumn" fx:id="ngaylapColumn" prefWidth="75.0" text="Ngày lập" />
+                                    <TableColumn id="thanhtienColumn" fx:id="thanhtienColumn" prefWidth="75.0" text="Thành tiền" />
+                                    <TableColumn id="tinhtrangColumn" fx:id="tinhtrangColumn" prefWidth="75.0" text="Tình trạng" />
+                                    <TableColumn id="nhanvienbanhangColumn" fx:id="nhanvienbanhangColumn" prefWidth="75.0" text="Nhân viên bán hàng" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+                  <StackPane layoutX="46.0" layoutY="15.0" prefHeight="30.0" prefWidth="179.0" style="-fx-background-color: #A0C3C9;">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách hóa đơn" textOrigin="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

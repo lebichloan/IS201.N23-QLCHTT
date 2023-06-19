@@ -26,7 +26,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -124,14 +123,12 @@ public class ThemHoaDonController implements Initializable {
 	@FXML
 	private Text soHoaDonTuDongTao;
 	@FXML
-	private Button quayLaiButton, themKhachHangButton;
+	private Button quayLaiButton;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		chuaThanhToanCheckBox.setSelected(true);
 		loadDanhSachKhachHang();
-		nhanVienMenu.setText(common.NV.getMaNV());
-		
 		loadDanhSachNhanVien();
 		loadDanhSachSanPham();
 		capNhatThanhTien();
@@ -140,11 +137,6 @@ public class ThemHoaDonController implements Initializable {
 		handleChonTinhTrangDonHang();
 		handleNgayTao();
 		soHoaDonTuDongTao.setText(TuTaoKey.createKey("HD"));
-		
-	}
-	@FXML
-	private void themKhachHangButtonClicked() {
-		
 	}
 	
 	@FXML

@@ -3,7 +3,9 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.shape.Line;
 import dao.CTHDDAO;
 import dao.KhachHangDAO;
 import dao.NhanVienDAO;
@@ -24,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,7 +40,7 @@ import model.NhanVien;
 public class ThongTinHoaDonController implements Initializable{
 
 	@FXML
-	private MenuButton khachHangMenu,nhanVienMenu;
+	private MenuButton khachHangMenu,nhanVienMenu,loaiKhachHangMenuButton;
 	@FXML
 	private TextField tenKhachHangTextField,sdtTextField,diaChiTextField,tenNhanVienTextField;
 	@FXML
@@ -102,44 +105,72 @@ public class ThongTinHoaDonController implements Initializable{
 
 
 
+
+
 	private Node createPrintingContent() {
-	    // Tạo một GridPane để chứa nội dung in
+	    // Create a GridPane to contain the printing content
 	    GridPane gridPane = new GridPane();
 	    gridPane.setHgap(10);
 	    gridPane.setVgap(10);
 
-	    // Thêm các nodes vào GridPane
-	    gridPane.add(new Label("Hóa Đơn"), 0, 0);
-	    gridPane.add(new Label("Mã hóa đơn: " + soHoaDonTuDongTao.getText()), 0, 1);
-	    gridPane.add(new Label("Ngày tạo: " + ngayTaoText.getText()), 0, 2);
+	    // Set column constraints for better alignment
+	    ColumnConstraints columnConstraints = new ColumnConstraints();
+	    columnConstraints.setHgrow(Priority.ALWAYS);
+	    gridPane.getColumnConstraints().addAll(new ColumnConstraints(), columnConstraints);
 
-	    // Thêm các thông tin khách hàng vào GridPane
-	    gridPane.add(new Label("Thông tin khách hàng"), 0, 4);
-	    gridPane.add(new Label("Tên khách hàng: " + tenKhachHangTextField.getText()), 0, 5);
-	    gridPane.add(new Label("Số điện thoại: " + sdtTextField.getText()), 0, 6);
-	    gridPane.add(new Label("Địa chỉ: " + diaChiTextField.getText()), 0, 7);
+	    // Set row constraints for better alignment
+	    RowConstraints rowConstraints = new RowConstraints();
+	    rowConstraints.setVgrow(Priority.ALWAYS);
+	    gridPane.getRowConstraints().addAll(rowConstraints, rowConstraints, rowConstraints);
 
-	    // Thêm các thông tin nhân viên vào GridPane
-	    gridPane.add(new Label("Thông tin nhân viên"), 1, 4);
-	    gridPane.add(new Label("Tên nhân viên: " + tenNhanVienTextField.getText()), 1, 5);
+	    // Add nodes to the GridPane
+	    gridPane.add(new Label("Hóa Đơn"), 0, 0, 2, 1);
 
-	    // Tạo một GridPane mới để chứa thông tin chi tiết hóa đơn
+	    // Add a line separator
+	    Line line = new Line(0, 0, 1, 0);
+	    line.getStyleClass().add("separator-line");
+	    gridPane.add(line, 0, 1, 2, 1);
+
+	    gridPane.add(new Label("Mã hóa đơn: " + soHoaDonTuDongTao.getText()), 0, 2, 2, 1);
+	    gridPane.add(new Label("Ngày tạo: " + ngayTaoText.getText()), 0, 3, 2, 1);
+
+	    // Add customer information to the GridPane
+	    gridPane.add(new Label("Thông tin khách hàng"), 0, 5, 2, 1);
+	    gridPane.add(new Label("Tên khách hàng: " + tenKhachHangTextField.getText()), 0, 6, 2, 1);
+	    gridPane.add(new Label("Số điện thoại: " + sdtTextField.getText()), 0, 7, 2, 1);
+	    gridPane.add(new Label("Địa chỉ: " + diaChiTextField.getText()), 0, 8, 2, 1);
+
+	    // Add a line separator
+	    Line line2 = new Line(0, 0, 1, 0);
+	    line2.getStyleClass().add("separator-line");
+	    gridPane.add(line2, 0, 9, 2, 1);
+
+	    // Add employee information to the GridPane
+	    gridPane.add(new Label("Thông tin nhân viên"), 0, 11, 2, 1);
+	    gridPane.add(new Label("Tên nhân viên: " + tenNhanVienTextField.getText()), 0, 12, 2, 1);
+
+	    // Create a new GridPane to contain the detailed invoice information
 	    GridPane cthdGridPane = new GridPane();
 	    cthdGridPane.setHgap(10);
 	    cthdGridPane.setVgap(10);
 
-	    // Thêm các cột vào GridPane thông tin chi tiết hóa đơn
+	    // Set column constraints for the detailed invoice GridPane
+	    ColumnConstraints cthdColumnConstraints = new ColumnConstraints();
+	    cthdColumnConstraints.setHgrow(Priority.ALWAYS);
+	    cthdGridPane.getColumnConstraints().addAll(cthdColumnConstraints, cthdColumnConstraints, cthdColumnConstraints, cthdColumnConstraints);
+
+	    // Add columns to the GridPane for detailed invoice information
 	    cthdGridPane.add(new Label("Tên mặt hàng"), 0, 0);
 	    cthdGridPane.add(new Label("Số lượng"), 1, 0);
 	    cthdGridPane.add(new Label("Đơn giá"), 2, 0);
 	    cthdGridPane.add(new Label("Thành tiền"), 3, 0);
 
-	    // Lấy dữ liệu từ TableView và thêm vào GridPane thông tin chi tiết hóa đơn
+	    // Retrieve data from TableView and add it to the GridPane for detailed invoice information
 	    int rowIndex = 1;
 	    for (CTHD cthd : cthdTable.getItems()) {
-	        String tenMatHang = SanPhamDAO.getInstance().selectedById(cthd.getMaSp()).getTenMatHang();
+	        String tenMatHang = SanPhamDAO.getInstance().selectedById(cthd.getMaSp()).getTenSP();
 	        String soLuong = String.valueOf(cthd.getSoLuong());
-	        String donGia = String.valueOf(cthd.getDonGia());
+	        String donGia = String.valueOf(cthd.getGia());
 	        String thanhTien = String.valueOf(cthd.getThanhTien());
 
 	        cthdGridPane.add(new Label(tenMatHang), 0, rowIndex);
@@ -150,18 +181,25 @@ public class ThongTinHoaDonController implements Initializable{
 	        rowIndex++;
 	    }
 
-	    // Thêm GridPane thông tin chi tiết hóa đơn vào GridPane chính
-	    gridPane.add(new Label("Thông tin chi tiết hóa đơn"), 0, 9, 2, 1);
-	    gridPane.add(cthdGridPane, 0, 10, 2, 1);
+	    // Add the detailed invoice GridPane to the main GridPane
+	    gridPane.add(new Label("Thông tin chi tiết hóa đơn"), 0, 14, 4, 1);
 
-	    // Thêm các thông tin tổng hợp hóa đơn vào GridPane
-	    gridPane.add(new Label("Tổng số lượng mặt hàng: " + tongSoLuongMatHangTextFiled.getText()), 0, 12);
-	    gridPane.add(new Label("Tổng tiền hàng: " + TongTienHangTextField.getText()), 0, 13);
-	    gridPane.add(new Label("Tổng khuyến mãi: " + tongKhuyenMaiTextField.getText()), 0, 14);
-	    gridPane.add(new Label("Tổng tiền thanh toán: " + tongTienThanhToanTextField.getText()), 0, 15);
+	    // Add a line separator
+	    Line line3 = new Line(0, 0, 1, 0);
+	    line3.getStyleClass().add("separator-line");
+	    gridPane.add(line3, 0, 15, 4, 1);
+
+	    gridPane.add(cthdGridPane, 0, 16, 4, rowIndex);
+
+	    // Add the summarized invoice information to the GridPane
+	    gridPane.add(new Label("Tổng số lượng mặt hàng: " + tongSoLuongMatHangTextFiled.getText()), 0, rowIndex + 18, 2, 1);
+	    gridPane.add(new Label("Tổng tiền hàng: " + TongTienHangTextField.getText()), 0, rowIndex + 19, 2, 1);
+	    gridPane.add(new Label("Tổng khuyến mãi: " + tongKhuyenMaiTextField.getText()), 0, rowIndex + 20, 2, 1);
+	    gridPane.add(new Label("Tổng tiền thanh toán: " + tongTienThanhToanTextField.getText()), 0, rowIndex + 21, 2, 1);
 
 	    return gridPane;
 	}
+
 
 
 	//Hàm Hiển thị thông tin Hoá Đơn
@@ -181,7 +219,7 @@ public class ThongTinHoaDonController implements Initializable{
         // Hiển thị thông tin chi tiết của hoá đơn
         soHoaDonTuDongTao.setText(hoaDon.getSoHd());
         ngayTaoText.setText(hoaDon.getNgayLap().toString());
-        double TongTienHang = hoaDon.getKhuyenMai()+hoaDon.getTongTien();
+        double TongTienHang =  hoaDon.getTongTien() / ((100 - hoaDon.getKhuyenMai())/100);
 		TongTienHangTextField.setText(String.valueOf(TongTienHang));
 		tongKhuyenMaiTextField.setText(String.valueOf(hoaDon.getKhuyenMai()));
 		tongTienThanhToanTextField.setText(String.valueOf(hoaDon.getTongTien()));
@@ -189,9 +227,19 @@ public class ThongTinHoaDonController implements Initializable{
 	public void loadThongTinKhachHang(HoaDon hoaDon) {
 		 khachHangMenu.setText(hoaDon.getMaKh());
 		 KhachHang kh = khachHangDAO.selectedById(hoaDon.getMaKh());
-	        tenKhachHangTextField.setText(kh.getTenKh());
-			diaChiTextField.setText(kh.getDiaChi());
+		 if(kh != null) {
+			 tenKhachHangTextField.setText(kh.getTenKh());
+			 diaChiTextField.setText(kh.getDiaChi());
 			sdtTextField.setText(kh.getSdt());
+			khachHangMenu.setText(kh.getMaKh());
+			loaiKhachHangMenuButton.setText(kh.getMaLkh());
+		 } else {
+			 tenKhachHangTextField.setText("Không rõ");
+			 diaChiTextField.setText("Không rõ");
+			sdtTextField.setText("Không rõ");
+			khachHangMenu.setText("Không rõ");
+			loaiKhachHangMenuButton.setText("Không rõ");
+		 }
 			tongSoLuongMatHangTextFiled.setText(String.valueOf(hoaDon.getSlmh()));
 	}
 	private void khoitaoCTHDTable(String soHD){

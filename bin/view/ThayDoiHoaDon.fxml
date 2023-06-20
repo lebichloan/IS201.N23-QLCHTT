@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThayDoiHoaDonController">
+   <children>
+      <SplitPane dividerPositions="0.9396511079679396" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="599.0">
+               <children>
+                  <SplitPane dividerPositions="0.10556670010030089" layoutX="181.0" layoutY="-36.0" orientation="VERTICAL" prefHeight="750.0" prefWidth="699.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
+                           <children>
+                              <Text fill="#44707a" layoutX="205.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: BOLD; -fx-font-size: 35;" text="Thay đổi thông tin hóa đơn" textAlignment="CENTER" wrappingWidth="1197.6000000000001" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Text>
+                              <Button fx:id="quayLaiButton" layoutX="484.0" layoutY="14.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" onAction="#handleQuayLai" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Quay lại" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <SplitPane dividerPositions="0.47246784565916394" layoutX="42.0" layoutY="45.0" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <items>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <SplitPane dividerPositions="0.3734392735527809" orientation="VERTICAL" prefHeight="326.0" prefWidth="957.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <items>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
+                                                   <children>
+                                                      <SplitPane maxHeight="590.0" maxWidth="709.0" prefHeight="302.0" prefWidth="658.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                                                         <items>
+                                                            <AnchorPane prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9; -fx-border-radius: 5; -fx-border-width: 1.5; -fx-border-color: #FFFFFF;">
+                                                               <children>
+                                                                  <Text fill="WHITE" layoutX="29.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã khách hàng" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="27.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="70.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <TextField fx:id="diaChiTextField" layoutX="110.0" layoutY="151.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="151.0" />
+                                                                  <Text fill="WHITE" layoutX="30.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="151.6552734375">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <TextField fx:id="sdtTextField" layoutX="110.0" layoutY="106.0" maxHeight="40.0" maxWidth="411.0" prefHeight="40.0" prefWidth="411.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="106.0" />
+                                                                  <Text fill="WHITE" layoutX="30.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SĐT" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="111.6552734375">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <TextField fx:id="tenKhachHangTextField" layoutX="111.0" layoutY="65.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="274.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
+                                                                  <MenuButton fx:id="khachHangMenu" layoutX="169.0" layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF;" text="Chọn mã khách hàng" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="15.0">
+                                                                     <items>
+                                                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                                     </items>
+                                                                  </MenuButton>
+                                                                  <MenuButton layoutX="325.0" layoutY="15.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="176.0" style="-fx-background-color: #FFFFFF;" text="Chọn loại khách hàng" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="15.0">
+                                                                     <items>
+                                                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                                     </items>
+                                                                  </MenuButton>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </items>
+                                                      </SplitPane>
+                                                      <StackPane layoutX="30.0" layoutY="33.0" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9;">
+                                                         <children>
+                                                            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin khách hàng" textOrigin="CENTER">
+                                                               <font>
+                                                                  <Font size="20.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </StackPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="325.0" prefWidth="395.0" style="-fx-background-color: #A0C3C9;">
+                                                   <children>
+                                                      <SplitPane maxHeight="590.0" maxWidth="709.0" prefHeight="302.0" prefWidth="658.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
+                                                         <items>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9; -fx-border-radius: 5; -fx-border-width: 1.5; -fx-border-color: #FFFFFF;">
+                                                               <children>
+                                                                  <Text fill="WHITE" layoutX="20.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã sản phẩm*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <MenuButton fx:id="sanPhamMenu" layoutX="20.0" layoutY="44.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #FFFFFF;" text="Chọn mã sản phẩm" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="45.0">
+                                                                     <items>
+                                                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                                     </items>
+                                                                  </MenuButton>
+                                                                  <Text fill="WHITE" layoutX="313.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên sản phẩm*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="85.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="22.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Màu sắc" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="166.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="305.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kích thước" AnchorPane.leftAnchor="305.0" AnchorPane.topAnchor="115.6552734375">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="16.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng*" AnchorPane.topAnchor="215.6552734375">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="266.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Khuyến Mãi(%)*" wrappingWidth="126.3999999999997" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="179.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="20.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn giá*" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="265.6552734375">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="9.0" layoutY="336.3447265625" strokeType="OUTSIDE" strokeWidth="0.0" text="Thành tiền*" wrappingWidth="93.40869140625" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="318.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Button fx:id="luuCTHDButton" layoutX="352.0" layoutY="270.0" maxHeight="100.0" maxWidth="150.0" mnemonicParsing="false" onAction="#handleLuuCTHDButton" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #1EB2A6;" text="Lưu vào hóa đơn" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="10.0" />
+                                                                  <Button layoutX="327.0" layoutY="-15.0" maxHeight="100.0" maxWidth="150.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1EB2A6;" text="Chọn từ danh sách" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0" />
+                                                                  <TextField fx:id="tenSanPhamTextField" layoutX="20.0" layoutY="108.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="242.0" />
+                                                                  <TextField fx:id="mauSacTextField" layoutX="107.0" layoutY="159.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="142.0" />
+                                                                  <TextField fx:id="kichThuocTextField" layoutX="391.0" layoutY="108.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="135.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="10.0" />
+                                                                  <TextField fx:id="khuyenMaiTextField" layoutX="392.0" layoutY="172.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="126.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="10.0" />
+                                                                  <Text fill="WHITE" layoutX="329.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Còn Lại">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="300.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn vị tính*">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <TextField fx:id="soLuongTextField" layoutX="107.0" layoutY="207.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="142.0" />
+                                                                  <TextField fx:id="donGiaTextField" layoutX="107.0" layoutY="257.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="142.0" />
+                                                                  <TextField fx:id="thanhTienTextField" layoutX="107.0" layoutY="303.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="142.0" />
+                                                                  <TextField fx:id="conLaiTextField" layoutX="392.0" layoutY="227.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="126.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="10.0" />
+                                                                  <TextField fx:id="donViTinhTextField" layoutX="392.0" layoutY="277.0" maxHeight="40.0" maxWidth="400.0" prefHeight="40.0" prefWidth="126.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="10.0" />
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </items>
+                                                      </SplitPane>
+                                                      <StackPane layoutX="30.0" layoutY="10.0" prefHeight="40.0" prefWidth="284.0" style="-fx-background-color: #A0C3C9;">
+                                                         <children>
+                                                            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi sản phẩm cho hóa đơn" textOrigin="CENTER">
+                                                               <font>
+                                                                  <Font size="20.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </StackPane>
+                                                   </children>
+                                                </AnchorPane>
+                                             </items>
+                                          </SplitPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="366.0" prefWidth="995.0" style="-fx-background-color: #A0C3C9;">
+                                       <children>
+                                          <SplitPane maxHeight="590.0" maxWidth="709.0" prefHeight="302.0" prefWidth="658.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                                             <items>
+                                                <AnchorPane prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9; -fx-border-color: #FFFFFF; -fx-border-radius: 5; -fx-border-width: 1.5;">
+                                                   <children>
+                                                      <SplitPane dividerPositions="0.15139826422372227, 0.7814207650273224" orientation="VERTICAL" prefHeight="322.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                                                         <items>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9;">
+                                                               <children>
+                                                                  <Text fill="WHITE" layoutX="27.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số hóa đơn*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="soHoaDonTuDongTao" fill="WHITE" layoutX="185.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HD001" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="10.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="334.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo*" AnchorPane.leftAnchor="334.0" AnchorPane.topAnchor="9.6552734375">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="37.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tình trạng*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="50.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <CheckBox fx:id="daThanhToanCheckBox" layoutX="119.0" layoutY="56.0" mnemonicParsing="false" prefWidth="150.0" text="Đã thanh toán" textFill="WHITE" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="55.0">
+                                                                     <font>
+                                                                        <Font size="15.0" />
+                                                                     </font>
+                                                                  </CheckBox>
+                                                                  <CheckBox fx:id="chuaThanhToanCheckBox" layoutX="258.0" layoutY="71.0" mnemonicParsing="false" prefWidth="150.0" text="Chưa thanh toán" textFill="WHITE" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="55.0">
+                                                                     <font>
+                                                                        <Font size="15.0" />
+                                                                     </font>
+                                                                  </CheckBox>
+                                                                  <CheckBox fx:id="daHuyCheckBox" layoutX="414.0" layoutY="60.0" mnemonicParsing="false" prefWidth="92.0" text="Đã hủy" textFill="WHITE" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="55.0">
+                                                                     <font>
+                                                                        <Font size="15.0" />
+                                                                     </font>
+                                                                  </CheckBox>
+                                                                  <Text fx:id="ngayTaoText" fill="WHITE" layoutX="416.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo*" wrappingWidth="175.99999999999972">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <TableView fx:id="cthdTable" prefHeight="750.0" prefWidth="606.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <columns>
+                                                                        <TableColumn fx:id="maSanPhamColumn" prefWidth="75.0" text="Mã sản phẩm" />
+                                                                        <TableColumn fx:id="tenSanPhamColumn" prefWidth="75.0" text="Tên sản phẩm" />
+                                                                        <TableColumn fx:id="soLuongColumn" prefWidth="75.0" text="Số lượng" />
+                                                                        <TableColumn fx:id="donViTinhColumn" prefWidth="75.0" text="Đơn vị tính" />
+                                                                        <TableColumn fx:id="donGiaColumn" prefWidth="75.0" text="Đơn giá" />
+                                                                        <TableColumn fx:id="khuyenMaiColumn" prefWidth="75.0" text="Khuyến mãi" />
+                                                                        <TableColumn fx:id="thanhTienColumn" prefWidth="75.0" text="Thành tiền" />
+                                                                     </columns>
+                                                                     <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                     </columnResizePolicy>
+                                                                  </TableView>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A0C3C9;">
+                                                               <children>
+                                                                  <Text fill="WHITE" layoutX="335.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tổng số lượng mặt hàng:" wrappingWidth="192.56835937500009" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="10.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="206.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tổng tiền hàng:" wrappingWidth="126.3999999999997" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="40.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="337.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Khuyến mãi:" wrappingWidth="93.40869140625" AnchorPane.rightAnchor="246.0" AnchorPane.topAnchor="70.0">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fill="WHITE" layoutX="197.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tổng tiền thanh toán:" wrappingWidth="168.80008544921844" AnchorPane.rightAnchor="240.59991455078153" AnchorPane.topAnchor="99.6552734375">
+                                                                     <font>
+                                                                        <Font size="17.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <TextField fx:id="tongSoLuongMatHangTextFiled" layoutX="366.0" layoutY="9.0" prefHeight="26.0" prefWidth="234.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="10.0" />
+                                                                  <TextField fx:id="tongTienThanhToanTextField" layoutX="366.0" layoutY="98.0" prefHeight="26.0" prefWidth="234.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="10.0" />
+                                                                  <TextField fx:id="tongKhuyenMaiTextField" layoutX="366.0" layoutY="68.0" prefHeight="26.0" prefWidth="234.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="10.0" />
+                                                                  <TextField fx:id="TongTienHangTextField" layoutX="366.0" layoutY="38.0" prefHeight="26.0" prefWidth="234.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="10.0" />
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </items>
+                                                      </SplitPane>
+                                                   </children>
+                                                </AnchorPane>
+                                             </items>
+                                          </SplitPane>
+                                          <Button layoutX="518.0" layoutY="15.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Xuất hóa đơn" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                                          <StackPane layoutX="33.0" layoutY="26.0" prefHeight="47.0" prefWidth="182.0" style="-fx-background-color: #A0C3C9;">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin đơn hàng" textOrigin="CENTER">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </StackPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A0C3C9;">
+               <children>
+                  <Button fx:id="luuHoaDonButton" layoutX="549.0" layoutY="4.0" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" onAction="#luuHoaDonButton" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #1EB2A6;" text="Lưu thay đổi" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="549.4000000000001" AnchorPane.topAnchor="5.0" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

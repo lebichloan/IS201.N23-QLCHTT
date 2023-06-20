@@ -7,8 +7,8 @@ import java.sql.Statement;
 
 public class database {
     public static String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-    public static String username = "QLCHTT";
-    public static String password = "PASSWORD";
+    public static String username = "c##java";
+    public static String password = "java";
 
     public static Connection connection;
 

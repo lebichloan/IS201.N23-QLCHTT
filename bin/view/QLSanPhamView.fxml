@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="1155.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <TableView fx:id="table" layoutX="28.0" layoutY="52.0" prefHeight="496.0" prefWidth="810.0">
+        <columns>
+            <TableColumn fx:id="maSPColumn" prefWidth="124.79998397827148" text="Mã Sản Phẩm" />
+          <TableColumn fx:id="tenSPColumn" prefWidth="106.40000915527344" text="Tên Sản Phẩm" />
+          <TableColumn fx:id="mauSacColumn" prefWidth="92.800048828125" text="Màu Sắc" />
+            <TableColumn fx:id="kichThuocColumn" prefWidth="106.39996337890625" text="Kích Thước" />
+            <TableColumn fx:id="tinhTrangColumn" prefWidth="149.60003662109375" text="Tình Trạng" />
+            <TableColumn fx:id="maLSPColumn" prefWidth="229.60003662109375" text="Loại Sản Phẩm" />
+        </columns>
+      </TableView>
+      <Button fx:id="add" layoutX="28.0" layoutY="589.0" mnemonicParsing="false" onAction="#add" text="Thêm" />
+      <Button fx:id="delete" layoutX="415.0" layoutY="589.0" mnemonicParsing="false" onAction="#delete" text="Xoá" />
+      <Button fx:id="update" layoutX="771.0" layoutY="576.0" mnemonicParsing="false" text="Cập Nhật" />
+      <Label layoutX="851.0" layoutY="85.0" prefHeight="18.0" prefWidth="78.0" text="Mã Sản Phẩm" />
+      <TextField fx:id="maSPTextField" layoutX="951.0" layoutY="81.0" prefHeight="26.0" prefWidth="173.0" />
+      <Label layoutX="851.0" layoutY="134.0" prefHeight="18.0" prefWidth="123.0" text="Tên Sản Phẩm" />
+      <TextField fx:id="tenSPTextField" layoutX="951.0" layoutY="130.0" prefHeight="26.0" prefWidth="173.0" />
+      <Label layoutX="855.0" layoutY="189.0" prefHeight="18.0" prefWidth="90.0" text="Màu Sắc" />
+      <TextField fx:id="mauSacTextField" layoutX="951.0" layoutY="185.0" prefHeight="26.0" prefWidth="173.0" />
+      <Label layoutX="855.0" layoutY="243.0" prefHeight="18.0" prefWidth="102.0" text="Kích Thước" />
+      <TextField fx:id="kichThuocTextField" layoutX="951.0" layoutY="239.0" prefHeight="26.0" prefWidth="173.0" />
+      <Label layoutX="854.0" layoutY="293.0" prefHeight="18.0" prefWidth="102.0" text="Tình Trạng" />
+      <TextField fx:id="tinhTrangTextField" layoutX="951.0" layoutY="289.0" prefHeight="26.0" prefWidth="173.0" />
+      <Label layoutX="854.0" layoutY="348.0" prefHeight="18.0" prefWidth="123.0" text="Loại Sản Phẩm" />
+      <TextField fx:id="maLSPTextField" layoutX="951.0" layoutY="344.0" prefHeight="26.0" prefWidth="173.0" />
+   </children>
+</AnchorPane>

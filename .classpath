@@ -6,37 +6,22 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/fx_lib">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jfx_lib">
+	<classpathentry kind="lib" path="D:/jfoenix/jfoenix-9.0.10.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/IS201.N23.QLCHTT-Trieu/src/lib/itextpdf-5.5.9.jar">
+	<classpathentry kind="lib" path="D:/ojdbc11.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/IS201.N23.QLCHTT-Trieu/src/lib/jfoenix-9.0.10.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/IS201.N23.QLCHTT-Trieu/src/lib/ojdbc11.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javaFX">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

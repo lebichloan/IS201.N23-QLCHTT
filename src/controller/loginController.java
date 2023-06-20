@@ -268,8 +268,8 @@ public class loginController implements Initializable {
     }
     
     public void loginAction(ActionEvent event) throws IOException {
-    	String username = loginUserName.getText();
-    	String password = loginShowPassWord.getText();
+    	String username = loginUserName.getText().trim();
+    	String password = loginShowPassWord.getText().trim();
     	conn = database.getConnection();
     	sql = "select * from nhanvien where username = ? and password = ?";
     	try {

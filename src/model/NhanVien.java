@@ -1,5 +1,10 @@
 package model;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 
 import javafx.beans.property.BooleanProperty;
@@ -20,20 +25,22 @@ public class NhanVien {
 	private String username;
 	private String password;
 	private CheckBox checkBox;
-	String maLND;
+	private String maLND;
+	private File avatarFile;
 	
 	public NhanVien() {
 		checkBox = new CheckBox();
 		checkBox.setSelected(false);
+		avatarFile = null;
 	}
 
 	public NhanVien(String maNV, String hoten, String gioiTinh, LocalDate ngaySinh, String diaChi, String sdt,
-			String email, String ghiChu, LocalDate ngayVL, String username, String password, String ma_lnd) {
+			String email, String ghiChu, LocalDate ngayVL, String username, String password, String ma_lnd, File avatar) {
 		super();
 		this.maNV = maNV;
 		this.hoten = hoten;
 		this.gioiTinh = gioiTinh;
-		NgaySinh = ngaySinh;
+		this.NgaySinh = ngaySinh;
 		this.diaChi = diaChi;
 		this.sdt = sdt;
 		this.email = email;
@@ -44,6 +51,24 @@ public class NhanVien {
 		this.maLND = ma_lnd;
 		checkBox = new CheckBox();
 		checkBox.setSelected(false);
+		this.setAvatarFile(avatar);
+	}
+	
+	public NhanVien(String maNV, String hoten, String gioiTinh, LocalDate ngaySinh, String diaChi, String sdt,
+			String email, String ghiChu, LocalDate ngayVL, String username, String password, String ma_lnd) {
+		super();
+		this.maNV = maNV;
+		this.hoten = hoten;
+		this.gioiTinh = gioiTinh;
+		this.NgaySinh = ngaySinh;
+		this.diaChi = diaChi;
+		this.sdt = sdt;
+		this.email = email;
+		this.ghiChu = ghiChu;
+		this.ngayVL = ngayVL;
+		this.username = username;
+		this.password = password;
+		this.maLND = ma_lnd;
 	}
 
 	public String getMaLnd() {
@@ -146,4 +171,39 @@ public class NhanVien {
 		return checkBox;
 	}
 	
+	public File getAvatarFile() {
+		return this.avatarFile;
+	}
+	
+	public void setAvatarFile(File file) {
+		if(file == null) {
+			this.avatarFile = null;
+			return;
+		}
+		String fileName = this.getMaNV() + "Avatar.png";
+		try {
+			Files.copy(Paths.get(file.toURI()), Paths.get(
+					System.getProperty("user.dir")+"/src/asset/"+fileName), 
+					StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.avatarFile = new File(System.getProperty("user.dir")+"/src/asset/"+fileName);
+	}
+	
+	public void clone(NhanVien nv) {
+		this.hoten = nv.getHoten();
+		this.gioiTinh = nv.getGioiTinh();
+		this.NgaySinh = nv.getNgaySinh();
+		this.diaChi = nv.getDiaChi();
+		this.sdt = nv.getSdt();
+		this.email = nv.getEmail();
+		this.ghiChu = nv.getGhiChu();
+		this.ngayVL = nv.getNgayVL();
+		this.username = nv.getUsername();
+		this.password = nv.getPassword();
+		this.maLND = nv.getMaLnd();
+		this.avatarFile = nv.getAvatarFile();
+	}
 }

@@ -360,3 +360,13 @@
 	-fx-border-color: linear-gradient(to top, #007991, #78ffd6);
 	-fx-border-width: 2;
 }
+
+.error-text:focused {
+	-fx-focus-color: transparent;
+	-fx-background-insets: -0.2 -0.2 -0.2 -0.2;
+	-fx-border-width: 1.25;
+	-fx-border-color: #F90716;
+	-fx-border-radius: 3;
+	-fx-background-radius: 3;
+	-fx-effect: dropshadow(three-pass-box, rgba(249, 7, 35,0.5), 6, 0, 0, 0);
+}

@@ -4,6 +4,7 @@ module QLCHTT {
 	requires javafx.fxml;
 	requires java.sql;
 	requires com.jfoenix;
+	requires org.controlsfx.controls;
 
 	exports view;
 	exports model;

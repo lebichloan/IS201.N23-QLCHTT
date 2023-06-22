@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.sql.SQLType;
 import java.sql.Statement;
 import java.sql.Types;
+import java.text.ParseException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -32,9 +33,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import org.controlsfx.control.RangeSlider;
+
 import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXRadioButton;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -74,6 +78,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SelectionModel;
@@ -83,6 +88,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableRow;
@@ -106,6 +112,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -116,6 +123,7 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 import javafx.util.converter.DateStringConverter;
+import javafx.util.converter.NumberStringConverter;
 import model.NhanVien;
 import db.database;
 
@@ -137,26 +145,11 @@ public class QLNhanVienController implements Initializable {
 
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-	StringConverter<LocalDate> StringDateConverter = new StringConverter<LocalDate>() {
-		
-		@Override
-		public String toString(LocalDate arg0) {
-			System.out.println("hello from toString: " + ((arg0 == null)?"null":arg0.format(dtf)));
-			if(arg0 == null) return "";
-			return arg0.format(dtf);
-		}
-		
-		@Override
-		public LocalDate fromString(String arg0) {
-			System.out.println("hello from fromString: " + ((arg0 == null)?"null":arg0));
-			try {
-				LocalDate date = LocalDate.parse(arg0, dtf);
-				return date;
-			}catch(DateTimeParseException e) {
-				return null;
-			}
-		}
-	};
+	StringConverter<LocalDate> StringDateConverter=new StringConverter<LocalDate>(){
+
+	@Override public String toString(LocalDate arg0){System.out.println("hello from toString: "+((arg0==null)?"null":arg0.format(dtf)));if(arg0==null)return"";return arg0.format(dtf);}
+
+	@Override public LocalDate fromString(String arg0){System.out.println("hello from fromString: "+((arg0==null)?"null":arg0));try{LocalDate date=LocalDate.parse(arg0,dtf);return date;}catch(DateTimeParseException e){return null;}}};
 
 	private NhanVien NHANVIEN_SHOWING = null;
 
@@ -268,14 +261,21 @@ public class QLNhanVienController implements Initializable {
 		if (event.getCode() == KeyCode.ENTER)
 			root.requestFocus();
 	};
-	@FXML private AnchorPane disableAddPhotoPane;
-	@FXML JFXButton addEmployeeBtn;
+	@FXML
+	private AnchorPane disableAddPhotoPane;
+	@FXML
+	JFXButton addEmployeeBtn;
 
 	@FXML
 	private TableView<NhanVien> employeeTable;
 	TableViewSelectionModel<NhanVien> tsm;
 	ObservableList<NhanVien> nvList = FXCollections.observableArrayList();
-	FilteredList<NhanVien> filteredList = new FilteredList<>(nvList);
+	FilteredList<NhanVien> searchFilteredList = new FilteredList<>(nvList, nv -> {
+		return true;
+	});
+	FilteredList<NhanVien> filteredList = new FilteredList<>(searchFilteredList, nv -> {
+		return true;
+	});
 	private TableColumn<NhanVien, CheckBox> tickCol = new TableColumn<>(null);
 	@FXML
 	private TableColumn<NhanVien, String> maNVCol;
@@ -303,6 +303,46 @@ public class QLNhanVienController implements Initializable {
 	Image activeSearchIcon = new Image(getClass().getResource("/asset/activeSearchIcon.gif").toExternalForm());
 	@FXML
 	private ImageView clearSearchBtn;
+
+	// filter
+	@FXML
+	private ToggleGroup gender;
+	@FXML
+	private JFXRadioButton maleRadioBtn;
+	@FXML
+	private JFXRadioButton femaleRadioBtn;
+	@FXML
+	private TextField minAgeTextField;
+	@FXML
+	private TextField maxAgeTextField;
+	@FXML
+	private RangeSlider ageRangeSlider;
+	@FXML
+	private TextField workingYearsTextField;
+	@FXML
+	private JFXComboBox<Integer> ngaySinhComboBox;
+	@FXML
+	private JFXComboBox<Integer> thangSinhComboBox;
+	@FXML
+	private HBox usedFilterHBox;
+	@FXML
+	private Label genderFilterLabel;
+	@FXML
+	private Label ageFilterLabel;
+	@FXML
+	private Label workingYearsFilterLabel;
+	@FXML
+	private Label ngaySinhFilterLabel;
+	@FXML
+	private Label thangSinhFilterLabel;
+	@FXML
+	private Text filterErrorText;
+	String ageFilterStrFormatter = "%d - %d tuổi";
+	String workingYearsFilterStrFormatter = "Năm làm việc: %d";
+	String ngaySinhFilterStrFormatter = "Sinh ngày: %02d";
+	String thangSinhFilterStrFormatter = "Sinh tháng: %02d";
+	int filterMinAge = 0, filterMaxAge = 50;
+	int filterWorkingYears = -1;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -921,7 +961,7 @@ public class QLNhanVienController implements Initializable {
 		});
 
 		// Nhan Vien Table------------------------------------------------------------------
-//		search table
+//		filter table by search
 		filteredList.addListener((ListChangeListener.Change<? extends NhanVien> change) -> {
 			displayedRowCntLabel.setText(Integer.toString(filteredList.size()));
 		});
@@ -934,7 +974,7 @@ public class QLNhanVienController implements Initializable {
 
 			tsm.clearSelection();
 			((CheckBox) tickCol.getGraphic()).setSelected(false);
-			filteredList.setPredicate(nhanvien -> {
+			searchFilteredList.setPredicate(nhanvien -> {
 				if (newVal.isEmpty() || newVal == null || newVal.isBlank()) {
 					return true;
 				}
@@ -964,7 +1004,7 @@ public class QLNhanVienController implements Initializable {
 				return false;
 			});
 		});
-		employeeTable.setItems(filteredList);
+		
 
 		searchTextField
 				.setFont(Font.loadFont(getClass().getResource("/asset/BeVietnamPro-Regular.ttf").toExternalForm(), 13));
@@ -985,6 +1025,156 @@ public class QLNhanVienController implements Initializable {
 			}
 		});
 
+//		filter table 
+		maleRadioBtn.setSelected(false); femaleRadioBtn.setSelected(false);
+		maleRadioBtn.setOnAction(event->{
+			filteredList_setPredicate();
+			genderFilterLabel.setText("Nam");
+			if(!usedFilterHBox.getChildren().contains(genderFilterLabel))
+				usedFilterHBox.getChildren().add(genderFilterLabel);
+		});
+		femaleRadioBtn.setOnAction(event->{
+			filteredList_setPredicate();
+			genderFilterLabel.setText("Nữ");
+			if(!usedFilterHBox.getChildren().contains(genderFilterLabel))
+				usedFilterHBox.getChildren().add(genderFilterLabel);
+		});
+		minAgeTextField.setText(String.valueOf(filterMinAge));
+		maxAgeTextField.setText(String.valueOf(filterMaxAge));
+		minAgeTextField.addEventHandler(KeyEvent.KEY_PRESSED, enterHandlerTextField);
+		maxAgeTextField.addEventHandler(KeyEvent.KEY_PRESSED, enterHandlerTextField);
+		minAgeTextField.focusedProperty().addListener((obser,oldVal,newVal)->{
+			if(!newVal) {
+				try {
+					int val = Integer.parseInt(minAgeTextField.getText());
+					val = Math.max(val, (int)ageRangeSlider.getMin());
+					val = Math.min(val, filterMaxAge);
+					filterMinAge = val;
+				}catch(NumberFormatException e) {
+					
+				}
+				minAgeTextField.setText(String.valueOf(filterMinAge));
+				ageRangeSlider.setLowValue(filterMinAge);
+				filteredList_setPredicate();
+				ageFilterLabel.setText(String.format(ageFilterStrFormatter, filterMinAge, filterMaxAge));
+				if(!usedFilterHBox.getChildren().contains(ageFilterLabel))
+					usedFilterHBox.getChildren().add(ageFilterLabel);
+			}
+		});
+		maxAgeTextField.focusedProperty().addListener((obser,oldVal,newVal)->{
+			if(!newVal) {
+				try {
+					int val = Integer.parseInt(maxAgeTextField.getText());
+					val = Math.max(val, filterMinAge);
+					val = Math.min(val, (int)ageRangeSlider.getMax());
+					filterMaxAge = val;
+				}catch(NumberFormatException e) {
+					
+				}
+				maxAgeTextField.setText(String.valueOf(filterMaxAge));
+				ageRangeSlider.setHighValue(filterMaxAge);
+				filteredList_setPredicate();
+				ageFilterLabel.setText(String.format(ageFilterStrFormatter, filterMinAge, filterMaxAge));
+				if(!usedFilterHBox.getChildren().contains(ageFilterLabel))
+					usedFilterHBox.getChildren().add(ageFilterLabel);
+			}
+		});
+		ageRangeSlider.setMax(filterMaxAge); ageRangeSlider.setMin(filterMinAge);
+		ageRangeSlider.setLowValue(filterMinAge); ageRangeSlider.setHighValue(filterMaxAge);
+		ageRangeSlider.setBlockIncrement(1.0); ageRangeSlider.setSnapToTicks(true);
+		ageRangeSlider.setMajorTickUnit(1.0); ageRangeSlider.setMinorTickCount(0);
+		ageRangeSlider.lowValueProperty().addListener((obser,oldVal,newVal)->{
+			minAgeTextField.setText(String.valueOf(newVal.intValue()));
+			filterMinAge = newVal.intValue();
+		});
+		ageRangeSlider.highValueProperty().addListener((obser,oldVal,newVal)->{
+			maxAgeTextField.setText(String.valueOf(newVal.intValue()));
+			filterMaxAge = newVal.intValue();
+		});
+		ageRangeSlider.lowValueChangingProperty().addListener((obser,oldVal,newVal)->{
+			if(!newVal) {
+				filteredList_setPredicate();
+				ageFilterLabel.setText(String.format(ageFilterStrFormatter, filterMinAge, filterMaxAge));
+				if(!usedFilterHBox.getChildren().contains(ageFilterLabel))
+					usedFilterHBox.getChildren().add(ageFilterLabel);
+			}
+		});
+		ageRangeSlider.highValueChangingProperty().addListener((obser,oldVal,newVal)->{
+			if(!newVal) {
+				filteredList_setPredicate();
+				ageFilterLabel.setText(String.format(ageFilterStrFormatter, filterMinAge, filterMaxAge));
+				if(!usedFilterHBox.getChildren().contains(ageFilterLabel))
+					usedFilterHBox.getChildren().add(ageFilterLabel);
+			}
+		});
+		filterErrorText.setVisible(false);
+		workingYearsTextField.addEventHandler(KeyEvent.KEY_PRESSED, enterHandlerTextField);
+		workingYearsTextField.setText(null);
+		workingYearsTextField.focusedProperty().addListener((obser,oldVal,newVal)->{
+			if(!newVal) {
+				if(workingYearsTextField.getStyleClass().remove("error-text"));
+				filterErrorText.setVisible(false);
+				if(workingYearsTextField.getText().isBlank()) {
+					workingYearsTextField.clear();
+					return;
+				}
+				int input = -1;
+				try {
+					input = Integer.parseInt(workingYearsTextField.getText());
+					workingYearsTextField.clear();
+					if(input > 0) {
+						filterWorkingYears = input;
+						filteredList_setPredicate();
+						workingYearsFilterLabel.setText(String.format(workingYearsFilterStrFormatter, filterWorkingYears));
+						if(!usedFilterHBox.getChildren().contains(workingYearsFilterLabel))
+							usedFilterHBox.getChildren().add(workingYearsFilterLabel);
+					}else {
+						workingYearsTextField.getStyleClass().add("error-text");
+						filterErrorText.setVisible(true);
+						workingYearsTextField.requestFocus();
+					}
+					return;
+				}catch(NumberFormatException e) {
+					
+				}
+				workingYearsTextField.clear();
+				workingYearsTextField.getStyleClass().add("error-text");
+				filterErrorText.setVisible(true);
+				workingYearsTextField.requestFocus();
+			}
+		});
+		ArrayList<Integer> DayInMonth = new ArrayList<>();
+		for(int i = 1;i<=31;i++)
+			DayInMonth.add(i);
+		ngaySinhComboBox.setItems(FXCollections.observableArrayList(DayInMonth));
+		ngaySinhComboBox.setVisibleRowCount(4);
+		ngaySinhComboBox.setValue(null);
+		ngaySinhComboBox.setOnAction(event->{
+			filteredList_setPredicate();
+			if(ngaySinhComboBox.getValue() != null) {
+				ngaySinhFilterLabel.setText(String.format(ngaySinhFilterStrFormatter, ngaySinhComboBox.getValue()));
+				if(!usedFilterHBox.getChildren().contains(ngaySinhFilterLabel))
+					usedFilterHBox.getChildren().add(ngaySinhFilterLabel);
+			}
+		});
+		ArrayList<Integer> MonthInYear = new ArrayList<>();
+		for(int i = 1;i<=12;i++)
+			MonthInYear.add(i);
+		thangSinhComboBox.setItems(FXCollections.observableArrayList(MonthInYear));
+		thangSinhComboBox.setVisibleRowCount(4);
+		thangSinhComboBox.setValue(null);
+		thangSinhComboBox.setOnAction(event->{
+			filteredList_setPredicate();
+			if(thangSinhComboBox.getValue() != null) {
+				thangSinhFilterLabel.setText(String.format(thangSinhFilterStrFormatter, thangSinhComboBox.getValue()));
+				if(!usedFilterHBox.getChildren().contains(thangSinhFilterLabel))
+					usedFilterHBox.getChildren().add(thangSinhFilterLabel);
+			}
+		});
+		usedFilterHBox.getChildren().clear();
+		
+		employeeTable.setItems(filteredList);
+		
 //		table selection model
 		tsm = employeeTable.getSelectionModel();
 		tsm.getSelectedIndices().addListener((ListChangeListener.Change<? extends Integer> change) -> {
@@ -1480,7 +1670,8 @@ public class QLNhanVienController implements Initializable {
 	}
 
 	void refreshTable() {
-		maleNumber.set(0); femaleNumber.set(0);
+		maleNumber.set(0);
+		femaleNumber.set(0);
 		nvList.clear();
 		tsm.clearSelection();
 		sql = "select * from nhanvien order by ma_nv asc";
@@ -1664,52 +1855,16 @@ public class QLNhanVienController implements Initializable {
 		}
 	}
 
-	EventHandler<MouseEvent> editAvatarAction = new EventHandler<MouseEvent>() {
-		@Override
-		public void handle(MouseEvent event) {
-			if (!event.getButton().equals(MouseButton.PRIMARY))
-				return;
-			Stage stg = (Stage) (root.getScene().getWindow());
-			avatarFile = avatarFileChooser.showOpenDialog(stg);
-			if (avatarFile != null) {
-				noPhotoPane.setVisible(false);
-				photoPane.setVisible(true);
-				Image avatar = new Image(avatarFile.toURI().toString(), avatarWidth, avatarHeight, false, false);
-				photoImageView.setImage(avatar);
+	EventHandler<MouseEvent> editAvatarAction=new EventHandler<MouseEvent>(){@Override public void handle(MouseEvent event){if(!event.getButton().equals(MouseButton.PRIMARY))return;Stage stg=(Stage)(root.getScene().getWindow());avatarFile=avatarFileChooser.showOpenDialog(stg);if(avatarFile!=null){noPhotoPane.setVisible(false);photoPane.setVisible(true);Image avatar=new Image(avatarFile.toURI().toString(),avatarWidth,avatarHeight,false,false);photoImageView.setImage(avatar);
 
-				if (maNVTextField.isEditable()) { // tab1
-					sql = "update nhanvien set avatar = ? where ma_nv = ?";
-					try {
-						prepareStm = conn.prepareStatement(sql);
-						FileInputStream fis = new FileInputStream(avatarFile);
-						try {
-							prepareStm.setBinaryStream(1, (InputStream) fis, fis.available());
-							prepareStm.setString(2, maNVTextField.getText());
-							prepareStm.executeUpdate();
-							if (NHANVIEN_SHOWING != null) {
-								NhanVien nv = NHANVIEN_SHOWING;
-								nv.setAvatarFile(avatarFile);
-							}
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+	if(maNVTextField.isEditable()){ // tab1
+	sql="update nhanvien set avatar = ? where ma_nv = ?";try{prepareStm=conn.prepareStatement(sql);FileInputStream fis=new FileInputStream(avatarFile);try{prepareStm.setBinaryStream(1,(InputStream)fis,fis.available());prepareStm.setString(2,maNVTextField.getText());prepareStm.executeUpdate();if(NHANVIEN_SHOWING!=null){NhanVien nv=NHANVIEN_SHOWING;nv.setAvatarFile(avatarFile);}}catch(IOException e){
+	// TODO Auto-generated catch block
+	e.printStackTrace();}
 
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					} catch (SecurityException e) {
-						e.printStackTrace();
-					}
-					avatarFile = null;
-				}
-			} else {
-				showAlert(AlertType.ERROR, "", "Mở file thất bại");
-			}
-		}
-	};
+	}catch(SQLException e){
+	// TODO Auto-generated catch block
+	e.printStackTrace();}catch(FileNotFoundException e){e.printStackTrace();}catch(SecurityException e){e.printStackTrace();}avatarFile=null;}}else{showAlert(AlertType.ERROR,"","Mở file thất bại");}}};
 
 	public void setAllFieldOn() {
 		disableAddPhotoPane.setVisible(false);
@@ -1778,9 +1933,9 @@ public class QLNhanVienController implements Initializable {
 		}
 		return nv;
 	}
-	
+
 	void enableAddEmployeeBtn() {
-		if(maNVTextField.isEditable())
+		if (maNVTextField.isEditable())
 			return;
 		String hoten = hoTenTextField.getText();
 		String gioiTinh = gioiTinhComboBox.getValue();
@@ -1791,13 +1946,82 @@ public class QLNhanVienController implements Initializable {
 		LocalDate ngayVL = ngayVLDatePicker.getValue();
 		String username = usernameTextField.getText();
 		String password = passwordTextField.getText();
-		if(hoten.isBlank() || gioiTinh == null || gioiTinh.isEmpty() || ngaySinh == null
-				|| diaChi.isBlank() || sdt.isEmpty() || email.isEmpty() || ngayVL == null
-				|| username.isBlank() || password.isBlank()) {
+		if (hoten.isBlank() || gioiTinh == null || gioiTinh.isEmpty() || ngaySinh == null || diaChi.isBlank()
+				|| sdt.isEmpty() || email.isEmpty() || ngayVL == null || username.isBlank() || password.isBlank()) {
 			addEmployeeBtn.setDisable(true);
-		}else {
+		} else {
 			addEmployeeBtn.setDisable(false);
 		}
 	}
+
+	void filteredList_setPredicate() {
+		filteredList.setPredicate(nv->{
+			if(maleRadioBtn.isSelected() && !nv.getGioiTinh().equals("Nam"))
+				return false;
+			else if(femaleRadioBtn.isSelected() && !nv.getGioiTinh().equals("Nữ"))
+				return false;
+			
+			int age = LocalDate.now().getYear()-nv.getNgaySinh().getYear();
+			System.out.println(filterMinAge + "\t" + filterMaxAge);
+			if(age<filterMinAge || age>filterMaxAge)
+				return false;
+			
+			int workingYears = LocalDate.now().getYear()-nv.getNgayVL().getYear();
+			if(filterWorkingYears != -1 && workingYears != filterWorkingYears)
+				return false;
+			
+			if(ngaySinhComboBox.getValue()!=null && nv.getNgaySinh().getDayOfMonth() != ngaySinhComboBox.getValue())
+				return false;
+			
+			if(thangSinhComboBox.getValue()!=null && nv.getNgaySinh().getMonthValue() != thangSinhComboBox.getValue())
+				return false;
+			
+			return true;
+		});
+
+	}
 	
+	public void removeGenderLabel(MouseEvent e) {
+		if(e.getButton().equals(MouseButton.PRIMARY)) {
+			usedFilterHBox.getChildren().remove(genderFilterLabel);
+			maleRadioBtn.setSelected(false); femaleRadioBtn.setSelected(false);
+			filteredList_setPredicate();
+		}
+	}
+	
+	public void removeAgeLabel(MouseEvent e) {
+		if(e.getButton().equals(MouseButton.PRIMARY)) {
+			usedFilterHBox.getChildren().remove(ageFilterLabel);
+			ageRangeSlider.setLowValue(ageRangeSlider.getMin());
+			ageRangeSlider.setHighValue(ageRangeSlider.getMax());
+			filterMinAge = (int)ageRangeSlider.getMin();
+			filterMaxAge = (int)ageRangeSlider.getMax();
+			filteredList_setPredicate();
+		}
+	}
+	
+	public void removeWorkingYearsLabel(MouseEvent e) {
+		if(e.getButton().equals(MouseButton.PRIMARY)) {
+			usedFilterHBox.getChildren().remove(workingYearsFilterLabel);
+			filterWorkingYears = -1;
+			filteredList_setPredicate();
+		}
+	}
+	
+	public void removeNgaySinhLabel(MouseEvent e) {
+		if(e.getButton().equals(MouseButton.PRIMARY)) {
+			usedFilterHBox.getChildren().remove(ngaySinhFilterLabel);
+			ngaySinhComboBox.setValue(null);
+			filteredList_setPredicate();
+		}
+	}
+	
+	public void removeThangSinhLabel(MouseEvent e) {
+		if(e.getButton().equals(MouseButton.PRIMARY)) {
+			usedFilterHBox.getChildren().remove(thangSinhFilterLabel);
+			thangSinhComboBox.setValue(null);
+			filteredList_setPredicate();
+		}
+	}
+
 }

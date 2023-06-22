@@ -25,6 +25,8 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.RangeSlider?>
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#exitFocused" prefHeight="600.0" prefWidth="1181.0" style="-fx-background-color: #E0D8B0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QLNhanVienController">
    <top>
@@ -338,50 +340,111 @@
                      </cursor>
                   </ImageView>
                   <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="417.0" layoutY="22.0" styleClass="refreshIcon" stylesheets="@../css/NhanVien.css" />
-                  <Label layoutX="472.0" layoutY="11.0" text="Lọc:">
+                  <Label layoutX="472.0" layoutY="5.0" text="Lọc:">
                      <font>
                         <Font name="Open Sans ExtraBold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="557.0" layoutY="8.0" text="Giới tính" />
-                  <JFXRadioButton layoutX="519.0" layoutY="35.0" text="Nam">
+                  <Label layoutX="557.0" layoutY="5.0" text="Giới tính" />
+                  <JFXRadioButton fx:id="maleRadioBtn" layoutX="527.0" layoutY="30.0" text="Nam">
                      <selectedColor>
                         <Color red="0.7764706015586853" green="0.8705882430076599" blue="0.2549019753932953" />
                      </selectedColor>
                      <toggleGroup>
                         <ToggleGroup fx:id="gender" />
                      </toggleGroup></JFXRadioButton>
-                  <JFXRadioButton layoutX="603.0" layoutY="35.0" text="Nữ" toggleGroup="$gender">
+                  <JFXRadioButton fx:id="femaleRadioBtn" layoutX="590.0" layoutY="30.0" text="Nữ" toggleGroup="$gender">
                      <selectedColor>
                         <Color red="0.7764706015586853" green="0.8705882430076599" blue="0.2549019753932953" />
                      </selectedColor></JFXRadioButton>
-                  <Label layoutX="726.0" layoutY="8.0" text="Tuổi" />
-                  <TextField alignment="CENTER" layoutX="676.0" layoutY="31.0" prefHeight="18.0" prefWidth="49.0" promptText="min" />
-                  <TextField alignment="CENTER" layoutX="755.0" layoutY="31.0" prefHeight="18.0" prefWidth="49.0" promptText="max" />
-                  <Label layoutX="738.0" layoutY="35.0" text="-" />
-                  <JFXComboBox layoutX="839.0" layoutY="31.0" />
-                  <Label layoutX="838.0" layoutY="8.0" text="Năm vào làm" />
-                  <JFXComboBox layoutX="957.0" layoutY="31.0" />
-                  <Label layoutX="958.0" layoutY="8.0" text="Ngày sinh" />
-                  <Label layoutX="1053.0" layoutY="8.0" text="Tháng sinh" />
-                  <JFXComboBox layoutX="1054.0" layoutY="31.0" />
+                  <Label layoutX="736.0" layoutY="5.0" text="Tuổi" />
+                  <JFXComboBox fx:id="ngaySinhComboBox" layoutX="957.0" layoutY="27.0" />
+                  <Label layoutX="958.0" layoutY="5.0" text="Ngày sinh" />
+                  <Label layoutX="1053.0" layoutY="5.0" text="Tháng sinh" />
+                  <JFXComboBox fx:id="thangSinhComboBox" layoutX="1054.0" layoutY="27.0" />
                   <Separator layoutX="466.0" layoutY="1.0" orientation="VERTICAL" prefHeight="110.0" prefWidth="2.0" />
                   <Label layoutX="472.0" layoutY="79.0" text="Bộ lọc đã sử dụng:">
                      <font>
                         <Font name="Open Sans ExtraBold" size="14.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="467.0" layoutY="67.0" prefHeight="0.0" prefWidth="673.0" />
-                  <HBox alignment="CENTER_LEFT" layoutX="619.0" layoutY="74.0" prefHeight="26.0" prefWidth="541.0" AnchorPane.leftAnchor="618.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
+                  <Separator layoutX="467.0" layoutY="73.0" prefHeight="0.0" prefWidth="691.0" />
+                  <HBox fx:id="usedFilterHBox" alignment="CENTER_LEFT" layoutX="605.0" layoutY="78.0" prefHeight="26.0" prefWidth="557.0" spacing="5.0" AnchorPane.leftAnchor="604.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="77.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="22.0" prefWidth="59.0" styleClass="filterCell" stylesheets="@../css/NhanVien.css" text="Nam">
+                        <Label fx:id="genderFilterLabel" alignment="CENTER" contentDisplay="RIGHT" onMouseClicked="#removeGenderLabel" prefHeight="22.0" prefWidth="59.0" styleClass="filterCell" stylesheets="@../css/NhanVien.css" text="Nam">
                            <graphic>
                               <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../asset/clearIcon.png" />
                                  </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Label fx:id="ageFilterLabel" alignment="CENTER" contentDisplay="RIGHT" onMouseClicked="#removeAgeLabel" prefHeight="22.0" prefWidth="97.0" styleClass="filterCell" stylesheets="@../css/NhanVien.css" text="xx - yy tuổi">
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../asset/clearIcon.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Label fx:id="workingYearsFilterLabel" alignment="CENTER" contentDisplay="RIGHT" onMouseClicked="#removeWorkingYearsLabel" prefHeight="22.0" prefWidth="138.0" styleClass="filterCell" stylesheets="@../css/NhanVien.css" text="Năm làm việc: xx">
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../asset/clearIcon.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Label fx:id="ngaySinhFilterLabel" alignment="CENTER" contentDisplay="RIGHT" onMouseClicked="#removeNgaySinhLabel" prefHeight="22.0" prefWidth="110.0" styleClass="filterCell" stylesheets="@../css/NhanVien.css" text="Sinh ngày: xx">
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../asset/clearIcon.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Label fx:id="thangSinhFilterLabel" alignment="CENTER" contentDisplay="RIGHT" onMouseClicked="#removeThangSinhLabel" prefHeight="22.0" prefWidth="116.0" styleClass="filterCell" stylesheets="@../css/NhanVien.css" text="Sinh tháng: xx">
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../asset/clearIcon.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Label>
                      </children>
                      <padding>
@@ -403,6 +466,12 @@
                         </Tooltip>
                      </tooltip>
                   </Label>
+                  <RangeSlider fx:id="ageRangeSlider" layoutX="655.0" layoutY="52.0" prefHeight="14.0" prefWidth="187.0" />
+                  <TextField fx:id="minAgeTextField" layoutX="655.0" layoutY="19.0" prefHeight="25.0" prefWidth="74.0" />
+                  <TextField fx:id="maxAgeTextField" layoutX="768.0" layoutY="19.0" prefHeight="25.0" prefWidth="74.0" />
+                  <Label layoutX="859.0" layoutY="5.0" text="Năm làm việc" />
+                  <TextField fx:id="workingYearsTextField" layoutX="861.0" layoutY="27.0" prefHeight="25.0" prefWidth="69.0" />
+                  <Text fx:id="filterErrorText" fill="RED" layoutX="472.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá trị nhập không hợp lệ" />
                </children>
             </AnchorPane>
          </children>

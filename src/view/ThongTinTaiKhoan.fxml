@@ -6,8 +6,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -137,21 +135,7 @@
                                                 <Font size="17.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="19.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quyền truy cập*" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="160.0">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                          </Text>
                                           <Button layoutX="283.0" layoutY="145.0" maxHeight="100.0" maxWidth="110.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #44707A;" text="Đổi mật khẩu" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="90.0" />
-                                          <TableView layoutX="173.0" layoutY="168.0" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #44707A; -fx-border-radius: 2;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="160.0">
-                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="STT" />
-                                                <TableColumn prefWidth="75.0" text="Tên quyền truy cập" />
-                                             </columns>
-                                             <columnResizePolicy>
-                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                             </columnResizePolicy>
-                                          </TableView>
                                        </children>
                                     </AnchorPane>
                                  </items>
